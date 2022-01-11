@@ -1,0 +1,290 @@
+\documentclass[12pt,nodisplayskipstretch]{article}
+\usepackage[utf8]{inputenc}
+
+%Definição do tamanho do documento e margens
+\usepackage[a4paper, left=30mm, right=20mm, top=30mm, bottom=20mm]{geometry}
+
+%Alinhamento de texto adicionais
+\usepackage{ragged2e}
+
+%Fonte do texto em Times New Roman
+\usepackage{mathptmx}
+
+\usepackage{fancyhdr}
+\usepackage{quoting}
+\usepackage{nomencl}
+
+%Suporte para caracteres especiais
+\usepackage[brazil]{babel}
+
+\usepackage{hyphenat}
+
+%Citações das referências bibliográficas dentro da ABNT no documento e no final
+\usepackage[alf,abnt-repeated-title-omit=yes,abnt-emphasize=bf,abnt-etal-list=0]{abntex2cite}
+
+%Geração de dummy text
+\usepackage{lipsum}
+
+\usepackage[]{setspace}
+
+%Pacote para visualização de grades e distância no documento, util para formatação
+% \usepackage[grid]{eso-pic}
+
+%Como será a citação
+\citebrackets()
+
+%Para disponibilizar a página de siglas
+\makenomenclature
+
+% \setlength{\parindent}{1.5cm}
+% \renewcommand{\baselinestretch}{1.5}
+
+%Alteração do tamanho da linha do rodapé 
+\renewcommand{\footnoterule}{
+\kern -3pt
+\hrule width 5cm
+\kern 2pt
+}
+
+%Esses comandos precisam ser carregados em primeira instancia para que o pacote babel não entre em conflito e tornando não efetivo as alterações e renewcommand
+\AtBeginDocument{
+    %Centralização do título sumário
+    \renewcommand\contentsname{\centering \normalsize \uppercase{Sumário}}
+    %Renomeação do título das siglas
+    \renewcommand{\nomname}{\centering \normalsize \uppercase{Siglas}} 
+    %Remoção do título referências
+    \renewcommand{\refname}{} 
+    %Renomeação do título da lista de figuras
+    \renewcommand{\listfigurename}{\centering \normalsize \uppercase{Lista de figuras}}
+    %Renomeação do título da lista de tabela
+    \renewcommand{\listtablename}{\centering \normalsize \uppercase{Lista de tabela}}
+}
+
+%Configuração do fancy para paginação
+\pagestyle{fancy}
+\fancyhf{}
+\fancyheadoffset{0cm}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[R]{\thepage}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[R]{\thepage}%
+}
+
+%Ambiente para a apresentação da natureza do trabalho
+\newenvironment{natureza}{\hspace{59mm}\begin{minipage}[c]{95mm}\begin{justify}}{\end{justify}\end{minipage}}
+
+%Ambiente para citações longas com mais de três linhas
+\newenvironment{longcite}{\vspace{5mm}\hfill\begin{minipage}[c]{120mm}\setstretch{1.0}\small}{\end{minipage}\vspace{5mm}}
+
+%Comando para título
+\newcommand{\titulo}{\uppercase{Título}}
+
+\begin{document}
+
+%Definir o espaçamento entre as linhas para 1.5
+\setstretch{1.5}
+
+%Capa------------------------------------------------------
+\thispagestyle{empty}
+\begin{center}
+    \uppercase{Universidade Estadual Paulista ``Júlio de Mesquita Filho"}
+\end{center}
+
+\vspace{4cm}
+
+\begin{center}
+    \uppercase{Nome Sobrenome}
+\end{center}
+
+\vspace{5cm}
+
+\begin{center}
+    \titulo
+\end{center}
+
+\vspace*{\fill}
+
+\begin{center}
+    \uppercase{Cidade -- Estado\\2022}
+\end{center}
+
+%Lombada------------------------------------------------------
+
+%Folha de rosto------------------------------------------------------
+\newpage
+
+\thispagestyle{empty}
+
+\begin{center}
+    \uppercase{Nome Sobrenome}
+\end{center}
+
+\vspace{5cm}
+
+\begin{center}
+    \titulo
+\end{center}
+
+\vspace{5cm}
+
+\begin{natureza}
+\noindent Tese apresentada ao Departamento de Matemática e Computação da Faculdade de Ciência e Tecnologia da Unesp ``Júlio de Mesquita Filho"\;para obtenção de bacharel.\\
+Orientador: Prof. Dr. Nome Sobrenome
+\end{natureza}
+
+%Para deixar a cidade da instituição no final da página
+\vspace*{\fill}
+
+\begin{center}
+\uppercase{Cidade -- Estado\\2022}
+\end{center}
+
+%Errata------------------------------------------------------
+
+%Termo de aprovação------------------------------------------------------
+\newpage 
+\thispagestyle{empty}
+\begin{center}
+    \uppercase{Nome Sobrenome}
+\end{center}
+\vspace{2cm}
+\begin{center}
+    \titulo
+\end{center}
+\vspace{2cm}
+Tese apresentada para obtenção de bacharel em Ciência da Computação, da Universidade Estadual ``Júlio de Mesquita Filho", pela seguinte banca examinadora:
+\\
+\vspace{3cm}
+\\
+Orientador:
+\hspace{5mm}
+\begin{minipage}[t]{11cm}
+Prof. Dr. Nome Sobrenome\\
+Departamento de Matemática e Computação, Unesp\\
+\end{minipage}\\
+
+\vspace*{\fill}
+
+\begin{center}
+    Cidade, \today
+\end{center}
+
+%Dedicatória*------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\hspace{34mm}
+\begin{minipage}{11cm}
+Ao professor Lorem Ipsum\\
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tristique, dui eu tempor consequat, felis ligula faucibus urna, ac porttitor erat est et ante. Nullam pulvinar leo elit, at dapibus elit imperdiet at.
+\end{minipage}
+
+%Agradecimentos*------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\begin{center}
+    \uppercase{Agradecimentos}
+\end{center}
+\lipsum[1]
+
+%Epígrafe*------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\hspace{44mm}
+\begin{minipage}{10cm}
+\begin{flushright}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tristique, dui eu tempor consequat, felis ligula faucibus urna, ac porttitor erat est et ante. Nullam pulvinar leo elit, at dapibus elit imperdiet at.\\(Nome Sobrenome)
+\end{flushright}
+\end{minipage}
+
+%Resumo/palavras-chave (língua vernácula)------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\begin{center}
+    \uppercase{Resumo}
+\end{center}
+\lipsum[1]
+
+\begin{center}
+    \uppercase{Palavras-chaves}
+\end{center}
+
+
+%Resumo/palavras-chave (língua estrangeira)------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\begin{center}
+    \uppercase{Abstract}
+\end{center}
+\lipsum[1]
+
+\begin{center}
+    \uppercase{Keywords}
+\end{center}
+
+%Lista de ilustrações*------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\listoffigures
+\newpage
+
+%Lista de tabelas*------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\listoftables
+\newpage
+
+%Lista de abreviaturas e siglas------------------------------------------------------
+\thispagestyle{empty}
+%Impressão da página de siglas no documento
+\printnomenclature
+\newpage
+
+%Lista de símbolos*------------------------------------------------------
+
+%Sumário------------------------------------------------------
+\newpage
+
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+
+%Introdução------------------------------------------------------
+\section{Introdução}
+\lipsum[1]
+\cite{Lorem}
+
+\newpage
+
+\section{Problemas}
+\lipsum[1]
+
+\subsection{Outros problemas}
+\lipsum[1]
+
+\section{Objetivos}
+\lipsum[1]
+
+\subsection{Objetivos gerais}
+\lipsum[1]
+
+\subsection{Objetivos específicos}
+\subsubsection{Objetivo um}
+\lipsum[1]
+
+\section{Justificativa}
+\lipsum[1]
+
+\section{Metodologia}
+\lipsum[1]
+
+\newpage
+\section{Referências}
+%Para compensar a ausência do título de referências
+\vspace{-20mm}
+%Precisa colocar esse comando e dentro dele o titulo do documento bib para o processamento das referências bibliográficas
+\bibliography{referencias}
+\end{document}
