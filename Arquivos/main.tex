@@ -67,9 +67,9 @@
 \renewcommand{\headrulewidth}{0pt} 
 \renewcommand{\footrulewidth}{0pt}
 \fancyhead[R]{\thepage}
-\fancypagestyle{plain}{%
-  \fancyhf{}%
-  \fancyhead[R]{\thepage}%
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[R]{\thepage}
 }
 
 %Ambiente para a apresentação da natureza do trabalho
@@ -79,7 +79,14 @@
 \newenvironment{longcite}{\vspace{5mm}\hfill\begin{minipage}[c]{120mm}\setstretch{1.0}\small}{\end{minipage}\vspace{5mm}}
 
 %Comando para título
-\newcommand{\titulo}{\uppercase{Título}}
+\newcommand{\titulo}{\begin{center}\uppercase{Título}\end{center}}
+
+%Comando para o nome
+\newcommand{\nome}{\begin{center}\uppercase{Nome Sobrenome}\end{center}}
+
+%Comando para a instituição
+\newcommand{\instituicao}{\begin{center}\uppercase{Universidade Estadual Paulista ``Júlio de Mesquita Filho"}\end{center}}
+
 
 \begin{document}
 
@@ -88,21 +95,17 @@
 
 %Capa------------------------------------------------------
 \thispagestyle{empty}
-\begin{center}
-    \uppercase{Universidade Estadual Paulista ``Júlio de Mesquita Filho"}
-\end{center}
+\instituicao
 
 \vspace{4cm}
 
-\begin{center}
-    \uppercase{Nome Sobrenome}
-\end{center}
+\nome 
 
 \vspace{5cm}
 
-\begin{center}
-    \titulo
-\end{center}
+
+\titulo 
+
 
 \vspace*{\fill}
 
@@ -117,15 +120,11 @@
 
 \thispagestyle{empty}
 
-\begin{center}
-    \uppercase{Nome Sobrenome}
-\end{center}
+\nome
 
 \vspace{5cm}
 
-\begin{center}
-    \titulo
-\end{center}
+\titulo
 
 \vspace{5cm}
 
@@ -146,13 +145,13 @@ Orientador: Prof. Dr. Nome Sobrenome
 %Termo de aprovação------------------------------------------------------
 \newpage 
 \thispagestyle{empty}
-\begin{center}
-    \uppercase{Nome Sobrenome}
-\end{center}
+
+\nome
+
 \vspace{2cm}
-\begin{center}
-    \titulo
-\end{center}
+
+\titulo
+
 \vspace{2cm}
 Tese apresentada para obtenção de bacharel em Ciência da Computação, da Universidade Estadual ``Júlio de Mesquita Filho", pela seguinte banca examinadora:
 \\
