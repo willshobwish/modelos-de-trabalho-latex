@@ -1,0 +1,159 @@
+\usepackage[utf8]{inputenc}
+
+%Definição do tamanho do documento e margens
+\usepackage[a4paper, left=30mm, right=20mm, top=30mm, bottom=20mm]{geometry}
+
+%Alinhamento de texto adicionais
+\usepackage{ragged2e}
+
+%Fonte do texto em Times New Roman
+\usepackage{mathptmx}
+
+\usepackage{fancyhdr}
+\usepackage{quoting}
+
+%Nomenclaturas e abreviacao
+\usepackage{nomencl}
+\makenomenclature
+
+% Subfigures
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{multirow}
+\usepackage{multicol}
+%Suporte para caracteres especiais
+\usepackage[brazil]{babel}
+
+\usepackage{hyphenat}
+
+\usepackage{import}
+
+\usepackage{sectsty}
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\normalsize}
+
+% Hyperlinks
+\usepackage{hyperref}
+\usepackage{float}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+    citecolor=black,
+    pdftitle={},
+    }
+    
+% \urlstyle{same}
+\usepackage[style=abnt]{biblatex}
+\addbibresource{referencias.bib}  
+
+% \usepackage[alf,abnt-repeated-title-omit=yes,abnt-emphasize=bf,abnt-etal-list=0]{abntex2cite}
+
+%Geração de dummy text
+\usepackage{lipsum}
+
+\usepackage[]{setspace}
+
+\usepackage{graphicx}
+
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\renewcommand\tabularxcolumn[1]{m{#1}}
+%Pacote para visualização de grades e distância no documento, util para formatação
+% \usepackage[grid]{eso-pic}
+
+%Como será a citação
+% \citebrackets()
+
+%Para disponibilizar a página de siglas
+\makenomenclature
+
+% \setlength{\parindent}{1.5cm}
+% \renewcommand{\baselinestretch}{1.5}
+
+%Alteração do tamanho da linha do rodapé 
+\renewcommand{\footnoterule}{
+\kern -3pt
+\hrule width 5cm
+\kern 2pt
+}
+
+% Pacote para listar 
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1,1,1}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%Esses comandos precisam ser carregados em primeira instancia para que o pacote babel não entre em conflito e tornando não efetivo as alterações e renewcommand
+\AtBeginDocument{
+% Renomeação da descricao do listing para código
+    \renewcommand{\lstlistingname}{Código}
+    % Renomeação do titulo de listing para código
+    \renewcommand{\lstlistlistingname}{\centering \normalsize \uppercase{Lista de Códigos}}
+    %Centralização do título sumário
+    \renewcommand\contentsname{\centering \normalsize \uppercase{Sumário}}
+    %Renomeação do título das siglas
+    \renewcommand{\nomname}{\centering \normalsize \uppercase{Siglas}} 
+    %Remoção do título referências
+    \renewcommand{\refname}{} 
+    %Renomeação do título da lista de figuras
+    \renewcommand{\listfigurename}{\centering \normalsize \uppercase{Lista de figuras}}
+    %Renomeação do título da lista de tabela
+    \renewcommand{\listtablename}{\centering \normalsize \uppercase{Lista de tabela}}
+    %Citações das referências bibliográficas dentro da ABNT no documento e no final
+
+}
+
+%Configuração do fancy para paginação
+\pagestyle{fancy}
+\fancyhf{}
+\fancyheadoffset{0cm}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[R]{\thepage}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[R]{\thepage}%
+}
+
+% %Configuração do fancy para paginação
+% \pagestyle{fancy}
+% \fancyhf{}
+% \fancyheadoffset{0cm}
+% \renewcommand{\headrulewidth}{0pt} 
+% \renewcommand{\footrulewidth}{0pt}
+% % Impressão frente e verso com a paginação correta
+% \fancyhead[LE,RO]{\thepage}
+% \fancypagestyle{plain}{%
+%   \fancyhf{}%
+%   \fancyhead[R]{\thepage}
+%     % \fancyhead[LE,RO]{\thepage}
+% }
+\urlstyle{same}
+\usepackage{indentfirst}
