@@ -1,5 +1,9 @@
 # Modelo de Trabalho de Conclusão de Curso da FCT Unesp
 
+Em tipo-de-modelo/config/commands.sty possui constantes como titulo, orietnador, cidade e entre outros.  
+
+É necessário alterar essas constantes que será alterado em todo o projeto.
+
 ## Alunos da ciência da computação, este modelo não está conforme as normas da Sociedade Brasileira de Computação
 
 Modelo de Trabalho de Conclusão de Curso com base na ABNT da Faculdade de Ciência e Tecnologia "Júlio de Mesquita Filho" Unesp em LaTeX.  
