@@ -1,6 +1,25 @@
-\newenvironment{natureza}{\hspace{59mm}\begin{minipage}[c]{95mm}\begin{justify}}{\end{justify}\end{minipage}}
-\newenvironment{longcite}{\vspace{5mm}\hfill\begin{minipage}[c]{120mm}\setstretch{1.0}\small}{\end{minipage}\vspace{5mm}}
+% Ambiente para apresentação da natureza do trabalho (ex: tipo, curso, ano, etc.).
+% Insere um recuo horizontal de 59mm e posiciona o conteúdo dentro de uma caixa de 95mm com alinhamento justificado.
+\newenvironment{natureza}
+  {\hspace{59mm}\begin{minipage}[c]{95mm}\begin{justify}}
+  {\end{justify}\end{minipage}}
+
+% Ambiente para citações longas (com mais de três linhas), formatando com recuo, espaçamento simples e fonte reduzida.
+% Utilizado para destacar trechos de textos de outros autores.
+\newenvironment{longcite}
+  {\vspace{5mm}\hfill\begin{minipage}[c]{120mm}\setstretch{1.0}\small}
+  {\end{minipage}\vspace{5mm}}
+
+% Comando personalizado para o título da pesquisa.
+% Pode ser redefinido com \renewcommand{\titulo}{Novo Título}.
 \newcommand{\titulo}{Título da pesquisa}
+
+% Comando para o nome do autor ou autora do trabalho.
 \newcommand{\nome}{Nome sobrenome}
+
+% Comando para o nome do(a) orientador(a).
 \newcommand{\orientador}{Prof. Dr. Nome Sobrenome}
-\newcommand{\cidade}{Presidente Prudente -- São Paulo}
+
+% Comando para a cidade e o estado em que o trabalho foi desenvolvido.
+\newcommand{\cidade}{Cidade}
+\newcommand{\cidadeestado}{\cidade\;-- Estado}

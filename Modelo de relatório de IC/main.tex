@@ -1,19 +1,60 @@
+% Define o tipo de documento como "article", com fonte de 12pt
+% A opção 'nodisplayskipstretch' evita que o LaTeX altere o espaçamento ao redor de fórmulas exibidas
 \documentclass[12pt,nodisplayskipstretch]{article}
+
+% Importa o arquivo com as configurações gerais do projeto (pacotes, margens, fonte etc.)
 \usepackage{config/config}
+
+% Importa comandos personalizados definidos pelo usuário, como macros para título, nome, orientador etc.
 \usepackage{config/commands}
+
+% Importa redefinições de comandos padrão do LaTeX, para personalizar o comportamento de comandos existentes
 \usepackage{config/renew-commands}
-\begin{document}
-%Importacao das secoes
+
+\begin{document} % Início do conteúdo do documento
+
+% ----------------------------
+% SEÇÕES PRÉ-TEXTUAIS
+% ----------------------------
+
+% Importa a folha de rosto (com título, autor, orientador etc.)
 \import{sections/pre-textual/}{0-folha-de-rosto.tex}
+
+% Importa a folha de aprovação (assinaturas da banca)
 \import{sections/pre-textual/}{1-folha-de-aprovacao.tex}
+
+% Importa o resumo em português
 \import{sections/pre-textual/}{2-resumo.tex}
+
+% Importa o resumo em inglês (abstract)
 \import{sections/pre-textual/}{3-resumo-ingles.tex}
+
+% Importa listas automáticas (figuras, tabelas, siglas etc.)
 \import{sections/pre-textual/}{4-listas.tex}
+
+% Importa o sumário (índice do conteúdo)
 \import{sections/pre-textual/}{5-sumario.tex}
+
+% ----------------------------
+% SEÇÕES TEXTUAIS
+% ----------------------------
+
+% Importa a introdução do trabalho
 \import{sections/textual/}{6-introducao.tex}
+
+% Importa a seção de materiais e métodos (ou metodologia)
 \import{sections/textual/}{7-materiais-e-metodos.tex}
+
+% Importa a seção de resultados e discussão
 \import{sections/textual/}{8-resultados-e-discussao.tex}
+
+% Importa a conclusão do trabalho
 \import{sections/textual/}{9-conclusoes.tex}
+
+% Importa os agradecimentos (opcional, mas comum)
 \import{sections/textual/}{11-agradecimentos.tex}
+
+% Importa as referências bibliográficas
 \import{sections/textual/}{10-referencias.tex}
-\end{document}
+
+\end{document} % Fim do conteúdo do documento

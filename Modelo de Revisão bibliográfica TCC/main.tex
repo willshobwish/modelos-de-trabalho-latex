@@ -1,24 +1,56 @@
+% Classe do documento: artigo, tamanho da fonte 12pt, e opção para não reduzir o espaçamento em fórmulas
 \documentclass[12pt,nodisplayskipstretch]{article}
+
+% Importa comandos personalizados definidos no arquivo "commands.sty"
 \usepackage{config/commands}
+
+% Importa configurações gerais do documento (margens, fontes, pacotes etc.) definidas em "config.sty"
 \usepackage{config/config}
-\begin{document}
-%Importacao das secoes
+
+\begin{document} % Início do conteúdo do documento
+
+% ---------------------------- %
+% SEÇÕES PRÉ-TEXTUAIS
+% ---------------------------- %
+
+% Importa o arquivo da capa
 \import{sections/pre-textual/}{0-capa.tex}
+
+% Importa a folha de rosto
 \import{sections/pre-textual/}{0-folha-de-rosto.tex}
+
+% Importa a folha de aprovação
 \import{sections/pre-textual/}{1-folha-de-aprovacao.tex}
+
+% Importa o resumo em português
 \import{sections/pre-textual/}{2-resumo.tex}
+
+% Importa o resumo em inglês (abstract)
 \import{sections/pre-textual/}{3-resumo-ingles.tex}
+
+% Importa listas (ex: lista de figuras, tabelas, siglas)
 \import{sections/pre-textual/}{4-listas.tex}
+
+% Importa o sumário
 \import{sections/pre-textual/}{5-sumario.tex}
-% \import{sections/}{1-identificacao.tex}
+
+% ---------------------------- %
+% SEÇÕES TEXTUAIS
+% ---------------------------- %
+
+% Importa a introdução
 \import{sections/textual/}{2-introducao.tex}
-\import{sections/textual/}{3-cnn.tex}
-\import{sections/textual/}{4-data-augmentation.tex}
-\import{sections/textual/}{5-noisy-images.tex}
-% \import{sections/textual/}{3-objetivos.tex}
-% \import{sections/textual/}{4-justificativa.tex}
-% \import{sections/textual/}{5-metodologia.tex}
-% \import{sections/textual/}{6-equipamento-material.tex}
-% \import{sections/textual/}{7-cronograma-de-execucao.tex}
+
+% Importa a justificativa
+\import{sections/textual/}{3-justificativa.tex}
+
+% Importa os objetivos
+\import{sections/textual/}{4-objetivos.tex}
+
+% Importa a metodologia
+\import{sections/textual/}{5-metodologia.tex}
+
+% Importa a seção de referências bibliográficas
 \import{sections/textual/}{8-referencias.tex}
-\end{document}
+
+\end{document} % Fim do conteúdo do documento
