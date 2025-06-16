@@ -1,0 +1,90 @@
+\section{Metodologia e plano de trabalho}
+\begin{frame}{Metodologia e plano de trabalho}
+    Durante a pesquisa, serão utilizados as seguintes arquiteturas de \textit{CNNs}: 
+    \begin{itemize}
+        \item \textit{DenseNet}
+        \item \textit{ResNet}
+        \item \textit{Inception}
+        \item \textit{InceptionResNet}
+        \item \textit{MobileNet}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Metodologia e plano de trabalho}
+    % Primeiramente será necessário um estudo das arquiteturas de redes neurais convolucionais: o seu propósito, concepção e as suas características. Também um breve estudo do algoritmo de otimização \textit{Adam}, pois esse que será utilizado durante os treinos.
+    Será feito um estudo sobre:
+    \begin{itemize}
+        \item Funcionamento de redes neurais convolucionais
+        \begin{itemize}
+            \item Processo de aprendizagem
+            \item Convolução, \textit{pooling} e entre outras camadas que uma \textit{CNN} possui
+        \end{itemize}
+        \item Estudo sobre as arquiteturas de \textit{CNNs}
+        \begin{itemize}
+            \item Proposito
+            \item Concepção
+            \item Características
+        \end{itemize}
+        \item Algoritmo de otimização \textit{Adam}
+        \item Tipos de técnicas de \textit{data augmentation} para aplicação
+        \item Possíveis tipos de ruídos ou pré-processamento que uma imagem possa ter 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Metodologia e plano de trabalho}
+    Ainda, serão identificados trabalhos correlatos aos tipos de técnicas de aumento de dados que podem ser utilizados para domínio do problema, ou seja, técnicas de aumento de dados que fazem sentido com os tipos de dados que serão utilizados durante o treinamento.
+\end{frame}
+
+\begin{frame}{Metodologia e plano de trabalho}
+    % Uma vez identificadas as técnicas e bibliotecas que serão utilizadas neste projeto, outra etapa é a codificação dos processos de treinos e aumento de dados utilizado a linguagem de programação \textit{Python} usando as \textit{frameworks} \textit{Tensorflow Keras} e ou \textit{PyTorch}. As \textit{frameworks} serão utilizadas para obter as arquiteturas de \textit{CNNs} para ser treinado com diferentes \textit{datasets}, otimizadores e aplicando técnicas de \textit{data augmentation}.
+    Para o projeto será utilizado a linguagem de programação \textit{Python}, com a framework \textit{Tensorflow Keras}, já que possuem as arquiteturas de CNN e as técnicas de \textit{data augmentation}.
+\end{frame}
+
+
+
+\begin{frame}{Metodologia e plano de trabalho}
+    % Para avaliar o desempenho das \textit{CNNs} serão observadas quatro métricas disponíveis durante o treino: precisão e perda (o quanto foi classificado incorretamente) da classificação sobre o conjunto de dados que são utilizados durante o treino e precisão da classificação e perda sobre um conjunto de dados de validação, isso serve para saber o quanto está generalizado o treino da \textit{CNNs} e também o conjunto de validação não é utilizado durante o treino, ou seja, os modelos de \textit{CNNs} não ``veem'' esse conjunto.
+    Para avaliação do desempenho da arquitetura de \textit{CNN}:
+    \begin{itemize}
+        \item Análise das métricas disponíveis durante o treino
+        \begin{itemize}
+            \item Precisão e perda no conjunto de dados usados para o treino
+            \item Precisão e perda no conjunto de dados usados para a validação
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Metodologia e plano de trabalho}
+    % Para validação do desenvolvimento e também para realização dos experimentos, está previsto o uso de diferentes \textit{datasets} para o treinamento para analisar o seu comportamento. Tais conjuntos permitirão a análise e comparação dos resultados dos desempenhos das arquiteturas de \textit{CNNs} que serão obtidos em diferentes \textit{datasets}. Adicionalmente, técnicas de aumento de dados serão aplicadas para analisar e comparar o desempenho que é obtido com e sem o seu uso.    
+    Para o desenvolvimento e realização dos experimentos:
+    \begin{itemize}
+        \item Uso de diferentes \textit{datasets} com domínios diferentes para o treinamento de arquiteturas de \textit{CNN}
+        \item Treinos das arquiteturas de \textit{CNN} sem e com a técnica de \textit{data augmentation}
+        \item Comparação do resultado entre as arquiteturas de \textit{CNN} com o mesmo \textit{dataset} e parâmetros de \textit{data augmentation}
+        \item Comparação do resultado entre os \textit{datasets}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Metodologia e plano de trabalho}
+    Também avaliaremos as imagens com pré-processamento, para isso, serão gerados imagens com ruídos ou filtros (será usado somente um tipo de pré-processamento por vez para validação) com parâmetros incrementados gradualmente.
+
+     % Por exemplo, aplicar o filtro \textit{Gaussiano} em \textit{dataset} de validação com \textit{kernel} de $3x3$, $5x5$ e assim por diante e depois utilizar a \textit{CNN} treinado para sua classificação.
+\end{frame}
+
+\begin{frame}{Metodologia e plano de trabalho}
+    \begin{figure}
+        \caption{\textit{Workflow} da pesquisa}
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/Presentation1.pdf}
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        % \caption{\textit{Workflow} da pesquisa}
+        \centering
+        \includegraphics[width=\linewidth]{images/Presentation1.pdf}
+        % \label{fig:enter-label}
+    \end{figure}
+\end{frame}

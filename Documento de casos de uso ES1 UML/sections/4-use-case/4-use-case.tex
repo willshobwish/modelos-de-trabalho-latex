@@ -1,0 +1,93 @@
+\section{Use case}
+\usecase{Emissão de certificados para participantes em cursos ou palestras}{Usuário}{Primário}{O usuário que participar de um curso ou palestra pode emitir o certificado através de uma requisição no sistema.
+
+O certificado é emitido somente para aqueles que participaram integralmente de todas as partes do curso ou palestra. No certificado deve listar o nome do evento, nome do ministrante(s) ou palestrante(s), data, hora, carga horária e autenticação digital do coordenador do evento. 
+
+% Caso seja participação em um grande evento, será listado apenas em que o usuário participou, listando em cada participação os mesmos itens descrito acima. Deve armazenar o local que foi salvo o certificado para uma possível reemissão e também a data e a hora da requisição para a geração do certificado.
+}
+
+\usecase{Emissão de certificado de participação para usuários que participaram de grandes eventos}{Usuário}{Primário}
+{O Usuário que participou de um grande evento pode realizar uma requisição ao sistema para obter o certificado dos cursos e palestras que participou.
+
+São considerados apenas os cursos e palestras na qual o Usuário participou integralmente de todas as suas respectivas partes. No certificado é listado apenas aqueles que participou, em cada evento descrito no certificado deve possuir: o nome do evento, nome do ministrante(s) ou palestrante(s), data, hora, carga horária.
+
+No certificado deve conter uma autenticação digital do coordenador do evento.
+}
+
+\usecase{Emissão de certificados para palestrantes ou ministrantes}{Palestrante, Ministrante}{Primário}{O usuário que ministrou ou palestrou eventos, pode realizar uma requisição no sistema para emitir o certificado. 
+
+O certificado só é emitido após a confirmação no sistema pelo Coordenador de Evento. No certificado deve listar o nome do evento, nome do ministrante(s) ou palestrante(s), data, hora, carga horária e autenticação digital do coordenador do evento. 
+
+Deve-se armazenar o local que foi salvo o certificado para uma possível reemissão e também a data e a hora da requisição para a geração do certificado.}
+
+% \usecase{Emissão de certificados para participantes em grande evento}{Usuário}{Primário}{O usuário que participar de um grande evento pode emitir o certificado após o termino do grande evento.
+
+% O certificado listará todos os cursos e palestras em que participou integralmente. Caso não tenha participado de alguma parte de algum curso ou palestra, não deve ser listado no certificado. Nessa listagem também deve conter: o nome do curso ou palestra, nome do ministrante ou palestrante, data e hora da realização e a carga horária.
+
+% No certificado deve conter também o nome do participante, nome do grande evento e o tipo de evento.
+
+% O sistema deve armazenar onde que está salvo o certificado para futura consulta ou recuperação.}
+
+\usecase{Inscrições em palestra gratuita}{Usuário}{Primário}{O usuário que deseja realizar inscrição em uma palestra sem taxa deve estar logado. O sistema deve antes de exibir as opções de palestras, precisa verificar se o usuário já está inscrito em algum evento e verificar se as palestras disponíveis possuem conflito de horário, caso tenha, não deverá ser permitido o usuário a selecionar a palestra. Deve-se verificar também a disponibilidade de vagas, caso não tenha vagas disponíveis, não deve ser possível selecionar. Quando o usuário selecionar a palestra, for elegível e enviar para o sistema, o sistema deve retornar uma confirmação da inscrição, armazenar a data e hora, registrar o usuário ao evento que escolheu e reduzir a quantidade de vagas disponíveis.}
+
+\usecase{Inscrições em palestra pago}{Usuário}{Primário}{O usuário que deseja realizar inscrição em uma palestra com taxa de inscrição deve estar logado. O sistema deve antes de exibir as opções de palestras, precisa verificar se o usuário já está inscrito em algum evento e verificar se as palestras disponíveis possuem conflito de horário, caso tenha, não deverá ser permitido o usuário a selecionar a palestra. Deve-se verificar também a disponibilidade de vagas, caso não tenha vagas disponíveis, não deve ser possível selecionar. Quando o usuário selecionar a palestra, for elegível e enviar para o sistema, ele deve retornar uma página para o pagamento do evento por QR code utilizando o PIX, após a confirmação do pagamento, o sistema deve retornar uma confirmação de inscrição, armazenar a data e hora, registrar o usuário ao evento que escolheu e reduzir a quantidade de vagas disponíveis.}
+
+\usecase{Inscrição em curso gratuito}{Usuário}{Primário}{O usuário que deseja realizar inscrição em uma curso sem taxa deve estar logado. O sistema deve antes de exibir as opções de cursos, precisa verificar se o usuário já está inscrito em algum evento e verificar se as palestras disponíveis possuem conflito de horário, caso tenha, não deverá ser permitido o usuário a selecionar a curso. Deve-se verificar também a disponibilidade de vagas, caso não tenha vagas disponíveis, não deve ser possível selecionar. Quando o usuário selecionar a curso, for elegível e enviar para o sistema, o sistema deve retornar uma confirmação da inscrição, armazenar a data e hora, registrar o usuário ao evento que escolheu e reduzir a quantidade de vagas disponíveis.}
+
+\usecase{Inscrição em curso pago}{Usuário}{Primário}{O usuário que deseja realizar inscrição em uma palestra com taxa de inscrição deve estar logado. O sistema deve antes de exibir as opções de palestras, precisa verificar se o usuário já está inscrito em algum evento e verificar se as palestras disponíveis possuem conflito de horário, caso tenha, não deverá ser permitido o usuário a selecionar a palestra. Deve-se verificar também a disponibilidade de vagas, caso não tenha vagas disponíveis, não deve ser possível selecionar. Quando o usuário selecionar a palestra, for elegível e enviar para o sistema, ele deve retornar uma página para o pagamento do evento por QR code utilizando o PIX, após a confirmação do pagamento, o sistema deve retornar uma confirmação de inscrição, armazenar a data e hora, registrar o usuário ao evento que escolheu e reduzir a quantidade de vagas disponíveis.}
+
+\usecase{Inscrição em grande evento gratuito}{Usuário}{Primário}{O usuário que deseja realizar inscrição em um grande evento sem taxa inscrição deve estar logado. O sistema deve listar todos os grandes eventos em que o usuário está habilitado para realizar. Antes do sistema listar os cursos e palestras disponíveis no grande evento, deve-se verificar se algum desses eventos possui conflito de horário com os eventos que o usuário já está inscrito, caso tenha conflito o sistema não deve permitir a seleção do evento para sua inscrição, deve-se também verificar a quantidade de vagas disponíveis, caso não possua mais vagas, o sistema não deve permitir a sua seleção. Ao final, quando o usuário se inscrever nos eventos, o sistema deve registrar o usuário no grande evento, quais eventos que foram escolhidos, registrar a data e hora da inscrição e decrementar a quantidade de vagas disponíveis para o grande evento}
+
+\usecase{Inscrição em grande evento pago}{Usuário}{Primário}{O usuário que deseja realizar inscrição em um grande evento com taxa de inscrição deve estar logado. O sistema deve listar todos os grandes eventos em que o usuário está habilitado para realizar. Antes do sistema listar os cursos e palestras disponíveis no grande evento, deve-se verificar se algum desses eventos possui conflito de horário com os eventos que o usuário já está inscrito, caso tenha conflito o sistema não deve permitir a seleção do evento para sua inscrição, deve-se também verificar a quantidade de vagas disponíveis, caso não possua mais vagas, o sistema não deve permitir a sua seleção. Ao final, quando o usuário se inscrever nos eventos, o sistema deve enviar um \textit{QR Code} para o pagamento da taxa de inscrição, caso não seja pago dentro de 24h, o usuário deve realizar todo o procedimento novamente. Caso o usuário pague, o sistema deve registrar o usuário no grande evento, quais eventos que foram escolhidos, registrar a data e hora da inscrição e decrementar a quantidade de vagas disponíveis para o grande evento.}
+
+\usecase{Modificação de inscrição de participante em grande evento}{Usuário}{Primário}{O usuário pode editar a sua inscrição em grande evento, modificando os cursos e palestras em que está inscrito para outros caso possua vaga disponível.}
+
+\usecase{Cancelamento de inscrição de usuário em palestra ou curso gratuito}{Usuário}{Primário}{Um usuário pode cancelar sua inscrição para liberar a vaga de uma palestra.}
+
+\usecase{Cancelamento de inscrição de usuário em palestra ou curso pago}{Usuário}{Primário}{Um usuário pode cancelar sua inscrição para liberar a vaga de uma palestra. O sistema deve estornar o pagamento realizado pelo usuário na durante a inscrição.}
+
+\usecase{Cancelamento de inscrição de usuário em grande evento gratuito}{Usuário}{Primário}{Um usuário pode cancelar sua inscrição em grande evento para liberar sua vaga.}
+
+\usecase{Cancelamento de inscrição de usuário em grande evento pago}{Usuário}{Primário}{Um usuário pode cancelar sua inscrição em grande evento para liberar sua vaga. O sistema deve estornar o pagamento realizado pelo usuário durante a inscrição.}
+
+\usecase{Cadastro de palestras}{Palestrante, moderador do sistema ou coordenador de evento}{Primário}{O usuário que possui o cargo de palestrante pode criar um evento do tipo palestra.
+
+É necessário a inserção do título, data, hora, duração aproximada, tema, local, capacidade máxima e quantidade de partes que a palestra pode possuir.}
+
+\usecase{Cadastro de cursos}{Ministrante, Moderador do Sistema, Coordenador de evento}{Primário}{O usuário que possui o cargo de ministrante de curso pode criar um evento do tipo curso, É necessário a inserção durante o cadastro o título, data, hora, duração aproximada, tema, requisitos de softwares instalados em máquinas \textit{desktop} ou \textit{notebook}, local, capacidade máxima e quantidade de partes que o curso pode possuir.}
+
+\usecase{Cadastro de um grande evento}
+{Coordenador de Evento ou Moderador do Sistema}
+{Primário}
+{O coordenador de evento ou moderador do sistema pode cadastrar um grande evento (um evento que possui diversas palestras ou cursos para os usuários se inscreverem, não necessariamente precisa em tudo).
+
+É necessário o nome do grande evento, tema, data de inicio, data de termino, locais que ocorrerão os cursos e palestras, caso seja pago, é necessário o valor da inscrição.
+
+Deve ser permitido também a inserção e ou edição do grande evento para adição de cursos e palestras.}
+
+\usecase{Coleta de presença de usuários em palestras ou cursos}
+{Coordenador de eventos, Ministrante, Palestrante ou Moderador do sistema}
+{Primário}
+{O Coordenador de Evento, Moderador, Ministrante ou Palestrante podem coletar a presença de uma palestra ou curso (o Ministrante coleta somente do curso que está ministrando e o Palestrante coleta somente da palestra que está sendo realizado). Acessa o sistema, seleciona a palestra ou curso que deseja coletar a presença, de qual parte do curso ou palestra que está sendo registrado a presença e registrar os usuários que estão presentes.}
+
+\usecase{Coleta de presença de usuários em grandes eventos}
+{Coordenador de Eventos, Moderador}
+{Primário}
+{O Coordenador de Evento ou Moderador podem coletar a presença de uma palestra ou curso que está dentro de um grande evento. Acessa o sistema, seleciona o grande evento, a palestra ou curso que deseja coletar a presença, qual parte que está sendo registrado a presença, registrar os usuários presentes.}
+
+\usecase{Cadastro de usuários para o sistema de eventos}
+{Usuário}
+{Primário}
+{O usuário que deseja a emissão do certificado de participação, é necessário o cadastro no sistema. Necessita das seguintes informações: nome, e-mail institucional e o tipo de vinculo com a universidade.
+
+A autenticação deve ser utilizando o serviço da \textit{Google}. Caso o usuário seja externo, deve-se permitir o cadastro com um e-mail pessoal.}
+
+\usecase{Tornar um usuário com privilégio de palestrante ou ministrante}
+{Moderador do Sistema, Coordenador de Evento}
+{Primário}
+{O sistema deve permitir que a partir de um usuário previamente cadastrado, ele possa ter o privilégio de um ministrante ou palestrante caso seja necessário. A permissão é concedida por um moderador de sistema ou coordenador de evento}
+
+\usecase{Tornar um usuário com privilégio de moderador de sistema}
+{Moderador de Sistema, Coordenador de Evento}
+{Primário}
+{O sistema deve permitir que um usuário previamente cadastrado torne-se um moderador do sistema com a indicação de um outro moderador do sistema ou coordenador de evento.}

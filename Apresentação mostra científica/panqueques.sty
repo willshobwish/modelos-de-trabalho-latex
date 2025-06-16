@@ -1,0 +1,34 @@
+% \usetheme{metropolis} %set theme
+\usetheme{Warsaw}
+% \usefonttheme{professionalfonts}
+% \setbeamercolor{frametitle}{bg=black,fg=white} 
+% \setbeamertemplate{footline}{\textbf{Análise do desempenho de arquiteturas de redes neurais convolucionais utilizando \textit{data augmentation}\- e pré-processamento de imagens}}
+% % \setbeamertemplate{frame numbering}[none]
+
+\usepackage{ragged2e}
+\apptocmd{\frame}{}{\justifying}{}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=4.5ex,dp=2.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=4.5ex,dp=2.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}
+    \parbox{.45\paperwidth}{\inserttitle}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\setbeamertemplate{caption}[numbered]
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+
+
+\usepackage{graphicx} % To include images
+\setbeamertemplate{headline}{}
+\setbeamertemplate{frametitle continuation}{}
+
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[style=abnt]{biblatex}
+\addbibresource{ref.bib}  

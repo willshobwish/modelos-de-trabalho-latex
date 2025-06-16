@@ -1,0 +1,683 @@
+%% Colocar as seções do documento de requisitos, os labels são usados nas referencias cruzadas
+\begin{hide}
+\setcounter{section}{2}
+\section{Specific requirements}
+\subsection{Funcionais}    
+    \subsubsection{Certificado} 
+        \subsubsubsection{O sistema deve emitir certificados com o nome do participante, o tipo de evento que participou com o nome, ministrante ou palestrante, data, hora, e carga horária. Caso seja evento grande, será listado apenas aqueles que o usuário participou, com as datas, horário, carga horária e uma autenticação digital.}\label{c1}
+        \subsubsubsection{O sistema deve emitir certificados para ministrantes ou palestrantes após a realização do evento com as seguintes informações: nome do evento, data, hora, carga horária, tipo de evento, local, nome do coordenador do evento e uma autenticação digital.}\label{c2}
+        \subsubsubsection{O sistema deve emitir certificados, ou listar a participação de em um curso dentro de um grande evento, apenas para aqueles que participaram integralmente de todas as partes de cursos (caso seja mais que uma parte).}\label{c3}
+        \subsubsubsection{Deve registrar e armazenar o nome e o diretório que está armazenado para a reemissão futura, também o registro da data e horário da emissão.}\label{c4}
+        \subsubsubsection{O sistema deve entregar o certificado em formato de PDF.}\label{c5}
+        % \subsubsubsection{O sistema deve emitir certificados somente para os usuários que participaram de todas as partes do curso ou palestra}
+        
+    \subsubsection{Usuários}
+        \subsubsubsection{O sistema deve cadastrar usuários que não possuem cadastro com essas informações: nome, e-mail, tipo de vinculo com a universidade.}\label{u1}
+        \subsubsubsection{A autenticação deve ser utilizando o serviço da \textit{Google}}\label{u2}
+        \subsubsubsection{Caso o usuário seja externo à faculdade e não possua e-mail institucional, deve-se permitir o cadastro com um e-mail que o usuário desejar.}\label{u3}
+        \subsubsubsection{O sistema deve permitir um usuário se tornar um palestrante ou ministrante de curso mediante a autorização do moderador do sistema.}\label{u4}
+        \subsubsubsection{O login do usuário deve persistir no dispositivo em que entrou, não sendo necessário a sua autenticação constante.}\label{u5}
+        \subsubsubsection{O sistema deve armazenar em quais eventos os usuários estão inscritos.}\label{u6}
+        \subsubsubsection{O sistema deve permitir um usuário se tornar um moderador ou coordenador de eventos mediante a concessão de um coordenador de evento.}\label{u6}
+    
+    \subsubsection{Grande evento}
+        \subsubsubsection{O sistema deve armazenar o nome, tema, cursos e palestras que faz parte do grande evento.}\label{g1}
+        \subsubsubsection{Um grande evento deve ser criado somente por coordenadores de evento, moderadores do sistema, ministrantes ou palestrantes.}\label{g2}
+        \subsubsubsection{O sistema deve permitir cadastro de eventos grandes com taxa de inscrição.}\label{g3}
+        \subsubsubsection{Caso o grande evento possua limitação de vagas disponíveis, é necessário que o sistema manipule a quantidade de vagas disponíveis.}\label{g4}
+        \subsubsubsection{Um grande evento é um agrupamento de cursos e palestras que os usuários participantes podem se inscrever, pode haver limitação de inscrições em palestras e cursos por usuário.}\label{g5}
+    
+    \subsubsection{Cursos}
+        \subsubsubsection{O curso precisa armazenar o ministrante(s), título, tema, data, hora, local, requisito de instalação de softwares nos computadores do local do curso, quantidade de vagas disponíveis e quantidade de partes que o curso possui.}\label{cu1}
+        \subsubsubsection{O ministrante é um usuário do sistema que possui cargo de ministrante dentro do sistema.}\label{cu2}
+        \subsubsubsection{O curso deve ser criado somente por ministrantes, coordenador de evento ou moderador do sistema.}\label{cu3}
+        \subsubsubsection{O sistema deve permitir o cadastro de curso com taxa de inscrição.}\label{cu4}
+        \subsubsubsection{Caso o curso possua limitação de vagas disponíveis, é necessário que o sistema manipule a quantidade de vagas disponíveis.}\label{cu5}
+    
+    \subsubsection{Palestras}
+        \subsubsubsection{A palestra precisa armazenar o palestrante, data, hora, local, capacidade máxima, tema e título.}\label{p1}
+        \subsubsubsection{O palestrante é um usuário do sistema que possui cargo de ministrante dentro do sistema.}\label{p2}
+        \subsubsubsection{A palestra deve ser criado somente por palestrantes, coordenador de evento ou moderador do sistema.}\label{p3}
+        \subsubsubsection{O sistema deve permitir o cadastro de palestras com taxa de inscrição.}\label{p4}
+        \subsubsubsection{Caso a palestra possua limitação de vagas disponíveis, é necessário que o sistema manipule a quantidade de vagas disponíveis.}\label{p5}
+        
+    \subsubsection{Inscrições em cursos, palestras e grandes eventos}
+        \subsubsubsection{O sistema deve realizar o cadastro de inscrições de usuários em eventos grandes, cursos ou palestras.}\label{i1}
+        % \subsubsubsection{O sistema deve permitir os participantes a modificação de suas respectivas inscrições em cursos ou palestras.}\label{i2}
+        \subsubsubsection{O sistema deve armazenar a data e hora da inscrição dos usuários em cursos, palestras e grandes eventos.}\label{i3}
+        \subsubsubsection{O sistema não deve permitir a inscrição em um curso ou palestra de um usuário caso possua conflito entre outros cursos ou palestras, seja em grande evento ou não.}\label{i4}
+        \subsubsubsection{O sistema não deve permitir o pagamento da inscrição em palestras, cursos ou grandes eventos após 24h}\label{i5}
+        \subsubsubsection{O sistema deve permitir a modificação de inscrição de palestra e ou cursos da sua respectiva inscrição em grande evento.}\label{i6}
+        \subsubsubsection{O sistema deve permitir que um usuário cancele a sua inscrição em um curso ou palestra, assim liberando a vaga que estava ocupando.}\label{i7}    
+        \subsubsubsection{O sistema deve permitir que um usuário cancela a sua inscrição em um grande evento, assim, liberando a vaga que estava ocupando.}\label{i8}
+    
+    \subsubsection{Presença}
+        \subsubsubsection{O sistema deve armazenar presenças de palestras e/ou cursos pertencentes ou não de um grande evento, as partes e os participantes presentes durante a sua realização.}\label{pr1}
+        \subsubsubsection{O sistema deve armazenar presenças de todos os eventos (incluindo todas as partes que pertencem ao evento) presentes em um grande evento.}\label{pr2}
+        
+    \subsubsection{Pagamento de taxa de inscrição em cursos, palestras e grandes eventos}
+        \subsubsubsection{O sistema deve emitir o \textit{QR code} de pagamento por \textit{PIX} para cursos, palestras ou eventos grandes que são pagos, aprovar a inscrição automaticamente após a confirmação do pagamento ou excluir a inscrição caso o participante não pague dentro do período estipulado.}\label{pa1}
+        \subsubsubsection{Caso o usuário cancele a sua inscrição, se a palestra, curso ou grande evento possua taxa de inscrição, a taxa deve ser estornado ao usuário.}\label{pa2}        
+
+\subsection{Não funcionais}
+    \subsubsection{Relatórios}
+        \subsubsubsection{O sistema deve emitir um relatório, usando como filtro um intervalo entre as datas, buscando todos os cursos e palestras que ocorreram durante esse período, listando os nomes, datas, carga horária e ministrante(s) ou palestrante(s).}\label{r1}
+\end{hide}
+
+\setcounter{section}{1}
+\section{Expanded use case}
+% \usecase{Emissão de certificados para participantes em eventos (cursos e ou palestras)}{Usuário Participante}{Primário}{O usuário que participar de um curso ou palestra pode emitir o certificado através de uma requisição no sistema.
+
+% O certificado é emitido somente para aqueles que participaram integralmente de todas as partes do curso ou palestra. No certificado deve listar o nome do evento, nome do ministrante(s) ou palestrante(s), data, hora, carga horária e autenticação digital do coordenador de curso. 
+
+% Caso seja participação em um grande evento, será listado apenas em que o usuário participou, listando em cada participação os mesmos itens descrito acima. Deve armazenar o local que foi salvo o certificado para uma possível reemissão e também a data e a hora da requisição para a geração do certificado.}
+
+\expandedusecase{Emissão de certificados para participantes em eventos (cursos e ou palestras)}{Usuário}{Emitir certificado}
+{O usuário que participou de um curso, palestra ou grande evento pode emitir o certificado através de uma requisição no sistema.
+
+O certificado é emitido somente para aqueles que participaram integralmente de todas as partes do curso ou palestra. No certificado deve listar o nome do evento, nome do ministrante(s) ou palestrante(s), data, hora, carga horária e autenticação digital do coordenador do evento.
+
+O certificado deve ser entregue ao Usuário em formato de PDF.
+}
+{Primário}{\ref{c1}, \ref{c4}, \ref{c5}}
+
+\sequencediagram{
+\diagramline{\newsequence{1}{Usuário acessa o sistema}}{\incsequence{1}{Sistema retorna com a interface}}
+\diagramline{\incsequence{1}{Usuário faz o \textit{login} e tem acesso as suas participações em cursos, palestras e grandes eventos}}{}
+\diagramline{\incsequence{1}{Usuário seleciona o curso, palestra ou evento grande que deseja emitir o certificado}}{\incsequence{1}{O sistema realiza o processamento de checagem em banco de dados se as informações são válidas}}
+\diagramline{\incsequence{1}{Usuário recebe o certificado através do download dele}}{\incsequence{1}{Sistema retorna uma confirmação de sucesso ao gerar o certificado}}
+\diagramline{\incsequence{1}{Usuário insere dados complementar: tipo de vinculo com a universidade}}{\incsequence{1}{Sistema retorna com a interface do sistema}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Emissão de certificado de participação para usuários que participaram de grandes eventos}{Usuário}{Primário}
+% {O Usuário que participou de um grande evento pode realizar uma requisição ao sistema para obter o certificado dos cursos e palestras que participou.
+
+% São considerados apenas os cursos e palestras na qual o Usuário participou integralmente de todas as suas respectivas partes. No certificado é listado apenas aqueles que participou, em cada evento descrito no certificado deve possuir: o nome do evento, nome do ministrante(s) ou palestrante(s), data, hora, carga horária.
+
+% No certificado deve conter uma autenticação digital do coordenador do evento.
+% }
+
+\expandedusecase{Emissão de certificado de participação para usuários que participaram de grandes eventos}{Usuário}{Emitir certificado de participação em cada evento em um grande evento}{
+O Usuário que participou de um grande evento pode realizar uma requisição ao sistema para obter o certificado dos cursos e palestras que participou.
+
+São considerados apenas os cursos e palestras na qual o Usuário participou integralmente de todas as suas respectivas partes. No certificado é listado apenas aqueles que participou, em cada evento descrito no certificado deve possuir: o nome do evento, nome do ministrante(s) ou palestrante(s), data, hora, carga horária.
+
+O sistema deve armazenar o diretório que está salvo o certificado para uma futura reemissão.
+
+No certificado deve conter uma autenticação digital do coordenador do evento.
+
+O certificado deve ser entregue em formato de PDF ao Usuário.
+}{Primário}{\ref{c1}, \ref{c3}, \ref{c4}, \ref{c5}}
+
+\sequencediagram{
+\diagramline{\newsequence{20}{Usuário acessa o sistema}}{\incsequence{20}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{20}{Usuário acessa os eventos grandes que participou}}{\incsequence{20}{Sistema retorna os grandes eventos que participou}}
+\diagramline{\incsequence{20}{Usuário seleciona o grande evento que deseja emitir o certificado}}{\incsequence{20}{Sistema recebe o grande evento. Acessa os eventos do grande evento, verifica as presenças em todas as partes dos eventos, lista as que o Usuário participou e emite o certificado}}
+\diagramline{\incsequence{20}{Usuário realiza o download do certificado}}{\incsequence{20}{Sistema exibe uma mensagem de sucesso}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Emissão de certificados de palestrante(s) ou ministrante(s)}{Palestrante, Ministrante}{Primário}{O usuário que ministrou ou palestrou eventos, pode realizar uma requisição no sistema para emitir o certificado. 
+
+% O certificado só é emitido após a confirmação no sistema pelo coordenador de evento. No certificado deve listar o nome do evento, nome do ministrante(s) ou palestrante(s), data, hora, carga horária e autenticação digital do coordenador do evento. 
+
+% Deve-se armazenar o local que foi salvo o certificado para uma possível reemissão e também a data e a hora da requisição para a geração do certificado.}
+
+\expandedusecase{Emissão de certificados de palestrante(s) ou ministrante(s)}{Palestrante ou Ministrante}{Emitir certificado para ministrante(s) ou palestrante(s)}{O usuário que ministrou ou palestrou eventos, pode realizar uma requisição no sistema para emitir o certificado. 
+
+O certificado só é emitido após a confirmação no sistema pelo coordenador de evento. No certificado deve listar o nome do evento, nome do ministrante(s) ou palestrante(s), data, hora, carga horária e autenticação digital do coordenador do evento. 
+
+Deve-se armazenar o local que foi salvo o certificado para uma possível reemissão e também a data e a hora da requisição para a geração do certificado.}{Primário}{\ref{c2}, \ref{c4}}
+
+\sequencediagram{
+\diagramline{\newsequence{2}{Usuário acessa o sistema}}{\incsequence{2}{Sistema retorna com a interface gráfica}}
+\diagramline{\incsequence{2}{Usuário realiza o login com o e-mail institucional}}{\incsequence{2}{Sistema retorna confirmação de login}}
+\diagramline{\incsequence{2}{Usuário seleciona o curso que ministrou ou palestra que palestrou}}{}
+\diagramline{\incsequence{2}{Usuário envia as informações para o sistema}}{\incsequence{2}{Sistema recebe as informações e confirma o recebimento}}
+\diagramline{}{\incsequence{2}{Sistema pega as informações do banco de dados e processa-os}}
+\diagramline{}{\incsequence{2}{Sistema retorna com o certificado}}
+\diagramline{\incsequence{2}{Usuário acessa o certificado}}{\incsequence{2}{Sistema retorna com a confirmação de envio de certificado}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Emissão de certificados para participantes em grande evento}{Usuário}{Primário}{O usuário que participar de um grande evento pode emitir o certificado após o termino do grande evento.
+
+% O certificado listará todos os cursos e palestras em que participou integralmente. Caso não tenha participado de alguma parte de algum curso ou palestra, não deve ser listado no certificado. Nessa listagem também deve conter: o nome do curso ou palestra, nome do ministrante ou palestrante, data e hora da realização e a carga horária.
+
+% No certificado deve conter também o nome do participante, nome do grande evento e o tipo de evento.
+
+% O sistema deve armazenar onde que está salvo o certificado para futura consulta ou recuperação.}
+
+% \expandedusecase{Emissão de certificados para participantes em grande evento}
+% {Usuário}
+% {Emissão de certificado para usuários que participaram em grandes eventos sem ou com taxa de inscrição}
+% {O usuário que participar de um grande evento pode emitir o certificado após o termino do grande evento. A emissão pode ser requisitado dentro do sistema.
+
+% O certificado listará todos os cursos e palestras em que participou integralmente. Caso não tenha participado de alguma parte de algum curso ou palestra, não deve ser listado no certificado. Nessa listagem também deve conter: o nome do curso ou palestra, nome do ministrante ou palestrante, data e hora da realização e a carga horária.
+
+% No certificado deve conter também o nome do participante, nome do grande evento e o tipo de evento.
+
+% O sistema deve armazenar onde que está salvo o certificado para futura consulta ou recuperação, também o armazenamento da data e hora da geração do certificado de participação}
+% {Primário}
+% {\ref{c1}, \ref{c3}, \ref{c4}, \ref{u5}}
+
+% \sequencediagram{
+% \diagramline{\newsequence{7}{Usuário acessa o sistema}}{\incsequence{7}{Sistema retorna a interface gráfica}}
+% \diagramline{\incsequence{7}{Usuário acessa os grandes eventos que participou}}{\incsequence{7}{Sistema retorna uma lista com os grades eventos}}
+% \diagramline{\incsequence{7}{Usuário seleciona o grande evento que deseja gerar o certificado}}{\incsequence{7}{Sistema recebe a requisição do grande evento}}
+% \diagramline{}{\incsequence{7}{Sistema consulta as palestras e cursos que o usuário participou}}
+% \diagramline{}{\incsequence{7}{Sistema contabiliza e verifica as presenças do usuários em cursos e palestras}}
+% \diagramline{}{\incsequence{7}{Sistema gera o certificado com os cursos e palestras que o usuário participou integralmente, nome do grande evento e o tipo de evento}}
+% \diagramline{}{\incsequence{7}{Sistema torna disponível o download do certificado}}
+% \diagramline{\incsequence{7}{Usuário realizar o download do certificado}}{\incsequence{7}{Sistema exibe uma mensagem de sucesso ao realizar o download do certificado}}
+% % \diagramline{\incsequence{7}{}}{\incsequence{7}{}}
+% % \diagramline{\incsequence{7}{}}{\incsequence{7}{}}
+% }
+
+% Sequência alternativa:
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|}
+%     \end{tabular}
+% \end{table}
+
+% \usecase{Inscrições em palestra gratuita}{Usuário}{Primário}{O usuário que deseja realizar inscrição em uma palestra sem taxa deve estar logado. O sistema deve antes de exibir as opções de palestras, precisa verificar se o usuário já está inscrito em algum evento e verificar se as palestras disponíveis possuem conflito de horário, caso tenha, não deverá ser permitido o usuário a selecionar a palestra. Deve-se verificar também a disponibilidade de vagas, caso não tenha vagas disponíveis, não deve ser possível selecionar. Quando o usuário selecionar a palestra, for elegível e enviar para o sistema, o sistema deve retornar uma confirmação da inscrição, armazenar a data e hora, registrar o usuário ao evento que escolheu e reduzir a quantidade de vagas disponíveis.}
+
+\expandedusecase{Inscrições em palestras gratuitas}
+{Usuário}
+{Inscrição de usuários que participam em palestras que não possui taxa de inscrição}
+{O usuário que realizar a inscrição em uma palestra ou evento deve estar previamente \textit{logado}.
+
+Após isso é necessário selecionar a palestra que deseja realizar, o sistema deve verificar se o usuário possui inscrição em alguma palestra ou curso para não gerar conflito de horário, efetivar a sua inscrição caso possua vagas restantes, armazenar a data e a hora de inscrição do usuário, registrar o usuário ao evento e reduzir a quantidade de vagas disponíveis para a palestra.}
+{Primário}
+{\ref{u5}, \ref{u6}, \ref{p5}, \ref{i1}, \ref{i3}, \ref{i4}}
+
+\sequencediagram{
+\diagramline{\newsequence{3}{Usuário acessa o sistema}}{\incsequence{3}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{3}{Usuário acessa as palestras disponíveis para inscrição}}{\incsequence{3}{O sistema verifica as palestras disponíveis e que não tenham conflito de horário com eventos que o usuário já está inscrito}}
+\diagramline{\incsequence{3}{Usuário seleciona a palestra para inscrição e envia para o sistema}}{\incsequence{3}{Sistema recebe a palestra, vincula a inscrição ao usuário, decrementa a quantidade de vagas disponíveis, registra a data e hora de inscrição e confirma que o usuário está inscrito}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Inscrições em palestra pago}{Usuário}{Primário}{O usuário que deseja realizar inscrição em uma palestra com taxa de inscrição deve estar logado. O sistema deve antes de exibir as opções de palestras, precisa verificar se o usuário já está inscrito em algum evento e verificar se as palestras disponíveis possuem conflito de horário, caso tenha, não deverá ser permitido o usuário a selecionar a palestra. Deve-se verificar também a disponibilidade de vagas, caso não tenha vagas disponíveis, não deve ser possível selecionar. Quando o usuário selecionar a palestra, for elegível e enviar para o sistema, ele deve retornar uma página para o pagamento do evento por \textit{QR Code} utilizando o \textit{PIX}, após a confirmação do pagamento, o sistema deve retornar uma confirmação de inscrição, armazenar a data e hora, registrar o usuário ao evento que escolheu e reduzir a quantidade de vagas disponíveis.}
+
+\expandedusecase{Inscrições em palestras pagos}
+{Usuário}
+{Inscrição de usuários que desejam participar de palestras que possui taxa de inscrição}
+{O usuário que realizar a inscrição em um evento deve estar previamente \textit{logado}.
+
+Após isso será necessário selecionar a palestra ou curso que deseja realizar. Deve-se verificar se o usuário possui alguma inscrição em palestra ou curso no mesmo período para não gerar conflito de horário. O sistema deve verificar se o evento possui vagas restantes, após isso, deve-se emitir um \textit{PIX} por \textit{QR Code} para o usuário realizar o pagamento, quando for confirmado o pagamento, o sistema efetiva a sua inscrição no evento e armazena a data e o horário da inscrição do usuário no evento.}
+{Primário}
+{\ref{u5}, \ref{p5}, \ref{i1}, \ref{i3}, \ref{i4}, \ref{pa1}}
+
+\sequencediagram{
+\diagramline{\newsequence{4}{Usuário acessa o sistema}}{\incsequence{4}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{4}{Usuário lista as palestras disponíveis}}{\incsequence{4}{Sistema retorna as palestras disponíveis: que não tenham conflito de horário com eventos em que o usuário já está cadastrado e que possuem quantidade de vagas disponíveis}}
+\diagramline{\incsequence{4}{Usuário seleciona a palestra que deseja participar e envia ao sistema}}{\incsequence{4}{Sistema retorna com um \textit{QR Code} para pagamento por \textit{PIX}}}
+\diagramline{\incsequence{4}{Usuário paga o \textit{QR Code} por \textit{PIX}}}{\incsequence{4}{Sistema retorna a confirmação de pagamento}}
+\diagramline{}{\incsequence{4}{Sistema armazena a data e hora de inscrição, registra a inscrição e confirma que o usuário está inscrito}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Inscrição em curso gratuito}{Usuário}{Primário}{O usuário que deseja realizar inscrição em uma curso sem taxa deve estar logado. O sistema deve antes de exibir as opções de cursos, precisa verificar se o usuário já está inscrito em algum evento e verificar se as palestras disponíveis possuem conflito de horário, caso tenha, não deverá ser permitido o usuário a selecionar a curso. Deve-se verificar também a disponibilidade de vagas, caso não tenha vagas disponíveis, não deve ser possível selecionar. Quando o usuário selecionar a curso, for elegível e enviar para o sistema, o sistema deve retornar uma confirmação da inscrição, armazenar a data e hora, registrar o usuário ao evento que escolheu e reduzir a quantidade de vagas disponíveis.}
+
+\expandedusecase{Inscrições em cursos gratuitos}
+{Usuário}
+{Inscrição de usuários que desejam participar em cursos que não possui taxa de inscrição}
+{O usuário que realizar a inscrição em uma curso deve estar previamente \textit{logado}.
+
+Após isso será necessário selecionar a curso ou curso que deseja realizar, o sistema deve verificar se o usuário possui inscrição em alguma curso ou curso para não gerar conflito de horário, efetivar a sua inscrição caso possua vagas restantes e armazenar a data e a hora de inscrição do usuário e reduzir a quantidade de vagas disponíveis.}
+{Primário}
+{\ref{u5}, \ref{cu5}, \ref{i1}, \ref{i3}, \ref{i4}}
+
+\sequencediagram{
+\diagramline{\newsequence{5}{Usuário acessa o sistema}}{\incsequence{5}{O sistema retorna a interface gráfica}}
+\diagramline{\incsequence{5}{O usuário acessa as cursos disponíveis para inscrição}}{\incsequence{5}{O sistema verifica as cursos disponíveis: que não tenham conflito de horário com eventos que o usuário já está inscrito e que possuem vagas disponíveis}}
+\diagramline{\incsequence{5}{O usuário seleciona a curso para inscrição e envia para o sistema}}{\incsequence{5}{O sistema recebe a curso, vincula a inscrição ao usuário, decrementa a quantidade de vagas disponíveis, registra a data e hora de inscrição e confirma que o usuário está inscrito}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Inscrição em curso pago}{Usuário}{Primário}{O usuário que deseja realizar inscrição em uma palestra com taxa de inscrição deve estar logado. O sistema deve antes de exibir as opções de palestras, precisa verificar se o usuário já está inscrito em algum evento e verificar se as palestras disponíveis possuem conflito de horário, caso tenha, não deverá ser permitido o usuário a selecionar a palestra. Deve-se verificar também a disponibilidade de vagas, caso não tenha vagas disponíveis, não deve ser possível selecionar. Quando o usuário selecionar a palestra, for elegível e enviar para o sistema, ele deve retornar uma página para o pagamento do evento por \textit{QR Code} utilizando o \textit{PIX}, após a confirmação do pagamento, o sistema deve retornar uma confirmação de inscrição, armazenar a data e hora, registrar o usuário ao evento que escolheu e reduzir a quantidade de vagas disponíveis.}
+
+\expandedusecase{Inscrições em cursos pagos}
+{Usuário}
+{Inscrição de usuários que desejam participar em cursos que possui taxa de inscrição}
+{O usuário que realizar a inscrição em um evento deve estar previamente \textit{logado}.
+
+Após isso será necessário selecionar o curso que deseja realizar. Deve-se verificar se o usuário possui alguma inscrição em palestra ou curso no mesmo período para não gerar conflito de horário. O sistema deve verificar se o evento possui vagas restantes, após isso, deve-se emitir um \textit{PIX} por \textit{QR Code} para o usuário realizar o pagamento, quando for confirmado o pagamento, o sistema efetiva a sua inscrição no evento e armazena a data e o horário da inscrição do usuário no curso e reduz a quantidade de vagas disponíveis.}
+{Primário}
+{\ref{u5}, \ref{cu4}, \ref{cu5}, \ref{i1}, \ref{i3}, \ref{i4}, \ref{pa1}}
+
+\sequencediagram{
+\diagramline{\newsequence{6}{Usuário acessa o sistema}}{\incsequence{6}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{6}{Usuário lista as cursos disponíveis}}{\incsequence{6}{Sistema retorna os cursos disponíveis: que não tenham conflito de horário com eventos em que o usuário já está cadastrado e possuem vagas disponíveis.}}
+\diagramline{\incsequence{6}{Usuário seleciona a curso que deseja participar e envia ao sistema}}{\incsequence{6}{Sistema retorna com um \textit{QR Code} para pagamento por \textit{PIX}}}
+\diagramline{\incsequence{6}{Usuário paga o \textit{QR Code} por \textit{PIX}}}{\incsequence{6}{Sistema retorna a confirmação de pagamento}}
+\diagramline{}{\incsequence{6}{Sistema armazena a data e hora de inscrição, registra a inscrição do usuário, reduz a quantidade de vagas disponíveis e confirma que o usuário está inscrito}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Inscrição em grande evento gratuito}{Usuário}{Primário}{O usuário que deseja realizar inscrição em um grande evento sem taxa inscrição deve estar logado. O sistema deve listar todos os grandes eventos em que o usuário está habilitado para realizar. Antes do sistema listar os cursos e palestras disponíveis no grande evento, deve-se verificar se algum desses eventos possui conflito de horário com os eventos que o usuário já está inscrito, caso tenha conflito o sistema não deve permitir a seleção do evento para sua inscrição, deve-se também verificar a quantidade de vagas disponíveis, caso não possua mais vagas, o sistema não deve permitir a sua seleção. Ao final, quando o usuário se inscrever nos eventos, o sistema deve registrar o usuário no grande evento, quais eventos que foram escolhidos, registrar a data e hora da inscrição e decrementar a quantidade de vagas disponíveis para o grande evento}
+
+\expandedusecase{Inscrição em grande evento gratuito}
+{Usuário}
+{Inscrição de usuários para participação em grande evento sem taxa de inscrição}
+{O usuário que deseja realizar uma inscrição em um grande evento precisa \textit{logar} ou cadastrar utilizando o serviço \textit{Google} e o e-mail institucional.
+
+O usuário seleciona as palestras e cursos, o sistema não deve permitir a seleção de cursos ou palestras que possam gerar conflito de horário, incluindo suas partes (e.g. cursos que possuem mais de uma parte) e ou aqueles que não possuem mais vagas restantes.
+
+Caso o grande evento possua quantidade de vagas limitadas, o sistema deve decrementar a quantidade de vagas disponíveis.}
+{Primário}
+{\ref{g3}, \ref{g4}, \ref{cu5}, \ref{p5}, \ref{i1}, \ref{i2}, \ref{i3}, \ref{i4}, \ref{pa1}}
+
+\sequencediagram{
+\diagramline{\newsequence{9}{Usuário acessa o sistema}}{\incsequence{9}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{9}{Usuário acessa os grandes eventos disponíveis}}{\incsequence{9}{Sistema retorna os grandes eventos disponíveis}}
+\diagramline{\incsequence{9}{Usuário seleciona o grande evento disponível que deseja se inscrever}}{\incsequence{9}{Sistema retorna os cursos e palestras disponíveis: aqueles que não possuem conflito de horário com os eventos que o usuário já está cadastrado e que ainda possuem vagas disponíveis}}
+\diagramline{\incsequence{9}{Usuário seleciona os cursos e palestras que deseja participar dentro do grande evento e envia para o sistema}}{\incsequence{9}{Sistema registra os cursos e palestras que o usuário se inscreveu, a data e hora de inscrição, decrementa a quantidade de vagas nos cursos e palestras em que foi inscrito, decrementa a quantidade de vagas no grande evento.}}
+\diagramline{}{\incsequence{9}{Sistema retorna uma mensagem de sucesso nas inscrições dos cursos, palestras e no grande evento.}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Inscrição em grande evento pago}{Usuário}{Primário}{O usuário que deseja realizar inscrição em um grande evento com taxa de inscrição deve estar logado. O sistema deve listar todos os grandes eventos em que o usuário está habilitado para realizar. Antes do sistema listar os cursos e palestras disponíveis no grande evento, deve-se verificar se algum desses eventos possui conflito de horário com os eventos que o usuário já está inscrito, caso tenha conflito o sistema não deve permitir a seleção do evento para sua inscrição, deve-se também verificar a quantidade de vagas disponíveis, caso não possua mais vagas, o sistema não deve permitir a sua seleção. Ao final, quando o usuário se inscrever nos eventos, o sistema deve enviar um \textit{QR Code} para o pagamento da taxa de inscrição, caso não seja pago dentro de 24h, o usuário deve realizar todo o procedimento novamente. Caso o usuário pague, o sistema deve registrar o usuário no grande evento, quais eventos que foram escolhidos, registrar a data e hora da inscrição e decrementar a quantidade de vagas disponíveis para o grande evento.}
+
+\expandedusecase{Inscrição em grande evento pago}
+{Usuário}
+{Inscrição de usuários para participação em grande evento com taxa de inscrição}
+{O usuário que deseja realizar inscrição em um grande evento com taxa de inscrição deve estar logado.
+
+O sistema deve listar todos os grandes eventos em que o usuário está habilitado para realizar. Antes do sistema listar os cursos e palestras disponíveis no grande evento, deve-se verificar se algum desses eventos possui conflito de horário com os eventos que o usuário já está inscrito, caso tenha conflito o sistema não deve permitir a seleção do evento para sua inscrição, deve-se também verificar a quantidade de vagas disponíveis, caso não possua mais vagas, o sistema não deve permitir a sua seleção. 
+
+Ao final, quando o usuário se inscrever nos eventos, o sistema deve enviar um \textit{QR Code} para o pagamento da taxa de inscrição, caso não seja pago dentro de 24h, o usuário deve realizar todo o procedimento novamente. Caso o usuário pague, o sistema deve registrar o usuário no grande evento, quais eventos que foram escolhidos, registrar a data e hora da inscrição e decrementar a quantidade de vagas disponíveis para o grande evento.}
+{Primário}
+{\ref{u5}, \ref{u6}, \ref{g4}, \ref{g5}, \ref{cu5}, \ref{p5}, \ref{i1}, \ref{i3}, \ref{i4}, \ref{i5}}
+
+\sequencediagram{
+\diagramline{\newsequence{8}{Usuário acessa o sistema}}{\incsequence{8}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{8}{Usuário acessa os grandes eventos disponíveis}}{\incsequence{8}{Sistema retorna os grandes eventos disponíveis}}
+\diagramline{\incsequence{8}{Usuário seleciona o grande evento disponível que deseja}}{\incsequence{8}{Sistema retorna os cursos e palestras disponíveis: aqueles que não possuem conflito de horário com os eventos que o usuário já está cadastrado e que possuem vagas disponíveis}}
+\diagramline{\incsequence{8}{Usuário seleciona os cursos e palestras que deseja participar dentro do grande evento e confirma}}{\incsequence{8}{Sistema envia um \textit{QR Code} para o pagamento da taxa de inscrição por \textit{PIX} para o usuário}}
+\diagramline{\incsequence{8}{Usuário realiza o pagamento da taxa de inscrição}}{\incsequence{8}{Sistema confirma o pagamento da taxa de inscrição}}
+\diagramline{}{\incsequence{8}{Sistema registra os cursos e palestras que o usuário se inscreveu, a data e hora de inscrição, decrementa a quantidade de vagas nos cursos e palestras em que foi inscrito, decrementa a quantidade de vagas no grande evento.}}
+\diagramline{}{\incsequence{8}{Sistema retorna uma mensagem de sucesso nas inscrições dos cursos, palestras e no grande evento.}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Modificação de inscrição de participante em grande evento}{Usuário}{Primário}{O usuário pode editar a sua inscrição em grande evento, modificando os cursos e palestras em que está inscrito para outros caso possua vaga disponível.}
+
+\expandedusecase{Modificação de inscrição de participante em grande evento}
+{Usuário}
+{Modificação de inscrição de participante em um grande evento para alterar as palestras e cursos}
+{O usuário pode editar a sua inscrição em grande evento, modificando os cursos e palestras em que está inscrito para outros caso possua vaga disponível.}
+{Primário}
+{\ref{i4}, \ref{c4}}
+
+\sequencediagram{
+\diagramline{\newsequence{10}{Usuário acessa o sistema}}{\incsequence{10}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{10}{Usuário acessa as suas inscrições em grande evento}}{\incsequence{10}{Sistema retorna as inscrições}}
+\diagramline{\incsequence{10}{Usuário seleciona a inscrição que deseja modificar}}{\incsequence{10}{Sistema retorna os cursos e palestras disponíveis: aqueles que não possuem conflito de horário com outros cursos e palestras que não são deste grande evento e que possuem vagas disponíveis ainda.}}
+\diagramline{\incsequence{10}{Usuário seleciona as palestras e cursos que deseja realizar e envia ao sistema}}{\incsequence{10}{Sistema acessa os cursos e palestras que o usuário estava cadastrado antes, remove os vínculos dos eventos com o usuário, incrementa a quantidade de vagas, vincula os novos eventos ao usuário, decrementa a quantidade de vagas disponíveis e envia uma mensagem de sucesso}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Cancelamento de inscrição de usuário em palestra ou curso gratuito}{Usuário}{Primário}{Um usuário pode cancelar sua inscrição para liberar a vaga de uma palestra.}
+
+\expandedusecase{Cancelamento de inscrição de usuário em palestra ou curso gratuito}
+{Usuário}
+{Cancelamento de inscrição para liberar a vaga de uma palestra ou curso sem taxa de inscrição}
+{O usuário acessa o sistema, acessa os eventos em que está inscrito, seleciona o evento que não quer participar mais e o cancela a inscrição, fazendo com que o sistema desvincule o evento do usuário e incremente a quantidade de vagas disponíveis.}
+{Primário}
+{\ref{i7}}
+
+\sequencediagram{
+\diagramline{\newsequence{11}{Usuário acessa o sistema}}{\incsequence{11}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{11}{Usuário acessa as suas inscrições}}{\incsequence{11}{Sistema retorna as inscrições do usuário}}
+\diagramline{\incsequence{11}{Usuário seleciona a inscrição que deseja cancelar e envia ao sistema}}{\incsequence{11}{Sistema recebe a inscrição, desvincula o usuário do evento, incrementa a quantidade de vagas disponíveis e retorna uma mensagem de sucesso.}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Cancelamento de inscrição de usuário em palestra ou curso pago}{Usuário}{Primário}{Um usuário pode cancelar sua inscrição para liberar a vaga de uma palestra. O sistema deve estornar o pagamento realizado pelo usuário na durante a inscrição.}
+
+\expandedusecase{Cancelamento de inscrição de usuário em palestra ou curso pago}{Usuário}{Cancelamento de inscrição para liberar a vaga de uma palestra ou curso com taxa de inscrição}{O usuário acessa o sistema, acessa os eventos em que está inscrito, seleciona o evento que não quer participar mais e o cancela a inscrição, fazendo com que o sistema desvincule o evento do usuário, incremente a quantidade de vagas disponíveis e o sistema estorna a taxa de inscrição que foi paga pelo usuário.}{Primário}{\ref{i7}, \ref{pa2}}
+
+\sequencediagram{
+\diagramline{\newsequence{12}{Usuário acessa o sistema}}{\incsequence{12}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{12}{Usuário acessa as suas inscrições}}{\incsequence{12}{Sistema retorna as inscrições do usuário}}
+\diagramline{\incsequence{12}{Usuário seleciona a inscrição que deseja cancelar e envia ao sistema}}{\incsequence{12}{Sistema recebe a inscrição, desvincula o usuário do evento, incrementa a quantidade de vagas disponíveis, estorna a taxa de inscrição que foi pago pelo usuário e retorna uma mensagem de sucesso.}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Cancelamento de inscrição de usuário em grande evento gratuito}{Usuário}{Primário}{Um usuário pode cancelar sua inscrição em grande evento para liberar sua vaga.}
+
+\expandedusecase{Cancelamento de inscrição de usuário em grande evento gratuito}{Usuário}{Cancelamento de inscrição para liberar a vaga de um grande evento sem taxa de inscrição}{O Usuário acessa o sistema, acessa as inscrições em grandes eventos, seleciona o grande evento que deseja cancelar a inscrição, o sistema deve desvincular todos os eventos em que o usuário foi cadastrado dentro do grande evento, incrementar a quantidade de vagas disponíveis, incrementar a quantidade de vagas disponíveis no grande evento.}{Primário}{\ref{u5}, \ref{g4}, \ref{cu5}, \ref{p5}, \ref{i7}, \ref{i8}}
+
+\sequencediagram{
+\diagramline{\newsequence{13}{Usuário acessa o sistema}}{\incsequence{13}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{13}{Usuário acessa as suas inscrições em grande evento}}{\incsequence{13}{Sistema retorna os grandes eventos que o usuário está inscrito}}
+\diagramline{\incsequence{13}{Usuário seleciona o grande evento que deseja cancelar a sua inscrição e envia ao sistema}}{\incsequence{13}{Sistema recebe o grande evento, desvincula o usuário das palestras e cursos que foi inscrito, incrementa a quantidade de vagas disponíveis desses eventos, desvincula o usuário do grande evento, incrementa a quantidade de vagas disponíveis no grande evento e envia a confirmação de cancelamento de inscrição no grande evento.}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+% \usecase{Cancelamento de inscrição de usuário em grande evento pago}{Usuário}{Primário}{Um usuário pode cancelar sua inscrição em grande evento para liberar sua vaga. O sistema deve estornar o pagamento realizado pelo usuário durante a inscrição.}
+
+\expandedusecase{Cancelamento de inscrição de usuário em grande evento pago}{Usuário}{Cancelamento de inscrição para liberar a vaga de um grande evento com taxa de inscrição}{O Usuário acessa o sistema, acessa as inscrições em grandes eventos, seleciona o grande evento que deseja cancelar a inscrição, o sistema deve desvincular todos os eventos em que o usuário foi cadastrado dentro do grande evento, incrementar a quantidade de vagas disponíveis, incrementar a quantidade de vagas disponíveis no grande evento e estonar a taxa de inscrição que foi pago pelo Usuário.}{Primário}{\ref{u5}, \ref{g4}, \ref{cu5}, \ref{p5}, \ref{i7}, \ref{i8}, \ref{pa2}}
+
+\sequencediagram{
+\diagramline{\newsequence{14}{Usuário acessa o sistema}}{\incsequence{14}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{14}{Usuário acessa as suas inscrições em grande evento}}{\incsequence{14}{Sistema retorna os grandes eventos que o usuário está inscrito}}
+\diagramline{\incsequence{14}{Usuário seleciona o grande evento que deseja cancelar a sua inscrição e envia ao sistema}}{\incsequence{14}{Sistema recebe o grande evento, desvincula o usuário das palestras e cursos que foi inscrito, incrementa a quantidade de vagas disponíveis desses eventos, desvincula o usuário do grande evento, incrementa a quantidade de vagas disponíveis no grande evento, estorna a taxa de inscrição pago pelo usuário e envia a confirmação de cancelamento de inscrição no grande evento.}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+
+% \usecase{Cadastro de palestras}{Palestrante, moderador do sistema ou coordenador de evento}{Primário}{O usuário que possui o cargo de palestrante pode criar um evento do tipo palestra.
+
+% É necessário a inserção da data, hora, duração aproximada, tema, local, capacidade máxima e quantidade de partes que a palestra pode possuir.}
+
+% \expandedusecase{Cadastro de palestras}{}{}{}{Primário}{\ref{}, \ref{}, \ref{}, \ref{}, \ref{}, \ref{}, \ref{}, }
+
+% \sequencediagram{
+% \diagramline{\newsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% }
+
+
+% \usecase{Cadastro de cursos}{Ministrante, Moderador do Sistema, Coordenador de evento}{Primário}{O usuário que possui o cargo de ministrante de curso pode criar um evento do tipo curso, É necessário a inserção durante o cadastro a data, hora, duração aproximada, tema, requisitos de softwares instalados em máquinas \textit{desktop} ou \textit{notebook}, local, capacidade máxima e quantidade de partes que o curso pode possuir.}
+
+% \expandedusecase{Cadastro de cursos}{}{}{}{Primário}{\ref{}, \ref{}, \ref{}, \ref{}, \ref{}, \ref{}, \ref{}, }
+
+% \sequencediagram{
+% \diagramline{\newsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% }
+
+
+% \usecase{Cadastro de um grande evento}{Coordenador de Evento ou Moderador do Sistema}{Primário}{O coordenador de evento ou moderador do sistema pode cadastrar um grande evento (um evento que possui diversas palestras ou cursos para os usuários se inscreverem, não necessariamente precisa em tudo).
+
+% \expandedusecase{Cadastro de um grande evento}{}{}{}{Primário}{\ref{}, \ref{}, \ref{}, \ref{}, \ref{}, \ref{}, \ref{}, }
+
+% \sequencediagram{
+% \diagramline{\newsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% \diagramline{\incsequence{}{}}{\incsequence{}{}}
+% }
+
+
+% É necessário o nome do grande evento, tema, data de inicio, data de termino, locais que ocorrerão os cursos e palestras, caso seja pago, é necessário o valor da inscrição.
+
+% Deve ser permitido também a inserção e ou edição do grande evento para adição de cursos e palestras.}
+
+% \usecase{Coleta de presença de usuários em palestras ou cursos}
+% {Coordenador de eventos, Ministrante, Palestrante ou Moderador do sistema}
+% {Primário}
+% {O Coordenador de Evento, Moderador, Ministrante ou Palestrante podem coletar a presença de uma palestra ou curso (o Ministrante coleta somente do curso que está ministrando e o Palestrante coleta somente da palestra que está sendo realizado). Acessa o sistema, seleciona a palestra ou curso que deseja coletar a presença, de qual parte do curso ou palestra que está sendo registrado a presença e registrar os usuários que estão presentes.}
+
+\expandedusecase{Coleta de presença de usuários em palestras ou cursos}{Coordenador de Eventos, Moderador, Ministrante, Palestrante}{Registra as presenças de usuários que estão participando de palestras ou cursos}{O ator acessa o sistema, acessa as palestras ou cursos disponíveis para coleta de presença, realiza a coleta de presença assinalando cada usuário que está presente e envia ao sistema.}{Primário}{\ref{pr1}}
+
+\sequencediagram{
+\diagramline{\newsequence{15}{Ator acessa o sistema}}{\incsequence{15}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{15}{Ator acessa os cursos e palestras disponíveis para coleta de presença}}{Sistema retorna as palestras e cursos disponíveis}
+\diagramline{\incsequence{15}{Ator seleciona o curso ou palestra e a parte que deseja coletar a presença}}{\incsequence{15}{Sistema retorna uma lista com os usuários inscritos para checar quais estão presentes}}
+\diagramline{\incsequence{15}{Ator assinala os usuários presentes e envia ao sistema}}{\incsequence{15}{Sistema registra a presença do evento, da parte que foi coletada e os usuários que estão presentes}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+% \usecase{Coleta de presença de usuários em grandes eventos}
+% {Coordenador de Eventos, Moderador}
+% {Primário}
+% {O Coordenador de Evento ou Moderador podem coletar a presença de uma palestra ou curso que está dentro de um grande evento. Acessa o sistema, seleciona o grande evento, a palestra ou curso que deseja coletar a presença, qual parte que está sendo registrado a presença, registrar os usuários presentes.}
+
+\expandedusecase{Coleta de presença de usuários em grandes eventos}{Coordenador de Eventos, Moderador}{Registra as presenças de usuários que estão participando de palestras ou cursos que pertencem a um grande evento}{O Ator acessa o sistema, acessa os grandes eventos disponíveis, seleciona o grande evento desejado, acessa as palestras e cursos disponíveis, seleciona o curso ou palestra e a parte para registrar a presença, seleciona os usuários presentes no evento e registra no sistema.}{Primário}{\ref{pr2}}
+
+\sequencediagram{
+\diagramline{\newsequence{16}{Ator acessa o sistema}}{\incsequence{16}{Sistema retorna a interface gráfica}}
+\diagramline{\incsequence{16}{Ator acessa os grandes eventos disponíveis}}{\incsequence{16}{Sistema retorna os grandes eventos disponíveis}}
+\diagramline{\incsequence{16}{Ator seleciona e envia o grande evento que deseja registrar a presença}}{\incsequence{16}{Sistema retorna os cursos e palestras disponíveis para coletar a presença}}
+\diagramline{\incsequence{16}{Ator seleciona o curso ou palestra que deseja coleta de presença}}{\incsequence{16}{Sistema retorna as partes disponíveis para coleta de presença}}
+\diagramline{\incsequence{16}{Ator seleciona a parte do evento que deseja coletar a presença}}{\incsequence{16}{Sistema retorna os usuários que estão inscritos no evento}}
+\diagramline{\incsequence{16}{Ator seleciona os usuários presentes e envia para o sistema}}{\incsequence{16}{Sistema registra as presenças, a parte do evento e o evento que foi coletado a presença}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+% \usecase{Cadastro de usuários para o sistema de eventos}
+% {Usuário}
+% {Primário}
+% {O usuário que deseja a emissão do certificado de participação, é necessário o cadastro no sistema. Necessita das seguintes informações: nome, e-mail institucional e o tipo de vinculo com a universidade.
+
+% A autenticação deve ser utilizando o serviço da \textit{Google}. Caso o usuário seja externo, deve-se permitir o cadastro com um e-mail pessoal.}
+
+\expandedusecase{Registro de usuários para o sistema de eventos}{Usuário}{Registro de usuários que não possuem cadastro dentro do sistema utilizando o serviço da \textit{Google}}{O usuário acessa o sistema, utiliza o e-mail institucional para o primeiro acesso e após isso preenche alguns dados básicos como: nome completo, tipo de vinculo com a universidade.}{Primário}{\ref{u1}, \ref{u2}, \ref{u3}}
+
+\sequencediagram{
+\diagramline{\newsequence{18}{Usuário acessa o sistema}}{\incsequence{18}{Sistema retorna interface gráfica}}
+\diagramline{\incsequence{18}{Usuário insere o e-mail institucional}}{\incsequence{18}{Sistema verifica o e-mail e retorna um formulário}}
+\diagramline{\incsequence{18}{Usuário preenche o formulário com o nome completo e o tipo de vinculo com a universidade}}{\incsequence{18}{Sistema registra esses dados e retorna sucesso}}
+% \diagramline{\incsequence{18}{}}{\incsequence{18}{}}
+% \diagramline{\incsequence{18}{}}{\incsequence{18}{}}
+% \diagramline{\incsequence{18}{}}{\incsequence{18}{}}
+% \diagramline{\incsequence{18}{}}{\incsequence{18}{}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+% \usecase{Tornar um usuário com privilégio de palestrante ou ministrante}{Moderador do Sistema, Coordenador de Evento}{Primário}{O sistema deve permitir que a partir de um usuário previamente cadastrado, ele possa ter o privilégio de um ministrante ou palestrante caso seja necessário. A permissão é concedida por um moderador de sistema ou coordenador de evento}
+
+\expandedusecase{Tornar um usuário com privilégio de palestrante ou ministrante}{Coordenador de Evento, Moderador}{Concede permissão de Ministrante ou Palestrante para um usuário}{O ator acessa o sistema, busca pelo usuário que deseja conceder a permissão de Ministrante ou Palestrante}{Primário}{\ref{u4}}
+
+\sequencediagram{
+\diagramline{\newsequence{17}{Ator acessa o sistema}}{\incsequence{17}{Sistema retorna interface gráfica}}
+\diagramline{\incsequence{17}{Ator busca pelo usuário que deseja conceder a permissão de Palestrante ou Ministrante}}{\incsequence{17}{Sistema retorna os possíveis usuários pela busca}}
+\diagramline{\incsequence{17}{Ator seleciona o usuário para conceder a permissão e envia para o sistema}}{\incsequence{17}{Sistema concede permissão para o usuário}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% \usecase{Tornar um usuário com privilégio de moderador de sistema}{Moderador de Sistema, Coordenador de Evento}{Primário}{O sistema deve permitir que um usuário previamente cadastrado torne-se um moderador do sistema com a indicação de um outro moderador do sistema ou coordenador de evento.}
+
+\expandedusecase{Tornar um usuário com privilégio de moderador de sistema}{Coordenador de Evento}{Concede permissão de Moderador para um usuário}{O Ator acessa o sistema, busca pelo usuário que deseja conceder a permissão de Moderador}{Primário}{\ref{u6}}
+
+\sequencediagram{
+\diagramline{\newsequence{19}{Ator acessa o sistema}}{\incsequence{19}{Sistema retorna interface gráfica}}
+\diagramline{\incsequence{19}{Ator busca pelo usuário que deseja conceder a permissão de Moderador}}{\incsequence{19}{Sistema retorna os possíveis usuários pela busca}}
+\diagramline{\incsequence{19}{Ator seleciona o usuário para conceder a permissão e envia para o sistema}}{\incsequence{19}{Sistema concede permissão para o usuário}}
+}
+
+Sequência alternativa:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{15cm}|}
+        \hline\\
+            Não há\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% Sequencia alternativa:
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|}
+%     \end{tabular}
+% \end{table}

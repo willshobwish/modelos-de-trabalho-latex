@@ -9,3 +9,11 @@
 *.nlo
 *.synctex.gz
 *.toc
+*.ist
+*.glo
+*.bcf
+*.aux
+*.acn
+*.out
+*.run.xml
+*.lol

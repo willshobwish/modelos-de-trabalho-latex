@@ -1,0 +1,188 @@
+% ============================================================================
+% COMANDOS PERSONALIZADOS
+% ============================================================================
+
+% Título do trabalho
+\newcommand{\titulo}{Descrição de projeto}
+\newcommand{\titulocapa}{\MakeUppercase{\titulo}}
+
+% Nome do autor
+\newcommand{\nome}{\uppercase{Nome Sobrenome}}
+
+% Orientador
+\newcommand{\orientador}{Prof. Dr. Nome Sobrenome}
+
+% Cidade e Estado
+\newcommand{\cidade}{Cidade -- Estado}
+
+% ============================================================================
+% COMANDOS PERSONALIZADOS PARA DOCUMENTAÇÃO DE CASOS DE USO
+% ============================================================================
+
+% ----------------------------------------------------------------------------
+% COMANDO: \usecase - Caso de uso básico com 4 parâmetros
+% ----------------------------------------------------------------------------
+% Uso: \usecase{Nome}{Atores}{Tipo}{Descrição}
+% Cria uma tabela padronizada para casos de uso simples
+\newcommand{\usecase}[4]{%
+    \begin{center}
+        \begin{tabular}{|p{2.2cm}|p{12cm}|}
+            \hline
+            Caso de uso: & \textbf{#1} \\ % #1 = Nome do caso de uso (em negrito)
+            \hline
+            Atores:      & #2 \\          % #2 = Atores envolvidos
+            \hline
+            Tipo:        & #3 \\          % #3 = Tipo (Primário/Secundário/etc.)
+            \hline
+            Descrição:   & #4 \\          % #4 = Descrição detalhada
+            \hline
+        \end{tabular}
+    \end{center}
+}
+
+% ----------------------------------------------------------------------------
+% COMANDO: \expandedusecase - Caso de uso expandido com 6 parâmetros
+% ----------------------------------------------------------------------------
+% Uso: \expandedusecase{Nome}{Atores}{Finalidade}{Visão geral}{Tipo}{Referências}
+% Versão mais detalhada para casos de uso complexos
+\newcommand{\expandedusecase}[6]{%
+    \begin{center}
+        \begin{tabular}{|p{4cm}|p{11cm}|}
+            \hline
+            Caso de uso: & \textbf{#1} \\        % #1 = Nome do caso de uso
+            \hline
+            Atores:      & #2 \\                 % #2 = Atores envolvidos
+            \hline
+            Finalidade:  & #3 \\                 % #3 = Objetivo/Finalidade
+            \hline
+            Visão geral: & #4 \\                 % #4 = Resumo do caso de uso
+            \hline
+            Tipo:        & #5 \\                 % #5 = Classificação do tipo
+            \hline
+            Referências cruzadas: & #6 \\        % #6 = Links para outros casos/requisitos
+            \hline
+        \end{tabular}
+    \end{center}
+}
+
+% ----------------------------------------------------------------------------
+% COMANDOS PARA SEQUENCIAMENTO DE PASSOS
+% ----------------------------------------------------------------------------
+
+% COMANDO: \newsequence - Inicia uma nova sequência numerada
+% Uso: \newsequence{nomecontador}{descrição do passo}
+% Cria um novo contador e exibe o primeiro passo
+\newcommand{\newsequence}[2]{%
+    \newcounter{#1}             % Cria contador com nome #1
+    \stepcounter{#1}            % Incrementa o contador para 1
+    \arabic{#1}. #2             % Exibe: "1. descrição"
+    \stepcounter{#1}            % Incrementa para próximo uso (fica em 2)
+}
+
+% COMANDO: \incsequence - Continua sequência existente
+% Uso: \incsequence{nomecontador}{descrição do passo}
+% Usa contador existente para continuar numeração
+\newcommand{\incsequence}[2]{%
+    \arabic{#1}. #2             % Exibe número atual do contador + descrição
+    \stepcounter{#1}            % Incrementa contador para próximo passo
+}
+
+% ----------------------------------------------------------------------------
+% COMANDO: \sequencediagram - Tabela para diagramas de sequência
+% ----------------------------------------------------------------------------
+% Uso: \sequencediagram{conteúdo das linhas usando \diagramline}
+% Cria tabela padronizada para interações ator-sistema
+\newcommand{\sequencediagram}[1]{%
+    \begin{table}[H]                    % [H] força posição exata (requer float)
+        \centering
+        \begin{tabular}{|p{7.5cm}|p{7.5cm}|}  % Duas colunas de largura igual
+            \hline
+            \textbf{Ação do ator} & \textbf{Resposta do sistema} \\
+            #1                      % Conteúdo inserido aqui
+            \hline
+        \end{tabular}
+    \end{table}
+}
+
+% COMANDO: \diagramline - Linha individual do diagrama de sequência
+% Uso: \diagramline{ação do ator}{resposta do sistema}
+% Adiciona uma linha com separador no diagrama
+\newcommand{\diagramline}[2]{%
+    \hline                      % Linha horizontal de separação
+    #1 & #2 \\                 % Ação do ator | Resposta do sistema
+}
+
+% ----------------------------------------------------------------------------
+% AMBIENTE: hide - Oculta seções mas mantém numeração
+% ----------------------------------------------------------------------------
+% Uso: \begin{hide} conteúdo \end{hide}
+% Útil para estruturar documento sem mostrar certas seções
+\newenvironment{hide}%
+{%
+    % Redefine comandos de seção para apenas incrementar contadores
+    \renewcommand\section[1]{\refstepcounter{section}}%
+    \renewcommand\subsection[1]{\refstepcounter{subsection}}%
+    \renewcommand\subsubsection[1]{\refstepcounter{subsubsection}}%
+    \renewcommand\subsubsubsection[1]{\refstepcounter{subsubsubsection}}%
+}%
+{}  % Nada especial no fim do ambiente
+
+% ============================================================================
+% EXEMPLOS DE USO DOS COMANDOS
+% ============================================================================
+
+% % Exemplo 1: Caso de uso básico
+% \usecase{Emissão de certificados para participantes em cursos ou palestras}
+%         {Usuário}
+%         {Primário}
+%         {O usuário que participar de um curso ou palestra pode emitir o certificado 
+%          através de uma requisição no sistema.
+
+%          O certificado é emitido somente para aqueles que participaram integralmente 
+%          de todas as partes do curso ou palestra. No certificado deve listar o nome 
+%          do evento, nome do ministrante(s) ou palestrante(s), data, hora, carga 
+%          horária e autenticação digital do coordenador do evento.}
+
+% % Exemplo 2: Caso de uso para grandes eventos
+% \usecase{Emissão de certificado de participação para usuários que participaram de grandes eventos}
+%         {Usuário}
+%         {Primário}
+%         {O Usuário que participou de um grande evento pode realizar uma requisição 
+%          ao sistema para obter o certificado dos cursos e palestras que participou.
+
+%          São considerados apenas os cursos e palestras na qual o Usuário participou 
+%          integralmente de todas as suas respectivas partes. No certificado é listado 
+%          apenas aqueles que participou, em cada evento descrito no certificado deve 
+%          possuir: o nome do evento, nome do ministrante(s) ou palestrante(s), data, 
+%          hora, carga horária.
+
+%          No certificado deve conter uma autenticação digital do coordenador do evento.}
+
+% % Exemplo 3: Uso do ambiente hide para estruturar requisitos
+% \begin{hide}
+%     \setcounter{section}{2}  % Define numeração da seção como 2
+%     \section{Specific requirements}
+%     \subsection{Funcionais}    
+%         \subsubsection{Certificado} 
+%             \subsubsubsection{O sistema deve emitir certificados com o nome do 
+%                 participante, o tipo de evento que participou com o nome, ministrante 
+%                 ou palestrante, data, hora, e carga horária. Caso seja evento grande, 
+%                 será listado apenas aqueles que o usuário participou, com as datas, 
+%                 horário, carga horária e uma autenticação digital.}\label{c1}
+            
+%             \subsubsubsection{O sistema deve emitir certificados para ministrantes 
+%                 ou palestrantes após a realização do evento com as seguintes informações: 
+%                 nome do evento, data, hora, carga horária, tipo de evento, local, nome 
+%                 do coordenador do evento e uma autenticação digital.}\label{c2}
+            
+%             \subsubsubsection{O sistema deve emitir certificados, ou listar a 
+%                 participação de em um curso dentro de um grande evento, apenas para 
+%                 aqueles que participaram integralmente de todas as partes de cursos 
+%                 (caso seja mais que uma parte).}\label{c3}
+            
+%             \subsubsubsection{Deve registrar e armazenar o nome e o diretório que 
+%                 está armazenado para a reemissão futura, também o registro da data 
+%                 e horário da emissão.}\label{c4}
+            
+%             \subsubsubsection{O sistema deve entregar o certificado em formato de PDF.}\label{c5}
+% \end{hide}

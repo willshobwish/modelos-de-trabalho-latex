@@ -1,0 +1,73 @@
+% ============================================================================
+% COMANDOS PERSONALIZADOS
+% ============================================================================
+
+% Título do trabalho
+\newcommand{\titulo}{Descrição de projeto}
+\newcommand{\titulocapa}{\MakeUppercase{\titulo}}
+
+% Nome do autor
+\newcommand{\nome}{\uppercase{Nome Sobrenome}}
+
+% Orientador
+\newcommand{\orientador}{Prof. Dr. Nome Sobrenome}
+
+% Cidade e Estado
+\newcommand{\cidade}{Cidade -- Estado}
+
+% Definição de um comando personalizado para criar tabelas de casos de uso
+% Este comando facilita a criação padronizada de documentação de casos de uso
+\newcommand{\usecase}[4]{
+    % Inicia um ambiente centralizado para posicionar a tabela no centro da página
+    \begin{center}
+        % Cria uma tabela com duas colunas de larguras fixas
+        % |p{4cm}|p{11cm}| define:
+        % - Primeira coluna: 4cm de largura para os rótulos
+        % - Segunda coluna: 11cm de largura para o conteúdo
+        % As barras verticais (|) criam bordas entre as colunas
+        \begin{tabular}{|p{4cm}|p{11cm}|}
+            % Linha horizontal superior da tabela
+            \hline
+            
+            % Primeira linha: Nome do caso de uso
+            % #1 é o primeiro parâmetro passado ao comando
+            % \textbf{} deixa o texto em negrito
+            Caso de uso: & \textbf{#1} \\
+            \hline
+            
+            % Segunda linha: Atores envolvidos
+            % #2 é o segundo parâmetro
+            Atores: & #2 \\
+            \hline
+            
+            % Terceira linha: Tipo do caso de uso
+            % #3 é o terceiro parâmetro
+            Tipo: & #3 \\
+            \hline
+            
+            % Quarta linha: Descrição detalhada
+            % #4 é o quarto parâmetro
+            Descrição: & #4 \\
+            \hline
+            
+        \end{tabular}
+    \end{center}
+}
+
+% EXEMPLO DE USO:
+% \usecase{Login do Usuário}
+%         {Usuário, Sistema}
+%         {Primário}
+%         {O usuário fornece suas credenciais para acessar o sistema}
+
+% VANTAGENS DESTE COMANDO:
+% 1. Padronização: Garante que todos os casos de uso tenham o mesmo formato
+% 2. Reutilização: Pode ser usado múltiplas vezes no documento
+% 3. Manutenibilidade: Mudanças no formato podem ser feitas em um só lugar
+% 4. Simplicidade: Reduz a repetição de código LaTeX complexo
+
+% PARÂMETROS:
+% #1 - Nome/título do caso de uso
+% #2 - Lista de atores (usuários, sistemas, etc.)
+% #3 - Classificação do tipo (primário, secundário, etc.)
+% #4 - Descrição detalhada do comportamento esperado

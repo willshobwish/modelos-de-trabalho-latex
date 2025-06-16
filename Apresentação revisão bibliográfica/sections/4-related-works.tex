@@ -1,0 +1,345 @@
+\begin{frame}[plain]
+    \begin{center}
+        \LARGE Trabalhos relacionados    
+    \end{center}
+\end{frame}
+
+\begin{frame}{\textit{Deep Convolutional Neural Networks and Noisy Images (2018)}}
+    \textcite{10.1007/978-3-319-75193-1_50} realizaram um estudo sobre o desempenho das \textit{CNNs} treinados com imagens que possuem ruídos e sem ruídos.
+\end{frame}
+
+\begin{frame}{\textit{Deep Convolutional Neural Networks and Noisy Images (2018)}}
+    Para o estudo foi utilizado os \textit{datasets}:
+    \begin{itemize}
+        \item \textit{MNIST}: são imagens de números escritos a mão em preto e branco (um canal).
+        \item \textit{CIFAR-10}: são $60000$ imagens de tamanho $32\times 32$ coloridos divididos em 10 classes de forma igual, ou seja, cada classe tem a mesma quantidade de imagens.
+        \item \textit{SVHN}: \textit{The Street View House Numbers}, ou números de casas do Google Street View. Foi composto por $73257$ imagens para o treinamento e $26032$ imagens para o teste, totalizando $99289$ imagens.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textit{Deep Convolutional Neural Networks and Noisy Images (2018)}}
+    O experimento consiste em algumas partes:
+    
+    \vspace{1em}
+    Primeiro criaram $5$ cópias das imagens dos \textit{datasets} originais e foram degradados por ruído Gaussiano com desvio padrão de $[10,20,30,40,50]$.
+    
+    \vspace{1em}
+    $5$ cópias foram aplicados sal e pimenta com a probabilidade do \textit{pixel} ser afetado pelo ruído variando de $[0.1,0.2,0.3,0.4,0.5]$.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Exemplos de imagens gerados pelos ruídos}
+        \includegraphics[width=\textwidth]{images/related-works/Deep Convolutional Neural Networks and Noisy Images/example.png}
+        \begin{center}
+            {\footnotesize
+            Fonte: \textcite{10.1007/978-3-319-75193-1_50}}
+        \end{center}
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{Deep Convolutional Neural Networks and Noisy Images (2018)}}
+    Após isso, para os dois ruídos e para cada parâmetro utilizados neles, foram criados $10$ versões restaurados (um para cada parâmetro, totalizando $10$).
+\end{frame}
+
+\begin{frame}{\textit{Deep Convolutional Neural Networks and Noisy Images (2018)}}
+    Foram utilizados os $21$ conjuntos (para cada \textit{dataset}) para o treinamento das \textit{CNNs}, sendo $10$ conjuntos representando o ruído Gaussiano com o desvio padrão dentro do intervalo apresentado, os outros $10$ conjuntos sendo o sal e pimenta também com o intervalo e $1$ conjunto original.
+\end{frame}
+
+\begin{frame}{\textit{Deep Convolutional Neural Networks and Noisy Images (2018)}}
+    Após o treinamento, os modelos foram avaliados nos outros conjuntos gerados pelos ruídos e restaurações, como está representado na imagem \ref{fig:evaluation}. 
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação da avaliação do modelo em outros conjuntos}
+        \includegraphics[height=7cm]{images/related-works/Deep Convolutional Neural Networks and Noisy Images/evaluation.pdf}
+        \begin{center}
+            {\footnotesize Fonte: \textcite[figura adaptado pelo autor]{10.1007/978-3-319-75193-1_50}}
+        \end{center}
+        \label{fig:evaluation}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{Deep Convolutional Neural Networks and Noisy Images (2018)}}
+    O ruído presente nas imagens diminui a precisão da classificação das \textit{CNNs} e a utilização de algoritmos para restauração de imagem também não apresentou uma boa precisão.
+\end{frame}
+
+\begin{frame}{\textit{Deep Convolutional Neural Networks and Noisy Images (2018)}}
+    \textcite{10.1007/978-3-319-75193-1_50} explicam (na figura \ref{fig:comparison}) que isso se deve ao fato que os algoritmos de restauração utilizado fazem com que sejam perdidos algumas informações importantes das imagens, o que não acontece quando utiliza-se imagens com ruídos para os treinos, porque ainda mantêm informações das imagens.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}[H]
+        \centering
+        \caption{Comparação entre validação utilizando como treino imagens com ruídos e restaurados. \textit{DNo} representa o uso de algoritmo para reduzir o ruído}
+        \includegraphics[width=\textwidth]{images/related-works/Deep Convolutional Neural Networks and Noisy Images/Comparison.png}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{10.1007/978-3-319-75193-1_50}}
+        \end{center}
+        \label{fig:comparison}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    \textcite{7498955} realizou pesquisa sobre quais tipos de distorções podem afetar uma imagem em aplicações do mundo real (e.g. sensores de câmeras com baixa qualidade, falta de foco, representado na figura \ref{fig:dodge-karam}).
+\end{frame}
+
+\begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    Aplicando certas distorções, a \textit{Deep Neural Network} (\textit{DNN} ou Redes Neurais Profundas) pode classificar de forma errônea ou classificar de forma correta, ou seja, o que determina a precisão da classificação é o tipo de distorção aplicado na imagem.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação dos ruídos e seu impacto na classificação de imagens}
+        \includegraphics[height=7cm]{images/related-works/Understanding How Image Quality Affects Deep Neural Networks/abstractpdf.pdf}
+      \begin{center}
+        {\footnotesize Fonte: \textcite{7498955}}
+      \end{center}
+      \label{fig:dodge-karam}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        % \caption{Representação dos ruídos e seu impacto na classificação de imagens}
+        \adjincludegraphics[width=0.5\linewidth, trim={0 {0.33\height} 0 0}, clip]{images/related-works/Understanding How Image Quality Affects Deep Neural Networks/abstractpdf.pdf}
+    %   \begin{center}
+    %     {\footnotesize Fonte: \textcite{7498955}}
+    %   \end{center}
+    %   \label{fig:dodge-karam}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        % \caption{Representação dos ruídos e seu impacto na classificação de imagens}
+        \adjincludegraphics[width=0.5\linewidth, trim={0 0 0 {0.67\height}}, clip]{images/related-works/Understanding How Image Quality Affects Deep Neural Networks/abstractpdf.pdf}
+    %   \begin{center}
+    %     {\footnotesize Fonte: \textcite{7498955}}
+    %   \end{center}
+    %   \label{fig:dodge-karam}
+    \end{figure}
+\end{frame}
+
+% \begin{frame}[plain]
+%     \begin{figure}
+%         \centering
+%         % \caption{Representação dos ruídos e seu impacto na classificação de imagens}
+%         \adjincludegraphics[width=0.5\linewidth, trim={0 {0.5\height} 0 0}, clip]{images/related-works/Understanding How Image Quality Affects Deep Neural Networks/abstractpdf.pdf}
+%     %   \begin{center}
+%     %     {\footnotesize Fonte: \textcite{7498955}}
+%     %   \end{center}
+%     %   \label{fig:dodge-karam}
+%     \end{figure}
+% \end{frame}
+
+\begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    O objetivo da pesquisa é saber o quão robusto as \textit{CNN} são e em até quais níveis de intensidade de distorção os modelos suportam para classificar corretamente a imagem.
+\end{frame}
+
+\begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    O \textit{dataset} utilizado foi o \textit{ImageNet 2012}, porém foram consideradas apenas 10000 das 50000 imagens totais.
+\end{frame}
+\begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    As distorções utilizadas foram:
+\begin{itemize}
+    \item Compressão de \textit{JPEG}
+    \item \textit{Gaussian Noise}
+    \item \textit{Gaussian Blur}
+    \item Redução de contraste
+\end{itemize}
+\end{frame}
+% \begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    
+% \end{frame}
+% \begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    
+% \end{frame}
+% \begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    
+% \end{frame}
+
+\begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    Para a compressão de \textit{JPEG}, foi considerado a variação de \textit{PSNR} \textit{(Power Signal Noise Ratio)} iniciando de $20$ e terminando em $40$, com incremento de $2$.
+
+    \vspace{1em}
+    O \textit{Gaussian noise} foi aplicado para cada canal de cor da imagem separadamente, com o desvio padrão iniciando em $10$ e terminando em $100$, com incremento de $10$.
+    
+    \vspace{1em}
+    \textit{Gaussian blur}, o desvio padrão iniciando em $1$ e terminando em $9$, com incrementos de $1$.
+
+    \vspace{1em}
+    O contraste foi a combinação da imagem com uma imagem cinza, começando em $0$ e terminando em $1$, com incrementos de $0.1$
+\end{frame}
+% \begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    
+% \end{frame}
+\begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    No artigo, foram utilizados as arquiteturas de \textit{CNN}:
+    \begin{itemize}
+        \item \textit{Convolutional architecture for fast feature embedding}
+        \item \textit{VGG-CNN-S}
+        \item \textit{VGG-16}
+        \item \textit{GoogleNet}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \includegraphics[width=\linewidth,trim={0 8.1cm 0 0},clip]{images/related-works/Understanding How Image Quality Affects Deep Neural Networks/accuracy.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \includegraphics[width=\linewidth,trim={0 0 0 8.1cm},clip]{images/related-works/Understanding How Image Quality Affects Deep Neural Networks/accuracy.pdf}
+    \end{figure}
+\end{frame}
+\begin{frame}{\textit{Understanding how image quality affects deep neural networks (2016)}}
+    Os resultados demonstraram que todas as \textit{CNNs} estão de alguma forma suscetíveis às distorções em imagens. Porém alguns modelos se destacam por ser mais robusto em algumas distorções porém apresentar uma certa falta de robustez em outros tipos de distorções.
+\end{frame}
+
+
+\begin{frame}{\textit{A noise robust convolutional neural network for image classification (2021)}}
+    \textcite{MOMENY2021100225} propôs em sua pesquisa uma camada de \textit{noise map} onde, primeiro, essa camada detectaria o tipo de ruído que está presente da imagem (e.g. imagens danificadas, perda de pacote durante a transmissão dessa imagem e entre outros).
+\end{frame}
+\begin{frame}{\textit{A noise robust convolutional neural network for image classification (2021)}}
+    A forma de detecção de ruído presente na imagem é realizada a partir de várias analises, isso gera o \textit{noise map}, esse mapeamento é utilizado na camada seguinte, para mudar a forma que a imagem será manipulado dentro da \textit{CNN}.
+\end{frame}
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação da arquitetura de \textit{noise map}}
+        \includegraphics[height=7cm]{images/related-works/A noise robust convolutional neural network for image classification/feature map a.jpg}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{MOMENY2021100225}}
+        \end{center}
+        \label{fig:noise-map}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{A noise robust convolutional neural network for image classification (2021)}}
+    A partir do mapeamento (a figura \ref{fig:noise-map}) podem ser gerados duas classificações: o \textit{pixel} está corrompido ou o \textit{pixel} está com ruído. A partir dessa seleção, utiliza-se um dos métodos: 
+
+    \begin{itemize}
+        \item Convolução normal.
+        \item Convolução ignorando os \textit{pixels} que são ruidosos.
+    \end{itemize}
+\end{frame}
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação da arquitetura da camada de convolução adaptativo}
+        \includegraphics[height=7cm]{images/related-works/A noise robust convolutional neural network for image classification/feature map b.jpg}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{MOMENY2021100225}}
+        \end{center}
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+\begin{frame}{\textit{A noise robust convolutional neural network for image classification (2021)}}
+    Com isso, gera-se um novo \textit{noise map} que tem o seguinte:
+    \begin{itemize}
+        \item Caso seja \textit{pixel} não corrompido, utiliza o \textit{stride} regular.
+        \item Caso seja \textit{pixel} com ruído, muda a posição do filtro para o próximo \textit{pixel} não corrompido.
+    \end{itemize}
+\end{frame}
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação da arquitetura para o \textit{stride} adaptativo}
+        \includegraphics[height=7cm]{images/related-works/A noise robust convolutional neural network for image classification/feature map c.jpg}
+        \label{fig:enter-label}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{MOMENY2021100225}}
+        \end{center}
+    \end{figure}
+\end{frame}
+\begin{frame}{\textit{A noise robust convolutional neural network for image classification (2021)}}
+    Para o processo de \textit{pooling} o \textit{noise map} faz novamente a analise da imagem (\textit{noise map} atualizado) e verifica:
+    \begin{itemize}
+        \item Caso os \textit{pixels} não sejam corrompidos, utiliza o \textit{pooling} regular
+        \item Caso sejam \textit{pixels} corrompidos, elimina os \textit{pixels} com ruído ou corrompidos e realiza o \textit{pooling}
+    \end{itemize}
+\end{frame}
+\begin{frame}[plain]
+    \begin{figure}[H]
+        \centering
+        \caption{Representação da arquitetura para \textit{pooling} adaptativo}
+        \includegraphics[height=7cm]{images/related-works/A noise robust convolutional neural network for image classification/feature map d.jpg}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{MOMENY2021100225}}
+        \end{center}
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{A noise robust convolutional neural network for image classification (2021)}}
+    Para o treinamento foi utilizado o \textit{dataset} \textit{ILSVRC-2012} que contém 1000 classes. O \textit{dataset} é divido em dois conjuntos: 
+    \begin{itemize}
+        \item $1.3$ milhões de imagens não corrompidos para o treino
+        \item $50$ mil imagens não corrompidos para validação
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{\textit{A noise robust convolutional neural network for image classification (2021)}}
+    Para a geração de imagens com ruídos foi utilizado a distribuição uniforme para todos os ruídos.
+    
+    \vspace{1em}
+    A única diferença é como isso é aplicado para cada ruído (os exemplos estão representados na figura \ref{fig:noise-example}):
+\end{frame}
+
+\begin{frame}{\textit{A noise robust convolutional neural network for image classification (2021)}}
+    \begin{itemize}
+        \item Imagens adulterada (\textit{tampered image}): uma linha branca com largura de $1$ \textit{pixel} e altura de $5$ \textit{pixels} é adicionado à imagem.
+        \item Imagem danificada (\textit{damaged image}): círculos com $2$ \textit{pixel} de raio é adicionado à imagem.
+        \item Perda de pacote (\textit{packet loss}): retângulos com $2$ \textit{pixels} de largura e a altura equivalente a altura da imagem é adicionado.
+        \item Amostra ausente (\textit{missing sample}): quadrados de $2\times 2$ é adicionado à imagem.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação dos ruídos utilizados para a validação (20\% de densidade)}
+        \includegraphics[height=7cm]{images/related-works/A noise robust convolutional neural network for image classification/noises.jpg}
+        \begin{center}
+            % \vspace{-0.5cm}
+            {\footnotesize Fonte: \textcite{MOMENY2021100225}}
+        \end{center}
+        \label{fig:noise-example}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{A noise robust convolutional neural network for image classification (2021)}}
+    Os resultados demonstraram (figuras \ref{fig:ResNet} e \ref{fig:GoogleNet}) que o \textit{NR-CNN} (\textit{Noise Reduction Convolutional Neural Network}, arquitetura proposta nesse artigo) possui uma maior precisão em classificação de imagens com ruídos em comparação com o \textit{GoogleNet} e \textit{ResNet}.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+            \caption{\textit{Top 5 error} com \textit{NR-CNN} e \textit{GoogleNet}}
+            \includegraphics[height=7cm]{images/related-works/Deep Convolutional Neural Networks and Noisy Images/GoogleNet.jpg}
+            \label{fig:GoogleNet}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{figure}
+        \centering
+        \caption{\textit{Top 5 error} com \textit{NR-CNN} e \textit{ResNet}}
+        \includegraphics[height=7cm]{images/related-works/Deep Convolutional Neural Networks and Noisy Images/ResNet.jpg}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{MOMENY2021100225}}
+        \end{center}
+        \label{fig:ResNet}
+\end{figure}
+\end{frame}

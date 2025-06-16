@@ -1,115 +1,239 @@
-% Codificação e idioma
-\usepackage[utf8]{inputenc}     % Codificação do arquivo
-\usepackage[T1]{fontenc}        % Codificação da fonte
-\usepackage[english,brazil]{babel}  % Idiomas do documento
+% ========================================
+% CONFIGURAÇÕES DE CODIFICAÇÃO E IDIOMA
+% ========================================
 
-% Fonte e formatação do texto
-\usepackage{mathptmx}           % Fonte Times
-% \usepackage{lmodern}          % Fonte Latin Modern (usada com mathptmx para símbolos melhores)
-\usepackage{setspace}           % Espaçamento entre linhas
-\usepackage{indentfirst}        % Indenta o primeiro parágrafo de cada seção
-\usepackage{ragged2e}           % Justificação e alinhamento flexível de texto
-\usepackage{sectsty}            % Tamanho das seções
-\sectionfont{\normalsize}
-\subsectionfont{\normalsize}
-\subsubsectionfont{\normalsize}
+% Define a codificação de entrada do arquivo como UTF-8
+% Permite o uso de caracteres especiais diretamente no código
+\usepackage[utf8]{inputenc}
 
-% Margens e geometria da página
+% Codificação de saída da fonte para suportar caracteres acentuados
+% T1 é recomendado para idiomas com acentos
+\usepackage[T1]{fontenc}
+
+% Configuração de idiomas do documento
+% 'brazil' é o idioma principal, 'english' é secundário
+% Afeta hifenização, nomes de seções, formato de datas, etc.
+\usepackage[english,brazil]{babel}
+
+% ========================================
+% CONFIGURAÇÕES DE FONTE E FORMATAÇÃO
+% ========================================
+
+% Define a fonte Times New Roman como padrão do documento
+% Fonte serifada tradicionalmente usada em documentos acadêmicos
+\usepackage{mathptmx}
+
+% Controle de espaçamento entre linhas
+% Permite usar \onehalfspacing, \doublespacing, etc.
+\usepackage{setspace}
+
+% Força a identação do primeiro parágrafo após títulos de seções
+% Por padrão, LaTeX não indenta o primeiro parágrafo
+\usepackage{indentfirst}
+
+% Melhores algoritmos de justificação e alinhamento de texto
+% Oferece comandos como \RaggedRight, \Centering, etc.
+\usepackage{ragged2e}
+
+% Controle do tamanho das fontes dos títulos das seções
+\usepackage{sectsty}
+\sectionfont{\normalsize}        % Seções com tamanho normal
+\subsectionfont{\normalsize}     % Subseções com tamanho normal
+\subsubsectionfont{\normalsize}  % Sub-subseções com tamanho normal
+
+% ========================================
+% CONFIGURAÇÕES DE PÁGINA
+% ========================================
+
+% Define as margens da página conforme padrões acadêmicos brasileiros
+% Papel A4 com margens: esquerda 30mm, direita 20mm, superior 30mm, inferior 20mm
 \usepackage[a4paper, left=30mm, right=20mm, top=30mm, bottom=20mm]{geometry}
 
-% Cabeçalho e rodapé
+% ========================================
+% CONFIGURAÇÕES DE CABEÇALHO E RODAPÉ
+% ========================================
+
+% Pacote para personalizar cabeçalhos e rodapés
 \usepackage{fancyhdr}
+
+% Define o estilo de página como 'fancy'
 \pagestyle{fancy}
+
+% Limpa todos os campos de cabeçalho e rodapé
 \fancyhf{}
+
+% Define que apenas o número da página aparece no canto superior direito
 \fancyhead[R]{\thepage}
+
+% Remove as linhas horizontais do cabeçalho e rodapé
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+
+% Configura o estilo 'plain' (usado em páginas especiais como a primeira)
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyhead[R]{\thepage}
+  \fancyhead[R]{\thepage}  % Número da página também no estilo plain
 }
 
-% Tabelas
+% ========================================
+% CONFIGURAÇÕES PARA TABELAS
+% ========================================
+
+% Permite células que ocupam múltiplas linhas
 \usepackage{multirow}
+
+% Tabelas com largura ajustável automaticamente
 \usepackage{tabularx}
+
+% Suporte a cores em tabelas
 \usepackage[table]{xcolor}
+
+% Alinhamento vertical centralizado para colunas X do tabularx
 \renewcommand\tabularxcolumn[1]{m{#1}}
 
-% Figuras
+% ========================================
+% CONFIGURAÇÕES PARA FIGURAS
+% ========================================
+
+% Inclusão de imagens nos formatos mais comuns
 \usepackage{graphicx}
+
+% Legendas personalizáveis para figuras e tabelas
 \usepackage{caption}
+
+% Subfiguras (figuras lado a lado com legendas individuais)
 \usepackage{subcaption}
+
+% Controle preciso do posicionamento de elementos flutuantes
+% [H] força o posicionamento exato onde o código foi inserido
 \usepackage{float}
 
-% Hiperlinks
+% ========================================
+% CONFIGURAÇÕES DE HIPERLINKS
+% ========================================
+
+% Criação de hiperlinks e bookmarks no PDF
 \usepackage{hyperref}
+
+% Configurações dos hiperlinks
 \hypersetup{
-    colorlinks=true,
-    linkcolor=black,
-    filecolor=black,
-    urlcolor=black,
-    citecolor=black,
-    pdftitle={},
+    colorlinks=true,    % Links coloridos ao invés de caixas
+    linkcolor=black,    % Cor dos links internos (sumário, referências cruzadas)
+    filecolor=black,    % Cor dos links para arquivos
+    urlcolor=black,     % Cor dos URLs
+    citecolor=black,    % Cor das citações
+    pdftitle={},        % Define o título do documento PDF (vazio neste caso)
 }
+
+% URLs com a mesma fonte do texto normal
 \urlstyle{same}
 
-% Citações e referências bibliográficas (ABNT com biblatex)
+% ========================================
+% CONFIGURAÇÕES BIBLIOGRÁFICAS (ABNT)
+% ========================================
+
+% Suporte aprimorado para aspas (necessário para biblatex)
 \usepackage{csquotes}
+
+% Sistema de bibliografia moderno com estilo ABNT
 \usepackage[style=abnt]{biblatex}
+
+% Define o arquivo de referências bibliográficas
 \addbibresource{referencias.bib}
 
-% Listagens de código
-\usepackage{listings}
-\usepackage{xcolor}
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{1,1,1}
+% ========================================
+% CONFIGURAÇÕES PARA CÓDIGO-FONTE
+% ========================================
 
+% Pacote principal para listagens de código
+\usepackage{listings}
+
+% Redefinição do pacote xcolor (já carregado anteriormente)
+\usepackage{xcolor}
+
+% Definição de cores personalizadas para syntax highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}      % Verde para comentários
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}   % Cinza para números de linha
+\definecolor{codepurple}{rgb}{0.58,0,0.82} % Roxo para strings
+\definecolor{backcolour}{rgb}{1,1,1}       % Fundo branco
+
+% Estilo personalizado para listagens de código
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2
+    backgroundcolor=\color{backcolour},   % Cor de fundo
+    commentstyle=\color{codegreen},       % Estilo dos comentários
+    keywordstyle=\color{magenta},         % Estilo das palavras-chave
+    numberstyle=\tiny\color{codegray},    % Estilo dos números de linha
+    stringstyle=\color{codepurple},       % Estilo das strings
+    basicstyle=\ttfamily\footnotesize,    % Fonte monoespaçada pequena
+    breaklines=true,                      % Quebra linhas longas automaticamente
+    captionpos=b,                         % Posição da legenda (bottom)
+    keepspaces=true,                      % Preserva espaços
+    numbers=left,                         % Números de linha à esquerda
+    numbersep=5pt,                        % Separação entre números e código
+    showspaces=false,                     % Não mostra espaços
+    showstringspaces=false,               % Não mostra espaços em strings
+    showtabs=false,                       % Não mostra tabs
+    tabsize=2                             % Tamanho do tab = 2 espaços
 }
+
+% Aplica o estilo personalizado como padrão
 \lstset{style=mystyle}
 
-% Nomenclatura e siglas
+% ========================================
+% CONFIGURAÇÕES DE NOMENCLATURA
+% ========================================
+
+% Sistema para lista de siglas e símbolos
 \usepackage{nomencl}
+
+% Gera os arquivos necessários para a nomenclatura
 \makenomenclature
 
-% Outras utilidades
-\usepackage{soul}               % Texto com destaque (ex: \hl{})
-\usepackage{quoting}            % Citações em bloco
-\usepackage{import}             % Importar arquivos de subdiretórios
-\usepackage{hyphenat}           % Melhor controle de hifenização
-\usepackage{lipsum}             % Texto de exemplo (dummy text)
+% ========================================
+% PACOTES UTILITÁRIOS ADICIONAIS
+% ========================================
 
-% Personalizações de títulos e listas
+% Destacar texto com cores de fundo (comando \hl{})
+\usepackage{soul}
+
+% Citações em bloco com melhor formatação
+\usepackage{quoting}
+
+% Importar arquivos TeX de subdiretórios mantendo caminhos relativos
+\usepackage{import}
+
+% Controle avançado de hifenização
+\usepackage{hyphenat}
+
+% Geração de texto dummy para testes (comando \lipsum)
+\usepackage{lipsum}
+
+% ========================================
+% PERSONALIZAÇÕES DE NOMES E TÍTULOS
+% ========================================
+
+% Executa as redefinições após o início do documento
 \AtBeginDocument{
+    % Renomeia elementos para português brasileiro
     \renewcommand{\lstlistingname}{Código}
     \renewcommand{\lstlistlistingname}{\centering \normalsize \uppercase{Lista de Códigos}}
     \renewcommand{\contentsname}{\centering \normalsize \uppercase{Sumário}}
     \renewcommand{\nomname}{\centering \normalsize \uppercase{Siglas}}
-    \renewcommand{\refname}{} 
+    \renewcommand{\refname}{} % Remove título das referências (controlado pelo biblatex)
     \renewcommand{\listfigurename}{\centering \normalsize \uppercase{Lista de Figuras}}
     \renewcommand{\listtablename}{\centering \normalsize \uppercase{Lista de Tabela}}
 }
 
-% Linha do rodapé customizada
+% Formatação da bibliografia: fonte normal e texto justificado
+\renewcommand*{\bibfont}{\normalfont\justifying}
+
+% ========================================
+% PERSONALIZAÇÕES DE NOTAS DE RODAPÉ
+% ========================================
+
+% Customiza a linha separadora das notas de rodapé
 \renewcommand{\footnoterule}{
-\kern -3pt
-\hrule width 5cm
-\kern 2pt
+    \kern -3pt          % Espaçamento negativo acima da linha
+    \hrule width 5cm    % Linha horizontal de 5cm
+    \kern 2pt           % Espaçamento abaixo da linha
 }

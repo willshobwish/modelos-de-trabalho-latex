@@ -1,0 +1,368 @@
+%% Copyright 2016 Daniel Ballester Marques
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is Daniel Ballester Marques.
+
+\ProvidesFile{abnt-numeric.cbx}%
+[2018-11-17\space v3.4\space ABNT BibLaTeX citation style]%
+
+% Init >>>1
+
+\RequireCitationStyle{numeric}%
+
+\newtoggle{comp}%
+\DeclareBibliographyOption{comp}[true]{%
+  \settoggle{comp}{#1}%
+}%
+
+% <<<1
+
+% Comp >>>1
+
+\providebool{bbx:subentry}%
+% \newbool{cbx:parens}%
+
+\newcounter{cbx@tempcnta}%
+\newcounter{cbx@tempcntb}%
+
+\DeclareFieldFormat{entrysetcount}{\mknumalph{#1}}%
+
+\newbibmacro*{cite:init}{%
+  \iftoggle{comp}{%
+    \global\boolfalse{cbx:parens}%
+    \global\undef\cbx@lasthash%
+    \global\undef\cbx@lastnumber%
+    \global\undef\cbx@lastprefix%
+    \setcounter{cbx@tempcnta}{0}%
+    \setcounter{cbx@tempcntb}{-2}%
+  }{}%
+}%
+
+\newbibmacro*{cite:comp}{%
+  \iftoggle{comp}{%
+    \addtocounter{cbx@tempcntb}{1}%
+    \iffieldundef{shorthand}%
+      {\ifbool{bbx:subentry}%
+        {\iffieldundef{entrysetcount}%
+            {\usebibmacro{cite:comp:comp}}%
+            {\usebibmacro{cite:comp:inset}}}%
+        {\usebibmacro{cite:comp:comp}}}%
+      {\usebibmacro{cite:comp:shand}}%
+  }{%
+    \usebibmacro{cite}%
+  }%
+}%
+
+\newbibmacro*{cite:comp:comp}{%
+  \ifboolexpr{%
+    ( test {\iffieldundef{labelprefix}} and test {\ifundef\cbx@lastprefix} )%
+    or%
+    test {\iffieldequals{labelprefix}{\cbx@lastprefix}}%
+  }%
+    {\ifnumequal{\thefield{labelnumber}}{\value{cbx@tempcntb}}%
+       {\savefield{entrykey}{\cbx@lastkey}%
+        \savefield{labelnumber}{\cbx@lastnumber}%
+        \addtocounter{cbx@tempcnta}{1}}%
+       {\ifnumequal{\thefield{labelnumber}}{\value{cbx@tempcntb}-1}%
+          {}%
+          {\usebibmacro{cite:dump}%
+           \ifnumgreater{\value{cbx@tempcntb}}{-1}%
+             {\multicitedelim}%
+             {}%
+           \printtext[bibhyperref]{%
+             \printfield{labelprefix}%
+             \printfield{labelnumber}}}}}%
+    {\usebibmacro{cite:comp:end}}%
+  \setcounter{cbx@tempcntb}{\thefield{labelnumber}}%
+  \savefield{labelprefix}{\cbx@lastprefix}}%
+
+\newbibmacro*{cite:comp:end}{%
+  \usebibmacro{cite:dump}%
+  \ifnumgreater{\value{cbx@tempcntb}}{-1}%
+    {\multicitedelim}%
+    {}%
+  \printtext[bibhyperref]{%
+    \printfield{labelprefix}%
+    \printfield{labelnumber}}}%
+
+\newbibmacro*{cite:comp:inset}{%
+  \usebibmacro{cite:dump}%
+  \ifnumgreater{\value{cbx@tempcntb}}{-1}%
+    {\multicitedelim}%
+    {}%
+  \printtext[bibhyperref]{%
+    \printfield{labelprefix}%
+    \printfield{labelnumber}%
+    \printfield{entrysetcount}}%
+  \setcounter{cbx@tempcntb}{-1}}%
+
+\newbibmacro*{cite:comp:shand}{%
+  \usebibmacro{cite:dump}%
+  \ifnumgreater{\value{cbx@tempcntb}}{-1}%
+    {\multicitedelim}%
+    {}%
+  \printtext[bibhyperref]{\printfield{shorthand}}%
+  \setcounter{cbx@tempcntb}{-1}}%
+
+\newbibmacro*{cite:dump}{%
+  \iftoggle{comp}{%
+    \ifnumgreater{\value{cbx@tempcnta}}{0}%
+      {\ifnumgreater{\value{cbx@tempcnta}}{1}%
+        {\bibrangedash}%
+        {\multicitedelim}%
+      \bibhyperref[\cbx@lastkey]{%
+        \ifdef\cbx@lastprefix%
+          {\printtext[labelprefix]{\cbx@lastprefix}}%
+          {}%
+        \printtext[labelnumber]{\cbx@lastnumber}}}%
+      {}%
+    \setcounter{cbx@tempcnta}{0}%
+    \global\undef\cbx@lastprefix%
+  }{}%
+}%
+
+% <<<1
+
+\renewbibmacro*{name:family}[4]{% >>>1
+  \ifuseprefix%
+    {\usebibmacro{name:delim}{#3#1}%
+     \usebibmacro{name:hook}{#3#1}%
+     \ifdefvoid{#3}{}{%
+       \ifcapital%
+         {\mkbibnameprefix{\MakeCapital{#3}}\isdot}%
+         {\mkbibnameprefix{#3}\isdot}%
+       \ifprefchar{}{\bibnamedelimc}}%
+     \mkbibnamefamily{#1}\isdot%
+     \ifdefvoid{#4}{}{\bibnamedelimd\mkbibnamesuffix{#4}\isdot}}%
+    {\usebibmacro{name:delim}{#1}%
+     \usebibmacro{name:hook}{#1}%
+     \mkbibnamefamily{#1}\isdot%
+     \ifdefvoid{#4}{}{\bibnamedelimd\mkbibnamesuffix{#4}\isdot}}}% <<<1
+
+% Cite commands >>>1
+
+\DeclareCiteCommand{\cite}[\mkbibparens]% >>>2
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}%
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}%
+  {\iftoggle{comp}{}{\multicitedelim}}%
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}}% <<<2
+
+\DeclareCiteCommand{\parencite}[\mkbibparens]% >>>2
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}%
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}%
+  {\iftoggle{comp}{}{\multicitedelim}}%
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}}% <<<2
+
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]% >>>2
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}%
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}%
+  {\iftoggle{comp}{}{\multicitedelim}}%
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}}% <<<2
+
+\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]% >>>2
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}%
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}%
+  {\iftoggle{comp}{}{\multicitedelim}}%
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}}% <<<2
+
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkbibparens\mkbibfootnote]% >>>2
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}%
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}%
+  {\iftoggle{comp}{}{\multicitedelim}}%
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}}% <<<2
+
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]% >>>2
+  {\usebibmacro{cite:init}%
+   \let\multicitedelim=\supercitedelim%
+   \iffieldundef{prenote}%
+     {}%
+     {\BibliographyWarning{Ignoring prenote argument}}%
+   \iffieldundef{postnote}%
+     {}%
+     {\BibliographyWarning{Ignoring postnote argument}}}%
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}%
+  {}%
+  {\usebibmacro{cite:dump}}% <<<2
+
+% \textcite >>>2
+
+  \renewcommand*{\iffinalcitedelim}{%
+    \ifnumequal{\value{textcitecount}}{\value{textcitetotal}-1}}%
+
+  \renewbibmacro*{textcite}{% >>>3
+    \iftoggle{comp}{%
+      \iffieldequals{namehash}{\cbx@lasthash}%
+        {\usebibmacro{cite:comp}}%
+        {\usebibmacro{cite:dump}%
+        \ifbool{cbx:parens}%
+          {\printtext{\bibcloseparen}\global\boolfalse{cbx:parens}}%
+          {}%
+        \iffirstcitekey%
+          {}%
+          {\textcitedelim}%
+        \usebibmacro{cite:init}%
+        \printtext[bibhyperref]{%
+          \ifnameundef{labelname}%
+            {\printfield[citetitle]{labeltitle}}%
+            {\printnames{labelname}}%
+        }
+        \setunit*{\printdelim{namelabeldelim}}%
+        \printtext{\bibopenparen}\global\booltrue{cbx:parens}%
+        \ifnumequal{\value{citecount}}{1}%
+          {\usebibmacro{prenote}}%
+          {}%
+        \usebibmacro{cite:comp}%
+        \stepcounter{textcitecount}%
+        \savefield{namehash}{\cbx@lasthash}}%
+    }{%
+      \iffieldequals{namehash}{\cbx@lasthash}%
+            {\setunit{\multicitedelim}}%
+            {\printtext[bibhyperref]{%
+              \ifnameundef{labelname}%
+                {\printfield[citetitle]{labeltitle}}%
+                {\printnames{labelname}
+             }}%
+            \setunit*{\printdelim{namelabeldelim}}%
+            \printtext{\bibopenparen}\global\booltrue{cbx:parens}%
+            \stepcounter{textcitecount}%
+            \savefield{namehash}{\cbx@lasthash}}%
+          \ifnumequal{\value{citecount}}{1}%
+            {\usebibmacro{prenote}}%
+            {}%
+          \usebibmacro{cite}%
+          \setunit{%
+            \ifbool{cbx:parens}%
+              {\bibcloseparen\global\boolfalse{cbx:parens}}%
+              {}%
+            \textcitedelim}%
+    }%
+  }% <<<3
+
+  \renewbibmacro*{textcite:init}{% >>>3
+    \ifnumless{\value{multicitecount}}{2}%
+      {\global\boolfalse{cbx:parens}%
+      \global\undef\cbx@lasthash}%
+      {\global\undef\cbx@lasthash}}% <<<3
+
+  \renewbibmacro*{textcite:postnote}{% >>>3
+    \usebibmacro{postnote}%
+    \ifthenelse{\value{multicitecount}=\value{multicitetotal}}%
+      {\setunit{}%
+      \printtext{%
+        \ifbool{cbx:parens}%
+          {\bibcloseparen\global\boolfalse{cbx:parens}}%
+          {}}}%
+      {\setunit{%
+        \ifbool{cbx:parens}%
+          {\bibcloseparen\global\boolfalse{cbx:parens}}%
+          {}%
+        \textcitedelim}}}% <<<3
+
+  \DeclareCiteCommand{\cbx@textcite}% >>>3
+    {\iftoggle{comp}{\usebibmacro{cite:init}}{\usebibmacro{textcite:init}}}%
+    {\usebibmacro{citeindex}%
+    \usebibmacro{textcite}}%
+    {}%
+    {\iftoggle{comp}{%
+      \usebibmacro{cite:dump}%
+          \usebibmacro{postnote}%
+          \ifbool{cbx:parens}%
+            {\bibcloseparen\global\boolfalse{cbx:parens}}%
+            {}%
+    }{%
+      \usebibmacro{textcite:postnote}%
+    }}% <<<3
+
+  \DeclareCiteCommand{\textcite}[\cbx@textcite@init\cbx@textcite]% >>>3
+    {\gdef\cbx@savedkeys{}%
+    \citetrackerfalse%
+    \pagetrackerfalse%
+    \DeferNextCitekeyHook%
+    \iftoggle{comp}{\usebibmacro{cite:init}}{\usebibmacro{textcite:init}}}%
+    {\ifthenelse{\iffirstcitekey\AND\value{multicitetotal}>0}%
+      {\protected@xappto\cbx@savedcites{()(\thefield{multipostnote})}%
+        \global\clearfield{multipostnote}}%
+      {}%
+    \xappto\cbx@savedkeys{\thefield{entrykey},}%
+    \iffieldequals{namehash}{\cbx@lasthash}%
+      {}%
+      {\stepcounter{textcitetotal}%
+        \savefield{namehash}{\cbx@lasthash}}}%
+    {}%
+    {\protected@xappto\cbx@savedcites{%
+      [\thefield{prenote}][\thefield{postnote}]{\cbx@savedkeys}}}% <<<3
+
+  % textcite has nested \DeclareCiteCommand definitions for textcite and we want to use
+  % the normal textcite context
+  \DeclareDelimcontextAlias{cbx@textcite}{textcite}%
+
+  \renewrobustcmd{\cbx@textcite@init}[2]{%
+    \setcounter{textcitetotal}{0}%
+    \setcounter{textcitecount}{0}%
+    \def\cbx@savedcites{#1}#2\cbx@savedcites\empty}%
+
+  \DeclareMultiCiteCommand{\cbx@textcites}{\cbx@textcite}{}%
+  \DeclareMultiCiteCommand{\textcites}[\cbx@textcites@init\cbx@textcites]{\textcite}{}%
+
+  \let\cbx@textcites@init\cbx@textcite@init%
+  \pretocmd{\cbx@textcites@init}{\UseNextMultiCiteHook}{}{}%
+
+% <<<2
+
+\DeclareMultiCiteCommand{\cites}[\mkbibparens]{\cite}{\multicitedelim}%
+
+\DeclareMultiCiteCommand{\parencites}%
+  [\mkbibparens]{\parencite}{\multicitedelim}%
+
+\DeclareMultiCiteCommand{\smartcites}%
+  [\iffootnote\mkbibparens\mkbibfootnote]{\smartcite}{\multicitedelim}%
+
+% <<<1
+
+% bibhyperref >>>1
+
+\DeclareFieldFormat{citehyperref}{%% >>>2
+  \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+  \bibhyperref{#1}%
+}% <<<2
+
+\savebibmacro{cite}%
+
+\renewbibmacro*{cite}{%% >>>2
+  \printtext[citehyperref]{%
+    \restorebibmacro{cite}%
+    \usebibmacro{cite}}%
+}% <<<2
+
+% <<<1
+
+\endinput%
+
+
+% vim: set foldmarker=\ >>>,\ <<< :
+

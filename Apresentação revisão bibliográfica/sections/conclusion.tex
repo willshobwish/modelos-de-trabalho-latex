@@ -1,0 +1,35 @@
+\begin{frame}{Conclusões}
+    Portanto, através dos trabalhos ``\textit{\citetitle{10.1007/978-3-319-75193-1_50}}'' e ``\textit{\citetitle{7498955}}'' pode-se notar que o ruído em imagens afetam a precisão de classificação das \textit{CNNs}. 
+\end{frame}
+
+\begin{frame}{Conclusões}
+    O trabalho ``\textit{\citetitle{MOMENY2021100225}}'' demonstra também os tipos de ruídos que as imagens podem ter durante a sua transferência. 
+    \vspace{1em}
+
+    Também apresentou uma forma de minimizar os ruídos das imagens, para não comprometer com as informações
+que não foram afetadas pela degradação.
+\end{frame}
+
+\begin{frame}{Conclusões}
+    Para essa pesquisa será realizado o treino das arquiteturas de \textit{CNNs} com e sem \textit{data augmentation}. 
+    
+    \vspace{1em}
+    O \textit{data augmentation} será aplicado para todas as classes e imagens. Os tipos de data augmentation são as transformações geométricas e modificações em imagens (como brilho e contraste). 
+    
+    \vspace{1em}
+    Não será aplicado ruídos (e.g. \textit{Gaussian noise} ou \textit{Gaussian blur}) durante o treino dessas imagens (como \textcite{10.1007/978-3-319-75193-1_50} realizaram em seu trabalho).
+\end{frame}
+
+\begin{frame}{Conclusões}
+    Para validação durante o treino dos modelos de \textit{CNN}, serão utilizados o conjunto de validação de cada \textit{dataset}. 
+    
+    \vspace{1em}
+    Após o treino será utilizado o conjunto de teste de cada \textit{dataset}, um tipo de ruído ou modificação, de forma gradativa e avaliando nas arquiteturas de \textit{CNN}.
+    
+    \vspace{1em}
+    Não será utilizado mais de um ruído ou modificação em um teste, cada degradação será analisada de forma individual e gradativa.
+\end{frame}
+
+\begin{frame}{Conclusões}
+    Ao final, será analisado qual arquitetura de \textit{CNN} é mais robusto a ruídos e modificações na imagem, também se a técnica de \textit{data augmentation} melhora a precisão e a perda durante a classificação, tanto em imagens sem e com pré-processamento.
+\end{frame}

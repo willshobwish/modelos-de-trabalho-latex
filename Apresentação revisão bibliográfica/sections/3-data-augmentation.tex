@@ -1,0 +1,112 @@
+\begin{frame}[plain]
+    \begin{center}
+        \LARGE \textit{Data augmentation}
+    \end{center}
+\end{frame}
+
+\begin{frame}{\textit{Data augmentation}}
+    As técnicas de \textit{data augmentation} que serão utilizados no projeto não depende da classe que a imagem pertence. Uma das formas são as transformações geométricas em imagens como: espelhamento, corte, rotação, translação.
+
+    \vspace{1em}
+    
+    Também descreve outros métodos com processamento de imagem: adição de ruído e mudança do espaço de cor \cite{Shorten2019-dr}. 
+\end{frame}
+
+\begin{frame}{Corte}
+    % A imagem de treino é cortada dentro do intervalo de $[a,b]$, onde o valor de $a$ é variação de altura e o $b$ é a variação de largura, o valor é selecionado aleatoriamente dentro desse intervalo de variação a cada época \cite{chollet2015keras}.
+
+    \begin{figure}[H]
+        \centering
+        \caption{Corte aleatório com fator de $200\times 200$ (representa o corte da imagem).}
+        \includegraphics[width=\linewidth]{images/data-augmentation/Crop.png}
+        \begin{center}
+            Fonte: Chevanon Photography, 2018; data augmentation aplicado pelo autor.
+        \end{center}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Espelhamento}
+    % A imagem pode ser espelhada em uma direção (somente verticalmente ou horizontalmente) ou nas duas direções (verticalmente e horizontalmente) a cada época \cite{chollet2015keras}.
+
+    \begin{figure}[H]
+        \centering
+        \caption{Espelhamento horizontal, vertical ou ambos de forma aleatória.}
+        \includegraphics[width=\linewidth]{images/data-augmentation/Flip.png}
+        \begin{center}
+            Fonte: Chevanon Photography, 2018; data augmentation aplicado pelo autor.
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Translação}
+    % A imagem sofre uma translação\footnote{Também pode ser chamado de \textit{shifting}} dentro do intervalo de $a$ e $b$, onde o valor de $a$ é a variação de altura e o $b$ é a variação de largura, o valor é selecionado aleatoriamente dentro desse intervalo a cada época \cite{chollet2015keras}.
+
+    \begin{figure}[H]
+        \centering
+        \caption{Translação aleatória com fator de $0.2$ para altura e $0.2$ para largura.}
+        \includegraphics[width=\linewidth]{images/data-augmentation/Translation.png}
+        \begin{center}
+            Fonte: Chevanon Photography, 2018; data augmentation aplicado pelo autor.
+        \end{center}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Rotação}
+    % A imagem é rotacionado dentro do intervalo de $[a,b]$, onde o valor de $a$ é o mínimo e o $b$ é o valor máximo, o valor é selecionado aleatoriamente e é utilizado a seguinte formula $f(x)=x\cdot2\pi$ para calcular a rotação da imagem a cada época \cite{chollet2015keras}.
+
+    \begin{figure}[H]
+        \centering
+        \caption{Rotação aleatória com fator de $0.3$.}
+        \includegraphics[width=\linewidth]{images/data-augmentation/Rotation.png}
+        \begin{center}
+            Fonte: Chevanon Photography, 2018; data augmentation aplicado pelo autor.
+        \end{center}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Ampliação}
+    % A imagem é ampliado dentro do intervalo de $a$ e $b$, onde o valor de $a$ é a variação de altura e o $b$ é a variação de largura, o valor é selecionado aleatoriamente dentro desse intervalo a cada época \cite{chollet2015keras}.
+
+    \begin{figure}[H]
+        \centering
+        \caption{Ampliação aleatória com fator de $0.3$.}
+        \includegraphics[width=\linewidth]{images/data-augmentation/Zoom.png}
+        \begin{center}
+            Fonte: Chevanon Photography, 2018; data augmentation aplicado pelo autor.
+        \end{center}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Contraste}
+    % O contraste da imagem de treino é incrementado ou decrementado dentro do intervalo de $[a,b]$, onde o valor de $a$ é o mínimo e o $b$ é o valor máximo, o valor é selecionado aleatoriamente dentro desse intervalo a cada época \cite{chollet2015keras}.
+
+    \begin{figure}[H]
+        \centering
+        \caption{Contraste aleatório com o fator de $0.2$.}
+        \includegraphics[width=\linewidth]{images/data-augmentation/Contrast.png}
+        \begin{center}
+            Fonte: Chevanon Photography, 2018; data augmentation aplicado pelo autor.
+        \end{center}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Brilho}
+    % O brilho é da imagem de treino é incrementado ou decrementado dentro do intervalo de $[a,b]$, onde o valor de $a$ é o mínimo e o $b$ é o valor máximo, o valor é selecionado aleatoriamente dentro desse intervalo a cada época \cite{chollet2015keras}.
+
+    \begin{figure}[H]
+        \centering
+        \caption{Brilho aleatório com fator de $0.2$.}
+        \includegraphics[width=\linewidth]{images/data-augmentation/Brightness.png}
+        \begin{center}
+            Fonte: Chevanon Photography, 2018; data augmentation aplicado pelo autor.
+        \end{center}
+    \end{figure}
+
+    
+\end{frame}
+

@@ -1,0 +1,214 @@
+\begin{frame}[plain]
+    \begin{center}
+        \LARGE Fundamentação teórica
+    \end{center}
+\end{frame}
+
+% \begin{frame}{Redes neurais convolucionais}
+    
+% \end{frame}
+
+\begin{frame}{\textit{Convolution layer} e \textit{feature map}}
+    Definição de convolução \cite{computers12080151}
+\begin{equation}
+    (f*g)[n]=\sum^{\infty}_{m=-\infty}f[m]g[n-m]
+\end{equation}
+
+As duas funções $f$ e $g$ podem ser discretas ou continuas, $n$ é a posição ou tempo. Considerando que os sinais de entrada sejam discretas:
+\begin{equation}
+    (f*g)[n]=\sum^{\infty}_{m=-\infty}f[m]g[n-m]\Delta M
+\end{equation}
+Onde $\Delta M$ é o intervalo de amostragem
+\end{frame}
+
+
+% \begin{frame}{\textit{Convolution layer} e \textit{feature map}}
+%     Após o processo de convolução pela imagem, o resultado é denominado de \textit{feature maps}, representado na figura \ref{fig:featuremap} \cite{computers12080151}.
+% \end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação das \textit{convolution layer} e \textit{feature map}}
+        \includegraphics[width=\linewidth]{images/theoretical-foundation/featuremap.jpg}
+        \begin{center}
+        {\footnotesize Fonte: Baeldung, 2023.}
+    \end{center} 
+        \label{fig:featuremap}
+    \end{figure}
+\end{frame}
+
+% \begin{frame}{Pooling layer}
+    
+% \end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{\textit{Average pooling layer}}
+        \includegraphics[width=\linewidth]{images/theoretical-foundation/Average Pooling.jpg}
+        \begin{center}
+        {\footnotesize Fonte: \textcite{AbhishekJain}}
+    \end{center} 
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{\textit{Max pooling}}
+        \includegraphics[width=\linewidth]{images/theoretical-foundation/Max Pooling.jpg}
+        \begin{center}
+        {\footnotesize Fonte: \textcite{AbhishekJain}}
+    \end{center} 
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+% \begin{frame}{\textit{Activation layer}}
+%     Essa camada é responsável por adicionar uma função de não linearidade, isso faz reduzir a sua saturação e o aprendizado de características mais complexas, geralmente é adicionado ao final das camadas, seja de \textit{pooling} ou \textit{convolution} \cite{computers12080151,201811.0546}. 
+% \end{frame}
+
+\begin{frame}{Rectified linear unit (\textit{ReLU})}
+    A função de ativação \textit{Rectified linear unit} (ou \textit{ReLU}) ocorre somente quando os valores são superiores a $0$ \cite{201811.0546}.
+
+\begin{equation}\label{eq:ReLU1}
+    g(y)\begin{cases}
+        0\text{ para } y<0\\
+        y\text{ para } y\geq 0
+    \end{cases}
+\end{equation}
+
+Também pode-se representar a equação \ref{eq:ReLU1} dessa forma \cite{computers12080151}:
+
+\begin{equation}\label{eq:ReLU2}
+    f(x)=max(0,x)
+\end{equation}
+
+% As funções de ativação demonstradas nas equações \ref{eq:ReLU1} ou \ref{eq:ReLU2} não permitem valores negativos, o que o torna bom para extração de características complexas \cite{computers12080151,8286426}.
+\end{frame}
+
+
+\begin{frame}{\textit{Softmax}}
+    A função de ativação \textit{Softmax} é empregado ao final da rede neural, para termos a distribuição de probabilidade da classe que pertence a imagem de entrada \cite{201811.0546}
+\begin{equation}
+    \alpha(c)_{j}=\cfrac{e^{c_{j}}}{\sum^{K}_{k=1}e^{c_{k}}}    
+\end{equation}
+\end{frame}
+
+% \begin{frame}{\textit{Flatten}}
+%     Processo onde utiliza a matriz de saída das operações de convolução, \textit{pooling} e entre outros para introduzir na rede neural. Para isso é necessário transformar essa matriz bidimensional em um vetor unidimensional.
+% \end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Processo de \textit{flatten} (ou achatamento da matriz)}
+        \includegraphics[width=\linewidth]{images/theoretical-foundation/flattening.png}
+        \begin{center}
+        {\footnotesize Fonte: \href{https://www.superdatascience.com/blogs/convolutional-neural-networks-cnn-step-3-flattening}{SuperDataScience}, 2018.}
+    \end{center} 
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+% \begin{frame}{\textit{Fully connected layer}}
+% \end{frame}
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação dos pesos, conexões e \textit{bias} entre neurônios}
+        \includegraphics[width=0.5\linewidth]{images/theoretical-foundation/neuron.png}
+        \begin{center}
+        {\footnotesize Fonte: Melcher, 2021}
+    \end{center} 
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+% \begin{frame}{\textit{Fully connected layer}}
+% \end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação de uma rede neural com \textit{hidden layers}}
+        \includegraphics[width=0.5\linewidth]{images/theoretical-foundation/nn.png}
+        \begin{center}
+        {\footnotesize Fonte: Melcher, 2021}
+    \end{center} 
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Processo de aprendizado}
+    As arquiteturas de \textit{CNN} precisam passar pelo processo de treinamento para a definição e ajuste dos pesos em cada conexão entre os neurônios e do \textit{bias} da camada \textit{fully connected}. 
+\end{frame}
+
+\begin{frame}{\textit{Backpropagation}}
+\textit{Backpropagation} é o processo de atualização e correção dos pesos de cada entrada dos neurônios e do \textit{bias} com o gradiente da função de perda, isso também pode ocorrer nas camadas de convolução se possuírem \textit {bias} \cite{computers12080151}.
+
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{align}
+        \dfrac{\partial L}{\partial w^{(l)}_{i,j}}=&\dfrac{\partial L}{\partial z_{i}^{(l)}}\cdot\dfrac{\partial z_{i}^{(l)}}{\partial w_{i,j}^{(l)}}\\
+        \dfrac{\partial L}{\partial b_{i}^{(l)}}=&\dfrac{\partial L}{\partial z_{i}^{(l)}}\cdot\dfrac{\partial z_{i}^{(l)}}{\partial b_{i}^{(l)}}
+\end{align}
+
+Onde:
+
+\begin{itemize}
+    \item $L$ é a função de \textit{loss} (ou perda)
+    \item $w_{i,j}^{(l)}$ é o peso da conexão do neurônio $i$ na camada $l-1$ para o neurônio $j$ na camada $l$.
+    \item $b_{i}^{(l)}$ é o \textit{bias} ou viés do neurônio $i$ na camada $l$.
+    \item $z_{i}^{(l)}$ é a somatória das entradas do neurônio $i$ na camada $l$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{\textit{Função de perda}}
+    A função para calcular a perda que será utilizado será o \textit{sparse categorical cross-entropy}, implementação do \textit{Tensorflow Keras} \cite{chollet2015keras}.
+
+    \vspace{1em}
+    Utiliza a \textit{cross-entropy} (entropia cruzada) que é calculado utilizando a diferença da saída da previsão que a \textit{CNN} realizou e a classe real que a imagem pertence \cite{paszke2019pytorchimperativestylehighperformance}.
+\end{frame}
+
+\begin{frame}{Otimizador}
+    O otimizador serve para encontrarmos o mínimo ou o máximo de uma função com diversas variáveis.
+
+    \vspace{1em}
+    O otimizador a ser utilizado durante os treinos das arquiteturas de \textit{CNN} é o \textit{Adam} (\textit{Adaptive Moment Estimation}), proposto por \textcite{kingma2017adammethodstochasticoptimization}.
+    \vspace{1em}
+    
+    Demonstra ser mais eficiente devido ao pouco uso de memória durante o seu uso.
+\end{frame}
+
+\begin{frame}[fragile]{Otimizador}
+    \begin{center}
+        \resizebox{10.5cm}{!}{
+        \centering
+        \begin{minipage}{\linewidth}
+            \begin{algorithm}[H]
+                \caption{Algoritmo de otimização \textit{Adam} descrito por \textcite[tradução pelo autor]{kingma2017adammethodstochasticoptimization}}
+                    \begin{algorithmic}
+                        \Require $\alpha$\Comment{Taxa de aprendizado (\textit{learning rate})}
+                        \Require $\beta_{1},\;\beta_{2}\in[0,1)$\Comment{Taxa de decaimento exponencial para a estimativa dos momentos}
+                        \Require $f(\theta)$\Comment{Função objetiva estocástico com parâmetros $\theta$}
+                        \Require $\theta_{0}$\Comment{Vetor de parâmetro inicial}
+                            \While {$\theta_{0}$ não convergiu}
+                            \State $t\leftarrow t+1$\Comment{Atualiza a iteração}
+                            \State $g_t\leftarrow\nabla_{\theta}f_{t}(\theta_{t-1})$\Comment{Obtenção dos gradientes}
+                            \State $m_t\leftarrow\beta_1\cdot m_{t-1}+(1-\beta_{1})\cdot g_{t}^{1}$\Comment{Atualiza o primeiro momento estimado}
+                            \State $v_t\leftarrow\beta_{2}\cdot v_{t-1}+(1-\beta_2)\cdot g_{t}^{2}$\Comment{Atualiza o segundo momento estimado}
+                            \State $\hat{m}_t\leftarrow\dfrac{m_{t}}{1-\beta^{t}_{1}}$\Comment{Computa a correção da estimativa do primeiro momento}
+                            \State $\hat{v}_t\leftarrow\dfrac{v_{t}}{1-\beta^{t}_{2}}$\Comment{Computa a correção da estimativa do segundo momento}
+                            \State $\theta_{t}\leftarrow\theta_{t-1}-\alpha\cdot\dfrac{\hat{m}_{t}}{\sqrt{\hat{v}_{t}}+\epsilon}$\Comment{Atualiza os parâmetros da função estocástica}
+                            \EndWhile
+                            \State \Return $\theta_{t}$ \Comment{Retorna o resultado dos parâmetros}
+                    \end{algorithmic}
+            \end{algorithm}
+        \end{minipage}
+        }
+    \end{center}
+    
+\end{frame}

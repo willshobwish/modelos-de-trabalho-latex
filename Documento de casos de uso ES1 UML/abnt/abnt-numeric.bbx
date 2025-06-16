@@ -1,0 +1,75 @@
+%% Copyright 2016 Daniel Ballester Marques
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is Daniel Ballester Marques.
+
+\ProvidesFile{abnt-numeric.bbx}%
+[2018-11-17\space v3.4\space ABNT BibLaTeX citation style]%
+
+\RequireBibliographyStyle{abnt}
+\ExecuteBibliographyOptions{%
+  labelnumber,%
+  sorting=none%
+}
+
+
+\providebool{bbx:subentry}
+\DeclareBibliographyOption[boolean]{subentry}[true]{%
+  \setbool{bbx:subentry}{#1}}
+
+\DeclareFieldFormat{bibentrysetcount}{\mkbibparens{\mknumalph{#1}}}
+
+
+\defbibenvironment{bibliography}% >>>
+  {\list
+     {\printtext[labelnumberwidth]{%
+	\printfield{labelprefix}%
+	\printfield{labelnumber}}}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endlist}
+  {\item}% <<<
+
+\defbibenvironment{shorthand}% >>>
+  {\list
+     {\printfield[shorthandwidth]{shorthand}}
+     {\setlength{\labelwidth}{\shorthandwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}}
+  {\endlist}
+  {\item}% <<<
+
+\DeclareBibliographyDriver{set}{%% >>>
+  \entryset
+    {\ifbool{bbx:subentry}
+       {\printfield[bibentrysetcount]{entrysetcount}%
+	\printunit*{\addnbspace}}
+       {}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{setpageref}%
+  \finentry}% <<<
+
+\endinput
+
+
+% vim: set foldmarker=\ >>>,\ <<< :
+

@@ -1,0 +1,626 @@
+\begin{frame}[plain]
+    \begin{center}
+        \LARGE Arquiteturas de redes neurais convolucionais    
+    \end{center}
+\end{frame}
+
+\begin{frame}{\textit{ResNet152V2}}\label{sec:ResNet152V2}
+    A arquitetura foi proposta por \textcite{he2016identitymappingsdeepresidual} e possui mais de $100$ camadas, a principal ideia foi utilizar função residual aditivo $\mathcal{F}$ em relação ao $h(x_{l})$ e com uma identidade $h(x_{l})=x_{l}$.
+\end{frame}
+
+\begin{frame}{\textit{ResNet152V2}}
+    Arquitetura possui unidades denominados \textit{residual units} que podem ser expressados dessa forma:
+\begin{align}\label{eq:residual-units}
+    y_1=&h(x_l)+F(x_1,W_1)\\
+    x_{l+1}=&f(y_1)
+\end{align}
+
+    Onde:
+    \begin{itemize}
+        \item $x_l$ e $x_{l+1}$ são as entradas e saídas da unidade de camada $l$
+        \item $F$ é a função residual 
+        \item $f$ é a ativação \textit{rectified linear unit} (\textit{ReLU})
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textit{ResNet152V2}}
+    A figura \ref{fig:residual-units}a representa a proposta original (representado na equação \ref{eq:residual-units}) e a figura \ref{fig:residual-units}b representa o que foi proposto para utilização nessa arquitetura. 
+    \vspace{1em}
+    
+    Pode-se observar que a informação passa de uma forma mais fácil através da seta em cinza.
+
+    \vspace{1em}
+    Isso faz com que não possua problemas com a propagação da informação, ou seja, que a informação não seja desaparecida no final da rede \cite{he2016identitymappingsdeepresidual}.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação dos \textit{Residual units}}
+        \includegraphics[trim={0 0 13.5cm 0},clip,height=7cm]{images/cnn-architecture/ResNet152V2/teaser.pdf}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{he2016identitymappingsdeepresidual}}
+        \end{center}
+        \label{fig:residual-units}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{DensetNet201}}
+    Abreviação para \textit{Dense Convolutional Network}, foi proposto por \textcite{huang2018denselyconnectedconvolutionalnetworks}.
+
+    \vspace{1em}
+    Um dos problemas que as \textit{CNN} muito profundas, ou seja, que possuem muitas camadas, enfrentam é a perda de informação quando chaga às camadas finais da \textit{CNN}.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação dos \textit{dense blocks}}
+        \includegraphics[width=0.5\linewidth]{images/cnn-architecture/DenseNet201/denseBlock.pdf}
+        \begin{center}
+            Fonte: \textcite{huang2018denselyconnectedconvolutionalnetworks}
+        \end{center}
+        \label{fig:dense blocks}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{DensetNet201}}
+    Como pode-se observar na figura \ref{fig:dense blocks}, toda a saída de um conjunto de camadas vai para a entrada do conjunto de camada subsequente, isso é denominado \textit{dense connectivity} por \textcite{huang2018denselyconnectedconvolutionalnetworks}.
+
+    \vspace{1em}
+    Assim a informação não há perda de informação para as camadas mais profundas da rede.
+\end{frame}
+
+\begin{frame}{\textit{Composite function}}
+    Cada \textit{dense block} (formado por $n$ camadas) passa por uma camada de transição $\mathcal{H}_{l}(\cdot)$ (representado na figura \ref{fig:densenet}), a ``\textit{convolution}'' representa o \textit{composite function} que possui três operações sequenciais \cite{huang2018denselyconnectedconvolutionalnetworks}:
+
+    \begin{itemize}
+    \item \textit{batch normalization}
+    \item \textit{rectified linear unit} (\textit{ReLU})
+    \item Uma convolução de $3\times 3$
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Exemplo de uma \textit{DenseNet} com três \textit{dense blocks}, entre os blocos há uma camada de transição}
+        \includegraphics[width=\linewidth]{images/cnn-architecture/DenseNet201/denseNet.pdf}
+        {\centering \footnotesize Fonte: \textcite{huang2018denselyconnectedconvolutionalnetworks}}
+        \label{fig:densenet}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{DensetNet201}}
+    A tabela \ref{tab:densenet-imagenet} mostra as variações da arquitetura \textit{DenseNet}. A arquitetura que será utilizado é o \textit{DenseNet201}.
+\end{frame}
+
+\begin{frame}[plain]
+\renewcommand{\arraystretch}{1.1}
+\begin{table}
+\centering
+\caption{Variações da arquitetura de DenseNet}
+\resizebox{10cm}{!}{
+\begin{tabular}{c|c|c|l|l|l}
+\hline
+Camadas& Tamanho da saída& DenseNet-121& \multicolumn{1}{c|}{DenseNet-169}& \multicolumn{1}{c|}{DenseNet-201}& \multicolumn{1}{c}{DenseNet-264} \\ \hline
+Convolution & \cross{112} & \multicolumn{4}{c}{\cross{7} convolução, stride 2} \\ \hline
+Pooling & \cross{56} & \multicolumn{4}{c}{\cross{3} max pool, stride 2} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Dense Block\\ (1)\end{tabular} & \cross{56} & \multicolumn{1}{l|}{\conv{6}} & \conv{6} & \conv{6} & \conv{6} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Transition Layer\\ (1)\end{tabular}} & \cross{56} & \multicolumn{4}{c}{\cross{1} convolução} \\ \cline{2-6}
+ & \cross{28} & \multicolumn{4}{c}{\cross{2} pooling médio, stride 2} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Dense Block\\ (2)\end{tabular} & \cross{28} & \multicolumn{1}{l|}{\conv{12}} & \conv{12}& \conv{12} & \conv{12} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Transition Layer\\ (2)\end{tabular}} & \cross{28} & \multicolumn{4}{c}{\cross{1} convolução} \\ \cline{2-6}
+ & \cross{14} & \multicolumn{4}{c}{\cross{2} pooling médio, stride 2} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Dense Block\\ (3)\end{tabular} & \cross{14} & \multicolumn{1}{l|}{\conv{24}} & \conv{32} & \conv{48} & \conv{64} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Transition Layer\\ (3)\end{tabular}} & \cross{14} & \multicolumn{4}{c}{\cross{1} convolução} \\ \cline{2-6}
+ & \cross{7} & \multicolumn{4}{c}{\cross{2} pooling médio, stride 2} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Dense Block\\ (4)\end{tabular} & \cross{7} & \multicolumn{1}{l|}{\conv{16}} & \conv{32} & \conv{32} & \conv{48} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Classification\\ Layer\end{tabular}} & \cross{1} & \multicolumn{4}{c}{\cross{7} pooling médio global} \\ \cline{2-6}
+ & & \multicolumn{4}{c}{1000D fully-connected, softmax} \\ \hline
+\end{tabular}
+}
+\label{tab:densenet-imagenet}
+\begin{center}
+    \footnotesize Fonte: \textcite[tradução pelo autor]{huang2018denselyconnectedconvolutionalnetworks}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}[plain]
+\renewcommand{\arraystretch}{1.1}
+\begin{table}
+\centering
+% \caption{Variações da arquitetura de DenseNet}
+\resizebox{14cm}{!}{
+\begin{tabular}{c|c|c|l|l|l}
+\hline
+Camadas& Tamanho da saída& DenseNet-121& \multicolumn{1}{c|}{DenseNet-169}& \multicolumn{1}{c|}{DenseNet-201}& \multicolumn{1}{c}{DenseNet-264} \\ \hline
+Convolution & \cross{112} & \multicolumn{4}{c}{\cross{7} convolução, stride 2} \\ \hline
+Pooling & \cross{56} & \multicolumn{4}{c}{\cross{3} max pool, stride 2} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Dense Block\\ (1)\end{tabular} & \cross{56} & \multicolumn{1}{l|}{\conv{6}} & \conv{6} & \conv{6} & \conv{6} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Transition Layer\\ (1)\end{tabular}} & \cross{56} & \multicolumn{4}{c}{\cross{1} convolução} \\ \cline{2-6}
+ & \cross{28} & \multicolumn{4}{c}{\cross{2} pooling médio, stride 2} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Dense Block\\ (2)\end{tabular} & \cross{28} & \multicolumn{1}{l|}{\conv{12}} & \conv{12}& \conv{12} & \conv{12} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Transition Layer\\ (2)\end{tabular}} & \cross{28} & \multicolumn{4}{c}{\cross{1} convolução} \\ \cline{2-6}
+ & \cross{14} & \multicolumn{4}{c}{\cross{2} pooling médio, stride 2} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Dense Block\\ (3)\end{tabular} & \cross{14} & \multicolumn{1}{l|}{\conv{24}} & \conv{32} & \conv{48} & \conv{64} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Transition Layer\\ (3)\end{tabular}} & \cross{14} & \multicolumn{4}{c}{\cross{1} convolução} \\ \cline{2-6}
+ & \cross{7} & \multicolumn{4}{c}{\cross{2} pooling médio, stride 2} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Dense Block\\ (4)\end{tabular} & \cross{7} & \multicolumn{1}{l|}{\conv{16}} & \conv{32} & \conv{32} & \conv{48} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Classification\\ Layer\end{tabular}} & \cross{1} & \multicolumn{4}{c}{\cross{7} pooling médio global} \\ \cline{2-6}
+ & & \multicolumn{4}{c}{1000D fully-connected, softmax} \\ \hline
+\end{tabular}
+}
+\end{table}
+\end{frame}
+
+\begin{frame}{\textit{InceptionV3}}
+    Arquitetura de rede neural convolucional foi proposta por \textcite{szegedy2015rethinkinginceptionarchitecturecomputer}, possui um custo de processamento reduzido em comparação ao \textit{VGGNet} devido a sua menor quantidade de parâmetros para ser avaliado.
+\end{frame}
+
+\begin{frame}{\textit{InceptionV3}}
+    Alguns princípios que foram adotados durante a concepção de sua arquitetura: evitar gargalos na representação das informações pelo processo de \textit{feed-forward} pela arquitetura da \textit{CNN}, ou seja, não fazer com que as informações sofram uma compressão extrema.
+\end{frame}
+
+\begin{frame}{\textit{InceptionV3}}
+    Processamento em uma representação de alta dimensão é mais fácil para uma rede local e isso faz com que o treino seja mais rápido.
+    
+    \vspace{1em}
+    Por último, balancear a \textit{CNN} no tamanho e profundidade \cite{szegedy2015rethinkinginceptionarchitecturecomputer}. 
+\end{frame}
+
+\begin{frame}{Utilização de convoluções menores de forma sequencial}
+    Invés de utilizar uma convolução com o \textit{kernel} de tamanho de $5\times 5$ ou $7\times 7$, foi adotado a utilização de \textit{kernel} menor e utilizar sobre o resultado obtido na primeira passagem. 
+    
+    \vspace{1em}
+    Isso apresenta uma redução no custo computacional para o treinamento e o processo de \textit{feed-forward} \cite{szegedy2015rethinkinginceptionarchitecturecomputer}.
+\end{frame}
+
+
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação de duas convoluções de $3\times 3$}
+        \includegraphics[width=0.5\linewidth]{images/cnn-architecture/InceptionV3/double3x3.pdf}
+        \begin{center}
+            Fonte: \textcite{szegedy2015rethinkinginceptionarchitecturecomputer}
+        \end{center}
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{InceptionV3}}
+    Esse método também apresenta um resultado equivalente a convoluções de $3\times 3$, porém utilizando, por exemplo, uma convolução de $1\times 3$ e em seguida $3\times 1$. 
+    \vspace{1em}
+    
+    A diferença que utiliza 33\% a menos de processamento, caso o número de entrada e saída de filtros sejam iguais.
+    \vspace{1em}
+    
+    Também propõem que pode-se utilizar convoluções de $1\times n$ seguido de $n\times 1$ \cite{szegedy2015rethinkinginceptionarchitecturecomputer}.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação de convoluções assimétricas}
+        \includegraphics[width=0.5\linewidth]{images/cnn-architecture/InceptionV3/double31.pdf}
+        \begin{center}
+            Fonte: \textcite{szegedy2015rethinkinginceptionarchitecturecomputer}
+        \end{center}
+        \label{fig:enter-label}
+    \end{figure}
+    
+\end{frame}
+
+
+
+\begin{frame}{\textit{InceptionV3}}
+    Para não remover características importantes e não ter um alto custo computacional, construíram um modulo que tem uma camada de \textit{pooling} e a outra de convolução e depois, o resultado dessas duas são concatenadas.
+    \vspace{1em}
+
+    Na figura \ref{fig:hybridreduction}, ambos exigem menos processamento e não removem características importantes \textcite{szegedy2015rethinkinginceptionarchitecturecomputer}.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação de uma alternativa para redução da dimensionalidade}
+        \includegraphics[width=0.6\linewidth]{images/cnn-architecture/InceptionV3/hybridreduction.pdf}
+        \begin{center}
+            Fonte: \textcite{szegedy2015rethinkinginceptionarchitecturecomputer}
+        \end{center}
+        \label{fig:hybridreduction}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{table}
+        \caption{Diagrama da arquitetura do \textit{Inception}}
+        {\small
+         \begin{center}
+            \resizebox{11cm}{!}{
+           \begin{tabular}[H]{|l|c|c|}
+           \hline
+           {Tipo} & {Tamanho do \textit{kernel} ou \textit{strides}} & {Tamanho da entrada} \\
+           \hline\hline
+           conv & $3\times3/2$ & $299\times299\times3$ \\
+           \hline
+            conv & $3\times3/1$ & $149\times149\times32$ \\
+           \hline
+           conv padded & $3\times3/1$ & $147\times147\times32$ \\
+           \hline
+           pool & $3\times3/2$ & $147\times147\times64$ \\
+           \hline
+           conv & $3\times3/1$ & $73\times73\times64$ \\
+           \hline
+           conv & $3\times3/2$ & $71\times71\times80$ \\
+           \hline
+           conv & $3\times3/1$ & $35\times35\times192$ \\
+           \hline
+           $3\times$Inception & representado na figura~\ref{fig:inceptionv2} & $35\times35\times288$ \\
+           \hline
+           $5\times$Inception & representado na figura~\ref{fig:inceptionv3} & $17\times17\times768$ \\
+           \hline
+           $2\times$Inception & representado na figura~\ref{fig:inceptionv4} & $8\times8\times1280$ \\
+           \hline
+           pool & $8\times8$ & $8\times8\times2048$ \\
+           \hline
+           linear & logits & $1\times1\times2048$ \\
+           \hline
+           softmax& classifier & $1\times1\times1000$ \\
+           \hline
+           \end{tabular}}
+         \end{center}
+         }
+         \begin{center}
+            {\footnotesize Fonte: \textcite[tradução pelo autor]{szegedy2015rethinkinginceptionarchitecturecomputer}}
+         \end{center}
+        \label{tab:incetion}
+        \end{table}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Módulos de \textit{Inception} utilizadas na arquitetura}
+        \vspace{-0.5em}
+        \begin{subfigure}[t]{0.3\textwidth}
+             \centering
+             \caption{Módulo \textit{Inception} com substituição de convolução de $5\times5$ por $3\times3$}
+             \includegraphics[width=\textwidth]{images/cnn-architecture/InceptionV3/inceptionv2.pdf}
+             \label{fig:inceptionv2}
+         \end{subfigure}\hspace{\fill}
+         \begin{subfigure}[t]{0.3\textwidth}
+             \centering
+             \caption{Módulos de \textit{Inception} para convoluções assimétricas}
+             \includegraphics[width=\textwidth]{images/cnn-architecture/InceptionV3/inceptionv3.pdf}
+             \label{fig:inceptionv3}
+         \end{subfigure}\hspace{\fill}
+         \begin{subfigure}[t]{0.3\textwidth}
+             \centering
+             \caption{Módulos de \textit{Inception} para expansão dos filtros de saída}
+             \includegraphics[width=\textwidth]{images/cnn-architecture/InceptionV3/inceptionv4.pdf}
+             \label{fig:inceptionv4}
+         \end{subfigure}
+         \vspace{-0.5em}
+         \begin{center}
+            {\footnotesize Fonte: \textcite{szegedy2015rethinkinginceptionarchitecturecomputer}}
+         \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{InceptionResNetV2}}
+    Arquitetura de rede neural convolucional foi proposta por \textcite{szegedy2016inceptionv4inceptionresnetimpactresidual}, na qual combina duas arquiteturas: 
+    
+    \begin{itemize}
+        \item \textit{ResNet}, que foi proposta no artigo ``\textit{\citetitle{he2016identitymappingsdeepresidual}}''.
+        \item \textit{Inception}, que foi proposta no artigo ``\textit{\citetitle{szegedy2015rethinkinginceptionarchitecturecomputer}}''.
+    \end{itemize}    
+\end{frame}
+\begin{frame}{\textit{InceptionResNetV2}}
+    Segundo \textcite{he2016identitymappingsdeepresidual}, a utilização de \textit{residual conections} demonstra uma vantagem para arquiteturas mais profundas.
+    \vspace{1em}
+
+    Para a concepção dessa arquitetura, foi utilizado os \textit{pure inception blocks} e \textit{residual inception blocks}.
+\end{frame}
+\begin{frame}{\textit{InceptionResNetV2}}
+    A representação do diagrama da estrutura da arquitetura de \textit{CNN} do \textit{InceptionResNetV2} na figura \ref{fig:inceptionresnetv2}.
+\end{frame}
+
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Diagrama da arquitetura de \textit{InceptionResNetV2}}
+        \includegraphics[height=7cm]{images/cnn-architecture/InceptionResNetV2/inceptionresnetsmallschema.pdf}
+        \label{fig:inceptionresnetv2}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{szegedy2016inceptionv4inceptionresnetimpactresidual}}
+        \end{center}
+    \end{figure}
+    
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \begin{subfigure}[t]{0.45\textwidth}
+            \centering
+            \vspace{-55em}\includegraphics[width=\textwidth]{images/cnn-architecture/InceptionResNetV2/inceptionresnetsmallschema.pdf}
+        \end{subfigure}
+        \begin{subfigure}[t]{0.45\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/cnn-architecture/InceptionResNetV2/inceptionresnetsmallschema.pdf}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{InceptionResNetV2}}
+    Onde:
+    \begin{itemize}
+        \item \textit{Stem}: representado na figura \ref{fig:inceptionv4stem}
+        \item \textit{Inception-resnet-A}: representado na figura \ref{fig:resnetwide35x35}
+        \item \textit{Reduction-A}: representado na figura \ref{fig:reductionto17}
+        \item \textit{Inception-resnet-B}: representando na figura \ref{fig:resnetsmall17x17}
+        \item \textit{Reduction-B}: representado na figura \ref{fig:reductionto8resnet}
+        \item \textit{Inception-resnet-C}: representado na figura \ref{fig:resnetwide8x8}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+            \caption{Representação do \textit{stem} do \textit{pure Inception}}
+            \includegraphics[height=7cm]{images/cnn-architecture/InceptionResNetV2/inceptionv4stem.pdf}
+            \label{fig:inceptionv4stem}
+            \begin{center}
+                {\footnotesize Fonte: \textcite{szegedy2016inceptionv4inceptionresnetimpactresidual}}
+            \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+            \includegraphics[width=0.4\linewidth,trim={0 0 0 12cm},clip]{images/cnn-architecture/InceptionResNetV2/inceptionv4stem.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+            \includegraphics[width=0.4\linewidth,trim={0 7cm 0 0},clip]{images/cnn-architecture/InceptionResNetV2/inceptionv4stem.pdf}
+    \end{figure}
+\end{frame}
+
+% \begin{frame}
+%     \centering
+%     \begin{figure}
+%         \begin{subfigure}[t]{0.45\linewidth}
+%             \centering
+%             \includegraphics[width=\linewidth,trim={0 0 0 8cm},clip]{images/cnn-architecture/InceptionResNetV2/inceptionv4stem.pdf}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.45\linewidth}
+%             \centering
+%             \includegraphics[width=\linewidth,trim={0 4cm 0 0},clip]{images/cnn-architecture/InceptionResNetV2/inceptionv4stem.pdf}
+%         \end{subfigure}
+%     \end{figure}
+% \end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+            \caption{Representação da convolução de $35\times 35$}
+            \includegraphics[height=7cm]{images/cnn-architecture/InceptionResNetV2/resnetwide35x35.pdf}    
+            \label{fig:resnetwide35x35}
+            \begin{center}
+                {\footnotesize Fonte: \textcite{szegedy2016inceptionv4inceptionresnetimpactresidual}}
+            \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+            \caption{Representação da redução de dimensionalidade de $35\times 35$ para $17\times 17$}
+            \includegraphics[height=7cm]{images/cnn-architecture/InceptionResNetV2/reductionto17.pdf}
+            \label{fig:reductionto17}
+            \begin{center}
+                {\footnotesize Fonte: \textcite{szegedy2016inceptionv4inceptionresnetimpactresidual}}
+            \end{center}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação da convolução de $17\times 17$}
+        \includegraphics[height=7cm]{images/cnn-architecture/InceptionResNetV2/resnetsmall17x17.pdf}
+        \label{fig:resnetsmall17x17}
+    \begin{center}
+        {\footnotesize Fonte: \textcite{szegedy2016inceptionv4inceptionresnetimpactresidual}}
+    \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação da redução de dimensionalidade de $17\times 17$ para $8\times 8$}
+        \includegraphics[height=7cm]{images/cnn-architecture/InceptionResNetV2/reductionto8resnet.pdf}
+        \label{fig:reductionto8resnet}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{szegedy2016inceptionv4inceptionresnetimpactresidual}}
+            \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+            \caption{Representação da convolução de $8\times 8$}
+            \includegraphics[height=7cm]{images/cnn-architecture/InceptionResNetV2/resnetwide8x8.pdf}
+            \label{fig:resnetwide8x8}
+            \begin{center}
+            {\footnotesize Fonte: \textcite{szegedy2016inceptionv4inceptionresnetimpactresidual}}
+            \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{MobileNetV2}}
+    A arquitetura de \textit{CNN} foi proposta por \textcite{sandler2019mobilenetv2invertedresidualslinear}, o objetivo é conseguir utilizar a arquitetura de \textit{CNN} em dispositivos que possuem menos poder computacional (e.g. como celulares \textit{smartphones}, sistemas embarcados).
+\end{frame}
+
+\begin{frame}{\textit{MobileNetV2}}
+    Alguns conceitos utilizados nessa arquitetura como \textit{depthwise convolution} foram introduzidos na primeira versão de \textit{MobileNet}, no artigo ``\textit{\citetitle{howard2017mobilenetsefficientconvolutionalneural}}''.
+\end{frame}
+
+\begin{frame}{\textit{MobileNetV2}}
+    Conceitos como: \textit{linear bottlenecks} e \textit{inverted residuals} foram introduzidos na segunda versão da arquitetura (essa arquitetura).
+\end{frame}
+
+\begin{frame}{\textit{MobileNetV2}}
+    O \textit{MobileNet} utiliza uma forma de convolução denominada \textit{depthwise separable convolutions} que utiliza de 8 a 9 vezes menos de processamento computacional.
+    
+    \vspace{1em}
+    Essa camada de convolução é realizado em duas partes: \textit{depthwise convolution} e \textit{pointwiese convolution} \cite{howard2017mobilenetsefficientconvolutionalneural}.
+\end{frame}
+
+\begin{frame}{\textit{MobileNetV2}}
+    O processo de \textit{Depthwise convolution} aplica uma convolução (representado na figura \ref{fig:depthwise separable convolutions}) que contém um único filtro com dimensão $D_{K}$ em cada canal da imagem \cite{howard2017mobilenetsefficientconvolutionalneural}.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}[H]
+        \centering
+        \caption{Representação de \textit{depthwise convolution}}
+        \includegraphics[width=0.8\linewidth]{images/cnn-architecture/MobileNetV2/depthwise.pdf}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{howard2017mobilenetsefficientconvolutionalneural}}
+        \end{center}
+        \label{fig:depthwise separable convolutions}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{MobileNetV2}}
+    O processo de \textit{Pointwise convolution} aplica uma convolução (representado na figura \ref{fig:pointwise convolution}) com dimensão de $1\times 1$ com $M$ filtros combinando as saídas do \textit{depthwise convolution} \cite{howard2017mobilenetsefficientconvolutionalneural}.    
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação de \textit{pointwise convolution}}
+        \includegraphics[width=0.8\linewidth]{images/cnn-architecture/MobileNetV2/pointwise.pdf}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{howard2017mobilenetsefficientconvolutionalneural}}
+        \end{center}
+        \label{fig:pointwise convolution}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{MobileNetV2}}
+    Os \textit{bottlenecks blocks} estão representados na tabela \ref{tab:bottlenec_block_table} e na figura \ref{fig:linear bottlenecks} \cite{sandler2019mobilenetv2invertedresidualslinear}.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{table}
+        \centering
+        \caption{Representação do \textit{bottleneck residual block}}
+            \resizebox{11cm}{!}{
+                \begin{tabular}{c|c|c}
+                \hline
+                Entrada & Operação & Saída\\
+                \hline
+                $h \times w \times k$ & $1\times 1$ \conv, \relus & $h \times w \times (tk)$\\
+                $h \times w \times tk$& $3\times 3$ \depthwise s=$s$, \relus & $\frac{h}{s} \times \frac{w}{s} \times (tk)$\\ 
+                $\frac{h}{s} \times \frac{w}{s} \times tk$ & linear $1\times 1$ \conv & $\frac{h}{s} \times \frac{w}{s} \times k'$\\
+                \hline
+                \end{tabular}}
+            \begin{center}
+                {\footnotesize Fonte: \textcite[tradução pelo autor]{sandler2019mobilenetv2invertedresidualslinear}}
+            \end{center}
+        \label{tab:bottlenec_block_table}
+        \end{table}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação de \textit{linear bottleneck}}
+        \includegraphics[width=\linewidth]{images/cnn-architecture/MobileNetV2/bottleneck_conv.pdf}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{sandler2019mobilenetv2invertedresidualslinear}}
+        \end{center}
+        \label{fig:linear bottlenecks}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textit{MobileNetV2}}
+    \textit{Inverted residuals} pode ser comparado ao \textit{residual units} (demonstrado no slide \ref{sec:ResNet152V2}) \cite{sandler2019mobilenetv2invertedresidualslinear}.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        \caption{Representação de \textit{inverted residuals}}
+        \includegraphics[width=\linewidth]{images/cnn-architecture/MobileNetV2/inverted_residual.pdf}
+        \begin{center}
+            {\footnotesize Fonte: \textcite{sandler2019mobilenetv2invertedresidualslinear}} 
+        \end{center}
+        \label{fig:inverted residuals}
+    \end{figure}
+\end{frame}
+
+% \begin{frame}{\textit{MobileNetV2}}
+%     Representação do diagrama da arquitetura \textit{MobileNetV2} na tabela \ref{tab:mobilenetarch}.
+% \end{frame}
+
+\begin{frame}[plain]
+    \begin{table}
+        \centering
+        \caption{Diagrama da arquitetura \textit{MobileNetV2}}
+        % \mbox{MobileNetV2} : Each line describes a sequence of 1 or more identical (modulo stride)  layers, repeated $n$ times.
+        %     All layers in the same sequence have the same number $c$ of output channels.
+        %     The first layer of each sequence has a stride $s$ and all others use stride $1$.
+        %     All spatial convolutions use $3\times3$ kernels. The expansion factor $t$ is always applied to the input size as described in Table~\ref{fig:bottlenec_block_table}.
+        \vspace{0pt}
+        \begin{tabular}{c|c|c|c|c|c}
+        % \toprule[0.2em]
+        \hline
+        Entrada & Operação & $t$& $c$ & $n$ & $s$ \\
+        \hline
+        % \toprule[0.2em]
+            $224\times224\times3$ & conv2d & - & 32 & 1 & 2\\
+            $112\times122\times32$ & bottleneck & 1 & 16 & 1 & 1 \\
+            $112\times112\times16$ & bottleneck & 6 & 24 & 2 & 2 \\
+            $56\times56\times24$ & bottleneck & 6 & 32 & 3 & 2 \\
+            $28\times28\times32$ & bottleneck & 6 & 64 & 4 & 2 \\
+            $14\times14\times64$ & bottleneck & 6 & 96 & 3 & 1 \\
+            $14\times14\times96$ & bottleneck & 6 & 160 & 3 & 2 \\
+            $7\times7\times160$ & bottleneck & 6 & 320 & 1 & 1 \\
+            $7\times7\times320$ & conv2d 1$\times$1 & - & 1280 & 1 & 1 \\
+            $7\times7\times1280$ & avgpool 7$\times$7 & - & - & 1 & - \\ 
+            $1\times1\times1280$ & conv2d 1$\times$1 & - & k & -& \\
+        % \toprule[0.2em]
+        \hline
+        \end{tabular}
+            \begin{center}
+                {\footnotesize Fonte: \textcite[tradução pelo autor]{sandler2019mobilenetv2invertedresidualslinear}}
+            \end{center}
+        \label{tab:mobilenetarch}
+        \end{table}
+\end{frame}
+
+\begin{frame}{\textit{MobileNetV2}}
+    Onde:
+    \begin{itemize}
+        \item c: representação do tamanho da saída 
+        \item s: \textit{stride} da camada
+        \item t: é o fator de expansão de cada saída
+    \end{itemize}
+\end{frame}
