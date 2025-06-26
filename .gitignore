@@ -17,3 +17,6 @@
 *.out
 *.run.xml
 *.lol
+*.snm
+*.vrb
+*.nav
