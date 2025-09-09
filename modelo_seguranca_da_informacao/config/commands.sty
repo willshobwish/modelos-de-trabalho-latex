@@ -1,0 +1,39 @@
+% Ambiente para a apresentação da natureza do trabalho (ex: tipo de trabalho, curso, etc.).
+% Aplica um recuo de 59mm à esquerda e insere o conteúdo justificado em uma caixa de largura 95mm.
+\newenvironment{natureza}
+  {\hspace{59mm}\begin{minipage}[c]{95mm}\begin{justify}}
+  {\end{justify}\end{minipage}}
+
+% Ambiente para citações longas (com mais de três linhas).
+% Adiciona espaçamento vertical antes e depois, centraliza o texto em uma caixa de 120mm,
+% define espaçamento entre linhas como 1.0 e reduz o tamanho da fonte para \small.
+\newenvironment{longcite}
+  {\vspace{5mm}\hfill\begin{minipage}[c]{120mm}\setstretch{1.0}\small}
+  {\end{minipage}\vspace{5mm}}
+
+% Comando que define o título do projeto de pesquisa.
+% Pode ser sobrescrito no início do documento com \renewcommand.
+\newcommand{\titulo}{Título do projeto de pesquisaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+% Comando que define o nome do(a) autor(a) do trabalho.
+\newcommand{\nome}{Nome Sobrenome}
+
+% Comando que define o nome do(a) orientador(a).
+\newcommand{\orientador}{Prof. Dr. Nome Sobrenome}
+
+% Comando que define a cidade e o estado onde o trabalho foi realizado.
+\newcommand{\cidade}{Cidade}
+\newcommand{\cidadeestado}{\cidade\;-- Estado}
+
+% Comando que define o e-mail institucional do(a) aluno(a).
+\newcommand{\email}{email@unesp.br}
+
+% Comando que define o e-mail institucional do(a) orientador(a).
+\newcommand{\emailorientador}{emailorientador@unesp.br}
+\newcommand{\codigo}{PRC-001}
+\newcommand{\macroprocesso}{Gestão de Processos}
+\newcommand{\aprovador}{João Silva}
+\newcommand{\elaborador}{Maria Santos}
+\newcommand{\dataaprovacao}{01/08/2025}
+\newcommand{\revisor}{Pedro Costa}
+\newcommand{\versao}{1.0}

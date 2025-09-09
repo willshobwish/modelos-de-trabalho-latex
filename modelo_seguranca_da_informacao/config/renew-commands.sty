@@ -1,0 +1,19 @@
+%Esses comandos precisam ser carregados em primeira instancia para que o pacote babel não entre em conflito e tornando não efetivo as alterações e renewcommand
+\AtBeginDocument{
+% Renomeação da descricao do listing para código
+    \renewcommand{\lstlistingname}{Código}
+    % Renomeação do titulo de listing para código
+    \renewcommand{\lstlistlistingname}{\centering \normalsize \uppercase{Lista de Códigos}}
+    %Centralização do título sumário
+    \renewcommand\contentsname{\centering \normalsize \uppercase{Sumário}}
+    %Renomeação do título das siglas
+    \renewcommand{\nomname}{\centering \normalsize \uppercase{Siglas}} 
+    %Remoção do título referências
+    \renewcommand{\refname}{} 
+    %Renomeação do título da lista de figuras
+    \renewcommand{\listfigurename}{\centering \normalsize \uppercase{Lista de figuras}}
+    %Renomeação do título da lista de tabela
+    \renewcommand{\listtablename}{\centering \normalsize \uppercase{Lista de tabela}}
+    %Citações das referências bibliográficas dentro da ABNT no documento e no final
+
+}
