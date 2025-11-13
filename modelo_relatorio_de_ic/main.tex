@@ -1,24 +1,15 @@
-% Define o tipo de documento como "article", com fonte de 12pt
-% A opção 'nodisplayskipstretch' evita que o LaTeX altere o espaçamento ao redor de fórmulas exibidas
-\documentclass[12pt,nodisplayskipstretch]{article}
+% Classe do documento: revisão bibliográfica customizada
+\documentclass{relatorioic}
 
-% Importa o arquivo com as configurações gerais do projeto (pacotes, margens, fonte etc.)
-\usepackage{config/config}
+% Define o arquivo de referências bibliográficas
+\addbibresource{referencias.bib}
 
-% Importa comandos personalizados definidos pelo usuário, como macros para título, nome, orientador etc.
-\usepackage{config/commands}
-
-% Importa redefinições de comandos padrão do LaTeX, para personalizar o comportamento de comandos existentes
-\usepackage{config/renew-commands}
 
 \begin{document} % Início do conteúdo do documento
 
 % ----------------------------
 % SEÇÕES PRÉ-TEXTUAIS
 % ----------------------------
-
-% Importa a folha de rosto (com título, autor, orientador etc.)
-\import{sections/pre-textual/}{0-folha-de-rosto.tex}
 
 % Importa a folha de aprovação (assinaturas da banca)
 \import{sections/pre-textual/}{1-folha-de-aprovacao.tex}
