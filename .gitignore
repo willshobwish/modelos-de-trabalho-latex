@@ -11,8 +11,9 @@
 *.toc
 *.ist
 *.glo
+*.ilg
+*.nls
 *.bcf
-*.aux
 *.acn
 *.out
 *.run.xml
