@@ -1,0 +1,67 @@
+\section{Matemática, tabelas e algoritmos}\label{sec:elementos}
+
+\subsection{Expressões matemáticas}
+
+Use \lstinline|$...$| para uma expressão curta na linha, como $a^2+b^2=c^2$. Para destacar uma equação sem numeração, use \lstinline|\[...\]|:
+
+\[
+  \bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i.
+\]
+
+O ambiente \texttt{equation} numera a expressão. Os comandos \lstinline|\label| e \lstinline|\eqref| permitem citá-la no texto:
+
+\begin{equation}\label{eq:normalizacao}
+  z_i = \frac{x_i-\mu}{\sigma}.
+\end{equation}
+
+A Equação~\eqref{eq:normalizacao} usa \lstinline|^| para sobrescrito e \lstinline|_| para subscrito. Frações usam \lstinline|\frac{numerador}{denominador}|; letras gregas usam comandos como \lstinline|\mu| e \lstinline|\sigma|; somatórios usam \lstinline|\sum|.
+
+Para alinhar várias expressões, use \texttt{align}:
+
+\begin{align}
+  f(x) &= x^2 + 2x + 1, \\
+  f'(x) &= 2x + 2.
+\end{align}
+
+O caractere \lstinline|&| marca o ponto de alinhamento e \lstinline|\\| encerra cada linha.
+
+\subsection{Tabelas}
+
+O ambiente \texttt{table} controla a posição, a legenda e o rótulo; \texttt{tabular} organiza linhas e colunas. Na especificação \lstinline|{lcr}|, as letras alinham as colunas à esquerda, ao centro e à direita.
+
+\begin{table}[H]
+  \centering
+  \caption{Comandos de alinhamento em tabelas}
+  \label{tab:alinhamento}
+  \begin{tabular}{lll}
+    \toprule
+    Especificador & Alinhamento & Uso típico \\
+    \midrule
+    \texttt{l} & esquerda & texto \\
+    \texttt{c} & centro & categorias \\
+    \texttt{r} & direita & números \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+O caractere \lstinline|&| separa células e \lstinline|\\| termina a linha. Os comandos \lstinline|\toprule|, \lstinline|\midrule| e \lstinline|\bottomrule| produzem as linhas horizontais recomendadas. A Tabela~\ref{tab:alinhamento} usa \lstinline|[H]| para permanecer exatamente neste ponto.
+
+\subsection{Algoritmos}
+
+O ambiente \texttt{algorithm} funciona como um elemento flutuante; \texttt{algorithmic} contém os passos. Palavras-chave como \lstinline|\REQUIRE|, \lstinline|\FOR| e \lstinline|\RETURN| descrevem o fluxo.
+
+\begin{algorithm}[H]
+  \caption{Soma dos valores de uma lista}
+  \label{alg:soma}
+  \begin{algorithmic}[1]
+    \REQUIRE Lista $L$ com $n$ valores
+    \ENSURE Soma $s$
+    \STATE $s \leftarrow 0$
+    \FOR{$i \leftarrow 1$ até $n$}
+      \STATE $s \leftarrow s + L_i$
+    \ENDFOR
+    \RETURN $s$
+  \end{algorithmic}
+\end{algorithm}
+
+O argumento \lstinline|[1]| numera todas as linhas. A chamada Algoritmo~\ref{alg:soma} é criada do mesmo modo que as referências a seções, tabelas e figuras.

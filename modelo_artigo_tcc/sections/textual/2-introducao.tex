@@ -1,0 +1,16 @@
+\section{Como usar este guia}\label{sec:introducao}
+
+O \LaTeX{} descreve a estrutura e o significado do conteúdo por meio de comandos. Em geral, um comando começa com uma barra invertida; argumentos obrigatórios aparecem entre chaves e opções aparecem entre colchetes. Por exemplo, \lstinline|\section{Título}| cria uma seção, enquanto \lstinline|\includegraphics[width=.6\linewidth]{arquivo.pdf}| recebe uma largura opcional e o nome obrigatório do arquivo.
+
+O ponto de entrada deste projeto é o arquivo \texttt{main.tex}. Ele declara a classe com \lstinline|\documentclass{artigo-abnt}|, registra a bibliografia com \lstinline|\addbibresource{referencias.bib}| e reúne as partes do texto entre \lstinline|\begin{document}| e \lstinline|\end{document}|.
+
+Os comandos \lstinline|\input{arquivo}| e \lstinline|\import{pasta/}{arquivo}| inserem conteúdo de outros arquivos. Neste projeto usa-se \lstinline|\import| porque ele facilita a organização em pastas. Comentários começam com o caractere \lstinline|%| e não aparecem no PDF.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Estrutura mínima de um documento},label={cod:estrutura}]
+\documentclass{article}
+\begin{document}
+Ola, mundo!
+\end{document}
+\end{lstlisting}
+
+Para gerar o PDF, compile o arquivo \texttt{main.tex}. O projeto está preparado para usar \texttt{latexmk}, que repete automaticamente as etapas necessárias para atualizar sumário, citações e referências.

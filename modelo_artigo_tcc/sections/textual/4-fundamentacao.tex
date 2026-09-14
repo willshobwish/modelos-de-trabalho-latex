@@ -1,0 +1,15 @@
+\section{Rótulos, referências e citações}\label{sec:referencias-cruzadas}
+
+O comando \lstinline|\label{nome}| atribui um identificador ao elemento mais próximo. Depois, \lstinline|\ref{nome}| recupera seu número e \lstinline|\pageref{nome}| informa a página. Por exemplo, a Seção~\ref{sec:texto} começa na página~\pageref{sec:texto}, e o Código~\ref{cod:estrutura} mostra a estrutura mínima do documento. O caractere \lstinline|~| entre o nome e o número cria um espaço que não pode ser quebrado no fim da linha.
+
+Adote prefixos para distinguir os rótulos: \texttt{sec:} para seções, \texttt{fig:} para figuras, \texttt{tab:} para tabelas, \texttt{eq:} para equações, \texttt{alg:} para algoritmos e \texttt{cod:} para códigos.
+
+As referências bibliográficas ficam em \texttt{referencias.bib}. A chave de cada registro é usada nos comandos de citação. \lstinline|\cite{lamport1994}| produz \cite{lamport1994}; \lstinline|\textcite{mittelbach2023}| integra o autor à frase, como em \textcite{mittelbach2023}; e \lstinline|\parencite{kopka2003}| gera uma chamada entre parênteses \parencite{kopka2003}. É possível citar mais de uma fonte separando as chaves por vírgulas.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Exemplos de citações e referências cruzadas},label={cod:referencias}]
+Veja a Figura~\ref{fig:fluxo} na página~\pageref{fig:fluxo}.
+Segundo \textcite{lamport1994}, ...
+Outros autores confirmam essa ideia \parencite{mittelbach2023,kopka2003}.
+\end{lstlisting}
+
+Execute a compilação completa sempre que rótulos ou citações aparecerem como ``??''. Esses marcadores normalmente indicam que ainda faltam passagens de compilação ou o processamento da bibliografia.

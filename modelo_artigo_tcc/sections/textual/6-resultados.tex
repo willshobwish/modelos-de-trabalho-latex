@@ -1,0 +1,53 @@
+\section{Figuras e trechos de código}\label{sec:figuras-codigo}
+
+\subsection{Uma figura}
+
+O comando \lstinline|\includegraphics| insere imagens nos formatos aceitos pelo compilador, como PDF, PNG e JPG. Use \lstinline|\linewidth| para definir a largura em relação ao espaço disponível.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.78\linewidth]{images/Fluxo treinamento.pdf}
+  \caption{Exemplo de figura incluída a partir de um arquivo PDF}
+  \label{fig:fluxo}
+  \fonteimagem{Fonte: elaboração própria.}
+\end{figure}
+
+Em elementos flutuantes, mantenha \lstinline|\caption| antes de \lstinline|\label| para que a referência receba o número correto. O comando personalizado \lstinline|\fonteimagem{...}| padroniza a indicação da fonte.
+
+\subsection{Subfiguras}
+
+O ambiente \texttt{subfigure} coloca imagens relacionadas sob uma única legenda principal. Cada subfigura pode ter legenda e rótulo próprios.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{.47\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/Fluxo treinamento.pdf}
+    \caption{Fluxo do processo}
+    \label{fig:subfluxo}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{.47\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/Quantidade treino.pdf}
+    \caption{Quantidade de execuções}
+    \label{fig:subquantidade}
+  \end{subfigure}
+  \caption{Exemplo de composição com duas subfiguras}
+  \label{fig:subfiguras}
+  \fonteimagem{Fonte: elaboração própria.}
+\end{figure}
+
+As referências Figuras~\ref{fig:subfluxo} e~\ref{fig:subquantidade} apontam para cada parte; a Figura~\ref{fig:subfiguras} aponta para o conjunto.
+
+\subsection{Código-fonte}
+
+Para código curto no meio do parágrafo, use \lstinline|\lstinline| com um delimitador adequado. Para blocos maiores, use o ambiente \texttt{lstlisting}, que permite linguagem, legenda e rótulo:
+
+\begin{lstlisting}[language=Python,caption={Função simples em Python},label={cod:python}]
+def media(valores):
+    """Retorna a media aritmetica."""
+    return sum(valores) / len(valores)
+\end{lstlisting}
+
+Um arquivo externo pode ser exibido com \lstinline|\lstinputlisting[language=Python]{arquivo.py}|. O Código~\ref{cod:python} também aparece automaticamente na lista de códigos.

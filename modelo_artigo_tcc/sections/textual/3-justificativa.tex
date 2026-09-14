@@ -1,0 +1,44 @@
+\section{Estrutura e formatação do texto}\label{sec:texto}
+
+\subsection{Seções e parágrafos}
+
+Use \lstinline|\section{...}|, \lstinline|\subsection{...}| e \lstinline|\subsubsection{...}| para criar a hierarquia do texto. Uma linha vazia no arquivo-fonte inicia um novo parágrafo. Os comandos \lstinline|\newpage| e \lstinline|\clearpage| forçam uma nova página; o segundo também posiciona antes dela as figuras e tabelas que ainda estiverem pendentes.
+
+\subsection{Ênfase, estilos e caracteres especiais}
+
+O comando \lstinline|\emph{ênfase}| produz \emph{ênfase}; \lstinline|\textbf{negrito}| produz \textbf{negrito}; \lstinline|\textit{itálico}| produz \textit{itálico}; e \lstinline|\texttt{monoespaçado}| produz \texttt{monoespaçado}. Para escrever símbolos reservados, use uma barra invertida: \lstinline|\%|, \lstinline|\&|, \lstinline|\_|, \lstinline|\#|, \lstinline|\{| e \lstinline|\}|.
+
+Aspas tipográficas são escritas como \lstinline|``texto''|, produzindo ``texto''. Uma quebra de linha pontual pode ser inserida com \lstinline|\\|, mas não deve substituir a separação normal entre parágrafos.
+
+\subsection{Listas}
+
+O ambiente \texttt{itemize} cria uma lista com marcadores:
+
+\begin{itemize}
+  \item cada item começa com \lstinline|\item|;
+  \item listas podem ser aninhadas;
+  \item o recuo e os marcadores são aplicados automaticamente.
+\end{itemize}
+
+O ambiente \texttt{enumerate} cria uma sequência numerada:
+
+\begin{enumerate}
+  \item escreva o conteúdo;
+  \item compile o documento;
+  \item verifique o PDF.
+\end{enumerate}
+
+Para termos e definições, use \texttt{description}:
+
+\begin{description}
+  \item[Comando] instrução iniciada por barra invertida.
+  \item[Ambiente] bloco delimitado por \lstinline|\begin{...}| e \lstinline|\end{...}|.
+\end{description}
+
+\subsection{Notas e citações longas}
+
+Uma nota de rodapé é inserida no ponto desejado com \lstinline|\footnote{Texto da nota.}|\footnote{Este é o resultado produzido pelo comando de nota de rodapé.}. Para uma citação longa, utilize o ambiente \texttt{quoting}:
+
+\begin{quoting}[leftmargin=4cm]
+Este bloco exemplifica uma citação recuada. Acrescente a chamada bibliográfica antes do ponto final, conforme as regras adotadas pelo trabalho \parencite[p.~10]{lamport1994}.
+\end{quoting}

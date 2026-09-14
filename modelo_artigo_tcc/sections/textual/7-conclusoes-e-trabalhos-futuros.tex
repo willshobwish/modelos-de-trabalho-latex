@@ -1,0 +1,38 @@
+\section{Comandos úteis e boas práticas}\label{sec:boas-praticas}
+
+\subsection{Links, endereços e datas}
+
+Use \lstinline|\url{https://www.latex-project.org}| para exibir um endereço completo: \url{https://www.latex-project.org}. Para associar um texto ao endereço, use \lstinline|\href{https://www.latex-project.org}{Projeto LaTeX}|, que produz \href{https://www.latex-project.org}{Projeto LaTeX}. O comando \lstinline|\today| imprime a data atual segundo o idioma configurado: \today.
+
+\subsection{Espaçamento e tamanho}
+
+O \LaTeX{} calcula automaticamente a maior parte do espaçamento. Quando um ajuste pontual for indispensável, \lstinline|\vspace{5mm}| acrescenta espaço vertical e \lstinline|\hspace{5mm}| acrescenta espaço horizontal. Os comandos \lstinline|\small|, \lstinline|\footnotesize|, \lstinline|\large| e \lstinline|\Large| alteram o tamanho a partir do ponto em que aparecem; limite seu efeito com chaves, por exemplo, \lstinline|{\small texto menor}|.
+
+\subsection{Criação de comandos}
+
+Comandos repetitivos podem ser definidos uma vez e reutilizados. Este projeto define \lstinline|\fonteimagem| em \texttt{artigo-abnt.cls}:
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Definição e uso de um comando com argumento},label={cod:comando}]
+\newcommand{\fonteimagem}[1]{%
+  \par\smallskip{\footnotesize #1}\par
+}
+
+\fonteimagem{Fonte: elaboração própria.}
+\end{lstlisting}
+
+O número \lstinline|[1]| informa quantos argumentos o comando recebe, e \lstinline|#1| representa o primeiro argumento.
+
+\subsection{Checklist de revisão}
+
+Antes de entregar o documento:
+
+\begin{enumerate}
+  \item verifique se todo \lstinline|\begin| possui o \lstinline|\end| correspondente;
+  \item mantenha chaves e colchetes balanceados;
+  \item use rótulos únicos e sem espaços;
+  \item confirme se todas as citações existem no arquivo \texttt{.bib};
+  \item remova pacotes, figuras e arquivos que não são usados;
+  \item faça uma compilação completa e revise avisos, sumário, listas e referências.
+\end{enumerate}
+
+Este documento é simultaneamente um guia e um exemplo compilável. Para adaptar o modelo, substitua os textos demonstrativos, mantenha apenas as seções necessárias e consulte o próprio código-fonte sempre que quiser reproduzir algum elemento.
