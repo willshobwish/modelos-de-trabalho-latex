@@ -1,0 +1,64 @@
+\section{Justificativa do projeto}
+\begin{frame}{Justificativa do projeto}
+    As \textit{CNNs} é um modelo de \textit{machine learning} que é utilizada principalmente em imagens, seja para classificação, segmentação, reconhecimento e entre outras atividades relacionadas. 
+    \vspace{1em}
+    
+    Porém, antes precisamos que essa \textit{CNN} tenha o processo de treinamento e durante o treino podemos utilizar algumas técnicas para aumentar o seu desempenho.     
+\end{frame}
+
+\begin{frame}{Justificativa do projeto}
+    Problemas relacionados ao treino \cites{aquino2017effect}{8243510}{7906545}:
+    \begin{itemize}
+        \item Precisa-se de uma grande quantidade de imagens para o treino
+        \item Nem sempre é possível obter uma quantidade satisfatória
+        \item Pode-se aumentar artificialmente essa quantidade de imagens
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Justificativa do projeto}
+    \begin{figure}
+        \centering
+        \caption{Aplicação de transformações de imagens como técnica de \textit{data augmentation}}
+        \includegraphics[width=\linewidth]{images/Data-augmentation.pdf}
+        {\scriptsize Fonte: Kowalievska, 2018, modificação de imagem realizado pelo autor}
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Justificativa do projeto}
+    A utilização do pré-processamento em imagens de validação será para analisar o quanto uma arquitetura de \textit{CNN} é sensível a um ruído ou alteração em uma imagem.
+    
+    \vspace{1em}
+    Isso seria tentar simular as condições da realidade, onde nem sempre é possível obter uma imagem apropriada para a classificação, alguns fatores que influenciam durante a obtenção da imagem \cite{10.1007/978-3-319-75193-1_50, MOMENY2021100225}:
+
+    \vspace{1em}
+    % iluminação, contraste, ruídos gerados pelo dispositivo de captura (e.g. borrão, imagem capturado em movimento) e entre outros. Pode-se incluir também a perda de qualidade devido a compressão de alguns formatos de imagens (e.g. compressão utilizando o formato \textit{JPEG}) \cites{10.1007/978-3-319-75193-1_50}{MOMENY2021100225}.
+
+    \begin{itemize}
+        \item Iluminação
+        \item Contraste
+        \item Ruídos
+        \item Compressão de imagem (e.g. compressão utilizando o formato \textit{JPEG})
+        \item e entre outros.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Justificativa do projeto}
+    \begin{figure}
+        \centering
+        \caption{Exemplos de pré-processamento que pode-se aplicar para simular os problemas durante a captura de imagem}
+        \includegraphics[width=0.8\linewidth]{images/Pre-processing-visualization.pdf}\\
+        {\scriptsize Fonte: Kowalievska, 2018, modificação de imagem realizado pelo autor}
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Justificativa do projeto}
+    \begin{figure}
+        \centering
+        % \caption{Exemplos de pré-processamento que pode-se aplicar para simular os problemas durante a captura de imagem}
+        \includegraphics[width=\linewidth]{images/Pre-processing-visualization.pdf}\\
+        % {\scriptsize Fonte: criado pelo autor com imagem de Kowalievska, 2018}
+        % \label{fig:enter-label}
+    \end{figure}
+\end{frame}

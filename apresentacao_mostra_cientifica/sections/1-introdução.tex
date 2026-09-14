@@ -1,0 +1,120 @@
+\begin{frame}
+\frametitle{Sumário}
+\tableofcontents
+\end{frame}
+
+\section{Formulação do problema}
+
+\begin{frame}{Formulação do problema}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+    Redes neurais convolucionais (\textit{convolutional neural networks} ou \textit{CNNs}) são uma forma de \textit{aprendizado de máquina} dentro de inteligência artificial que foram concebidas por meio da observação da natureza e da biologia.
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+    \centering
+    \caption{Ilustração de um neurônio}
+    \includegraphics[width=\linewidth]{images/Blausen_0657_MultipolarNeuron.png}
+    {\footnotesize Fonte: BruceBlaus, 2013}
+    \label{fig:enter-label}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+    \centering
+    % \caption{Ilustração de um neurônio}
+    \includegraphics[width=\linewidth]{images/Blausen_0657_MultipolarNeuron.png}
+    % {\footnotesize Fonte: BruceBlaus, 2013}
+    % \label{fig:enter-label}
+\end{figure}
+\end{frame}
+
+
+% \begin{frame}{Formulação do problema}
+%     \textcite{alma990001897250206341} explicam as motivações de utilização de redes neurais comparadas com a maneira como o cérebro consegue rapidamente processar informações extremamente complexas (e.g. reconhecer um rosto familiar ou um objeto), enquanto um computador pode demorar muito tempo para tarefas mais simples. Isso ocorre porque o cérebro é constituído por neurônios e por isso que possuem a característica de se adaptar ao ambiente e conseguir aprender com as informações que é exposto. 
+% \end{frame}
+
+\begin{frame}{Formulação do problema}
+    \begin{figure}
+        \centering
+        \caption{Representação de uma rede neural}
+        \includegraphics[width=0.9\linewidth]{images/NeuralNetwork.png}\\
+        {\footnotesize Fonte: Pramoditha, 2022}
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        % \centering
+        % \caption{Representação de uma rede neural}
+        \includegraphics[width=1.2\linewidth]{images/NeuralNetwork.png}\\
+        % {\footnotesize Fonte: Pramoditha, 2022}
+        % \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Formulação do problema}
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            As \textit{CNNs} são uma junção das redes neurais artificiais com camadas que possuem um função de convolução, amostragem e processamento não linear. Esse tipo de \textit{machine learning} também possui a capacidade de extração de características que não são espacialmente dependentes porém que possuem correlação.
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \begin{figure}
+                \centering
+                \caption{Arquitetura genérica de uma \textit{CNN}}
+                \includegraphics[width=\linewidth]{images/cnn.jpg}
+                {\footnotesize Fonte: Saha, 2018}
+                \label{fig:enter-labea}
+            \end{figure}
+        \end{column}
+    \end{columns}
+    \nocite{8308186,Goodfellow-et-al-2016,zhang2023dive,LeCun2015}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{figure}
+        \centering
+        % \caption{Arquitetura genérica de uma \textit{CNN}}
+        \includegraphics[width=\linewidth]{images/cnn.jpg}
+        % {\footnotesize Fonte: Saha, 2018}
+        % \label{fig:enter-labea}
+        \end{figure}
+\end{frame}
+% \begin{frame}{Formulação do problema}
+%     Como as \textit{CNN} são construídas com diversas camadas, cada camada possuí uma função e pesos para que no final consiga abstrair e classificar apropriadamente. Devido a isso, elas são as mais robustas para tarefas de classificação, segmentação, detecção e outros tipos de atividades relacionadas \cites{8308186}{Goodfellow-et-al-2016}{zhang2023dive}{LeCun2015}.
+% \end{frame}
+
+% \begin{frame}{Formulação do problema}
+%     Durante o treino de uma \textit{CNN} é possível obter algumas métricas importantes como a precisão e a perda para identificar o quanto uma \textit{CNN} está ``aprendendo'' e o quanto está errando na classificação. Uma limitação que as \textit{CNNs} possuem é a necessidade de uma grande quantidade de dados para atingir uma precisão minimamente satisfatória na etapa de treinamento.
+%     Durante o treino, possuímos essas métricas:
+%     \begin{itemize}
+%         \item 
+%     \end{itemize}
+% \end{frame}
+
+\begin{frame}{Formulação do problema}
+    % Geralmente, nem sempre é possível obter uma quantidade grande de dados que seja suficiente para o treino e sua generalização para o para dados do ``mundo real'', isto é, dados que não são sintéticos. Algumas técnicas podem ser empregadas para tentar amenizar essa limitação, por exemplo a aplicação do método de aumento de dados, ou \textit{data augmentation}.
+    \begin{itemize}
+        \item Geralmente nem sempre é possível obter uma grande quantidade de imagens para o \textbf{treino}
+        \item As imagens que vão ser classificadas pelas \textit{CNN} já \textbf{treinada} nem sempre estão em um ``bom estado''
+        \begin{itemize}
+            \item O que pode acarretar em uma classificação errada se a \textit{CNN} não for robusta
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Formulação do problema}
+    % Também devemos incluir um fato que nem sempre conseguimos obter imagens nítidas ou ideais para sua classificação. Para avaliar o comportamento do desempenho em imagens pré-processadas, adicionaremos ruídos ou filtros (dentro do que faz sentido para o domínio do problema) gradativamente e avaliar nas arquiteturas de \textit{CNNs} treinados com dados sem pré-processamento.
+    Nem sempre é possível obter imagens ``boas'' para a análise, podemos ter problemas durante a captura da fotografia:
+    \begin{itemize}
+        \item Brilho
+        \item Contraste
+        \item Movimentação, tornando a imagem borrada
+        \item e entre outros
+    \end{itemize}
+\end{frame}

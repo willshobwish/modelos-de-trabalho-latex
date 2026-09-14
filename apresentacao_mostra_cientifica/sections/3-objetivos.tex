@@ -1,0 +1,24 @@
+\section{Objetivos do projeto}
+% \subsection{Objetivos gerais}
+% \begin{frame}{Objetivos gerais}
+%     O objetivo desse projeto de pesquisa é a análise da precisão e perda em classificação de imagens de diferentes \textit{datasets} com e sem pré-processamento em modo de validação de diversas arquiteturas de \textit{CNNs}. Ainda, faz parte do objetivo deste projeto avaliar a aplicação de métodos de (\textit{data augmentation}) para verificar como eles podem melhorar a precisão dos modelos treinados \cites{Khan2020}{8862686}{chlap2021review}{chollet2015keras}.
+% \end{frame}
+
+% \subsection{Objetivos}
+\begin{frame}{Objetivos}
+\nocite{Khan2020,8862686,chlap2021review,chollet2015keras}
+\begin{itemize}
+    \item Analisar diversas características como domínio de natureza do \textit{dataset} que podem impactar o desempenho da \textit{CNN};
+    \item Observar como a construção das arquiteturas de \textit{CNN} impactam na sua precisão e perda na classificação em modo de validação e também durante o treino;
+    \item Comparar resultados dos treinos, tanto em precisão e perda sobre o conjunto de validação, de cada arquitetura de \textit{CNNs};
+    \item Comparar a precisão atingida entre as arquiteturas de \textit{CNNs} que utilizaram e não utilizaram a técnica de aumento de dados;
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Objetivos}
+\begin{itemize}
+    \item Comparar o desempenho da precisão e perda que as arquiteturas de \textit{CNN} obterão com a aplicação de pré-processamento em \textit{dataset} de validação;  
+    \item Modificar os diferentes parâmetros existentes da técnica de \textit{data augmentation} para análise e comparação no desempenho das \textit{CNNs} durante o processo de treinamento.
+    \item Avaliar as \textit{CNNs} treinadas com dados de validação (da mesma classe em que foi treinada) com aumento gradativo de ruídos e filtros para obter a robustez da arquitetura da \textit{CNN}.
+\end{itemize}
+\end{frame}
