@@ -1,4 +1,61 @@
-\section{Conclusões}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi a elit convallis, pulvinar mi nec, molestie est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Ut auctor bibendum auctor. Pellentesque vel odio eget lorem porta pulvinar. Nunc id placerat nulla, accumsan pulvinar ex. Nullam accumsan libero at viverra pretium. Aenean nunc turpis, condimentum a consequat auctor, vulputate et ex. Mauris in lorem ac odio ullamcorper luctus. Donec non justo mattis, lacinia metus vitae, luctus nulla. Sed egestas magna in ligula aliquet aliquet. Quisque suscipit consequat nisl nec tempus. Nulla facilisis ex nec massa euismod tincidunt. Donec laoreet tortor eget nisi hendrerit euismod. Pellentesque eu felis ut nisl sodales lacinia et at leo.
+\section{Referências, citações e siglas}
 
-Ut sed nisl posuere, consequat tellus eu, sagittis ligula. Duis elementum libero vitae ex mattis facilisis. Mauris convallis ultrices lectus. Praesent auctor turpis enim, sed mattis lectus vulputate vel. Nunc id turpis non dolor consectetur luctus in ac urna. Sed tellus libero, ornare at massa eu, bibendum mollis lorem. Ut felis dui, vehicula eget nulla eu, porta pellentesque neque. Fusce est ante, eleifend non fermentum a, cursus tristique lectus. Maecenas vestibulum nibh vel ipsum consequat ullamcorper. Sed blandit, dolor congue lobortis imperdiet, felis dui tincidunt nisi, id imperdiet lorem lacus at sem. In lorem neque, convallis sed fringilla ut, fermentum vel ex. Fusce vel dolor eu leo tincidunt ultrices ut in metus.
+\subsection{Referências cruzadas}
+
+Associe um nome ao elemento com \verb|\label| e recupere seu número com
+\verb|\ref|. A página é obtida com \verb|\pageref|. Por exemplo, a
+Seção~\ref{sec:estrutura} apresentou a estrutura do projeto. A
+Figura~\ref{fig:unesp} está na página~\pageref{fig:unesp}, a
+Figura~\ref{fig:subfiguras} contém duas imagens, a Tabela~\ref{tab:exemplo}
+contém dados tabulares e a Equação~\ref{eq:energia} mostra uma expressão
+numerada. O símbolo \verb|~| impede uma quebra de linha entre o nome e o número.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Referência cruzada}]
+Veja a Figura~\ref{fig:unesp} na pagina~\pageref{fig:unesp}.
+\end{lstlisting}
+
+\subsection{Citações bibliográficas}
+
+Cadastre cada obra em \texttt{referencias.bib}. Use \verb|\textcite| quando o
+nome fizer parte da frase, \verb|\parencite| para uma citação entre parênteses e
+\verb|\cites| para mais de uma obra. Exemplos: \textcite{dummy2024article},
+\parencite{dummy2024book} e \cites{dummy2024conference}{dummy2024thesis}.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Comandos de citação}]
+Segundo \textcite{dummy2024article}, o tema e relevante.
+Outros trabalhos tratam do assunto \parencite{dummy2024book}.
+Compare tambem \cites{dummy2024conference}{dummy2024thesis}.
+\end{lstlisting}
+
+\subsection{Siglas}
+
+O comando \verb|\nomenclature| registra uma sigla na lista pré-textual. Ele pode
+ser colocado na primeira ocorrência do termo.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Cadastro de uma sigla}]
+UNESP\nomenclature{UNESP}{Universidade Estadual Paulista}
+\end{lstlisting}
+
+UNESP\nomenclature{UNESP}{Universidade Estadual Paulista}
+
+\subsection{Código-fonte}
+
+Use \texttt{lstlisting} para trechos maiores e \verb|\verb| para um comando curto
+no meio do parágrafo. A opção \texttt{language} seleciona o realce de sintaxe;
+\texttt{caption} cria a legenda e \texttt{label} permite referências, como no
+Código~\ref{cod:estrutura}.
+
+\begin{lstlisting}[language=Python,caption={Exemplo de código Python},label={cod:python}]
+def saudacao(nome):
+    return f"Ola, {nome}!"
+
+print(saudacao("UNESP"))
+\end{lstlisting}
+
+O Código~\ref{cod:python} será incluído automaticamente na lista de códigos.
+
+\subsection{Links}
+
+Use \verb|\url{https://www.latex-project.org}| para exibir um endereço e
+\verb|\href{https://www.latex-project.org}{Projeto LaTeX}| para escolher o texto
+do link. Resultado: \href{https://www.latex-project.org}{Projeto \LaTeX}.

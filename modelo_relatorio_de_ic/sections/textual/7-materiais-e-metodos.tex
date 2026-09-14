@@ -1,2 +1,62 @@
-\section{Materiais e métodos}
-Ut sed nisl posuere, consequat tellus eu, sagittis ligula. Duis elementum libero vitae ex mattis facilisis. Mauris convallis ultrices lectus. Praesent auctor turpis enim, sed mattis lectus vulputate vel. Nunc id turpis non dolor consectetur luctus in ac urna. Sed tellus libero, ornare at massa eu, bibendum mollis lorem. Ut felis dui, vehicula eget nulla eu, porta pellentesque neque. Fusce est ante, eleifend non fermentum a, cursus tristique lectus. Maecenas vestibulum nibh vel ipsum consequat ullamcorper. Sed blandit, dolor congue lobortis imperdiet, felis dui tincidunt nisi, id imperdiet lorem lacus at sem. In lorem neque, convallis sed fringilla ut, fermentum vel ex. Fusce vel dolor eu leo tincidunt ultrices ut in metus \cites{dummy2024book}{dummy2024conference}.
+\section{Texto e organização}
+
+\subsection{Ênfase, destaque e nota de rodapé}
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Formatação de texto}]
+\textbf{negrito}
+\textit{italico}
+\emph{enfase conforme o contexto}
+\underline{sublinhado}
+\hl{texto destacado}
+Texto com uma nota\footnote{Conteudo da nota.}
+\end{lstlisting}
+
+O resultado é: \textbf{negrito}, \textit{itálico}, \emph{ênfase conforme o
+contexto}, \underline{sublinhado} e \hl{texto destacado}. Também é possível
+acrescentar uma nota de rodapé ao fim de uma frase.\footnote{Este é o conteúdo da
+nota de rodapé criada com \texttt{\textbackslash footnote}.}
+
+\subsection{Listas}
+
+Use \texttt{itemize} para uma lista sem ordem e \texttt{enumerate} quando a ordem
+dos itens for importante.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Listas com e sem numeração}]
+\begin{itemize}
+  \item Item sem numeracao.
+  \item Outro item.
+\end{itemize}
+
+\begin{enumerate}
+  \item Primeiro item.
+  \item Segundo item.
+\end{enumerate}
+\end{lstlisting}
+
+\begin{itemize}
+  \item Item sem numeração.
+  \item Outro item.
+\end{itemize}
+
+\begin{enumerate}
+  \item Primeiro item.
+  \item Segundo item.
+\end{enumerate}
+
+\subsection{Citação longa}
+
+O ambiente personalizado \texttt{longcite} aplica fonte menor, espaçamento
+simples e recuo ao trecho.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Citação longa}]
+\begin{longcite}
+Trecho de uma citacao com mais de tres linhas. Ao final, informe autor,
+ano e pagina de acordo com a norma adotada.
+\end{longcite}
+\end{lstlisting}
+
+\begin{longcite}
+Este é um exemplo visual de citação longa. Em um relatório real, substitua este
+texto pelo trecho consultado e informe autor, ano e página. Evite copiar conteúdo
+sem a indicação adequada da fonte.
+\end{longcite}

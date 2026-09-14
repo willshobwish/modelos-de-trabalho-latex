@@ -1,2 +1,53 @@
-\section{Introdução}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi a elit convallis, pulvinar mi nec, molestie est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Ut auctor bibendum auctor. Pellentesque vel odio eget lorem porta pulvinar. Nunc id placerat nulla, accumsan pulvinar ex. Nullam accumsan libero at viverra pretium. Aenean nunc turpis, condimentum a consequat auctor, vulputate et ex. Mauris in lorem ac odio ullamcorper luctus. Donec non justo mattis, lacinia metus vitae, luctus nulla. Sed egestas magna in ligula aliquet aliquet. Quisque suscipit consequat nisl nec tempus. Nulla facilisis ex nec massa euismod tincidunt. Donec laoreet tortor eget nisi hendrerit euismod. Pellentesque eu felis ut nisl sodales lacinia et at leo \cite{dummy2024article}.
+\section{Estrutura do documento}
+\label{sec:estrutura}
+
+O arquivo \texttt{main.tex} coordena o projeto. A classe é carregada com
+\verb|\documentclass{relatorioic}|, os dados da capa são alterados com
+\verb|\renewcommand| e cada parte é inserida com \verb|\import|.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Estrutura mínima do documento},label={cod:estrutura}]
+\documentclass{relatorioic}
+\renewcommand{\titulo}{Titulo do relatorio}
+\renewcommand{\nome}{Nome do autor}
+\renewcommand{\email}{autor@unesp.br}
+\renewcommand{\orientador}{Nome do orientador}
+\renewcommand{\emailorientador}{orientador@unesp.br}
+\renewcommand{\cidade}{Presidente Prudente}
+\renewcommand{\cidadeestado}{\cidade\;-- SP}
+\addbibresource{referencias.bib}
+
+\begin{document}
+\import{sections/textual/}{6-introducao.tex}
+\end{document}
+\end{lstlisting}
+
+\subsection{Seções e parágrafos}
+
+Use os comandos abaixo para criar a hierarquia que aparecerá automaticamente no
+sumário. Uma linha vazia no arquivo-fonte inicia um novo parágrafo.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Hierarquia de títulos}]
+\section{Titulo da secao}
+\subsection{Titulo da subsecao}
+\subsubsection{Titulo da subsubsecao}
+\end{lstlisting}
+
+\subsection{Sumário e listas automáticas}
+
+As listas pré-textuais são geradas a partir dos títulos, legendas e siglas
+cadastrados ao longo do documento. É preciso compilar mais de uma vez para que
+todos os números de página sejam atualizados.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Comandos para índices e listas}]
+\tableofcontents       % Sumario
+\listoffigures         % Lista de figuras
+\listoftables          % Lista de tabelas
+\lstlistoflistings     % Lista de codigos
+\printnomenclature     % Lista de siglas
+\end{lstlisting}
+
+\subsection{Caracteres reservados}
+
+Alguns caracteres têm função especial e precisam de uma barra invertida para
+serem impressos. Por exemplo: \verb|\%| produz \%, \verb|\&| produz \&,
+\verb|\_| produz \_ e \verb|\#| produz \#.

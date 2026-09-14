@@ -1,4 +1,104 @@
-\section{Resultados e discussões}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi a elit convallis, pulvinar mi nec, molestie est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Ut auctor bibendum auctor. Pellentesque vel odio eget lorem porta pulvinar. Nunc id placerat nulla, accumsan pulvinar ex. Nullam accumsan libero at viverra pretium. Aenean nunc turpis, condimentum a consequat auctor, vulputate et ex. Mauris in lorem ac odio ullamcorper luctus. Donec non justo mattis, lacinia metus vitae, luctus nulla. Sed egestas magna in ligula aliquet aliquet. Quisque suscipit consequat nisl nec tempus. Nulla facilisis ex nec massa euismod tincidunt. Donec laoreet tortor eget nisi hendrerit euismod. Pellentesque eu felis ut nisl sodales lacinia et at leo.
+\section{Elementos flutuantes e conteúdo técnico}
 
-Donec imperdiet pellentesque hendrerit. Nunc pellentesque dui mauris, eget mollis risus maximus vitae. Proin porta quis neque ac malesuada. Nullam maximus rhoncus arcu, ut accumsan ex vestibulum viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam finibus blandit malesuada. Duis at enim eu ante pellentesque blandit sed ut ligula. Ut tempor nisl nec condimentum faucibus. Aenean ut ante tempus, dapibus justo sit amet, fermentum ante. Praesent massa risus, consequat sed bibendum vel, fermentum sed nisl.
+\subsection{Figura}
+
+Use \texttt{figure} para que o \LaTeX\ posicione a imagem, numere a legenda e
+inclua o item na lista de figuras. O marcador de \verb|\label| deve vir depois de
+\verb|\caption|.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Inserção de uma figura}]
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.35\linewidth]{images/unesp.png}
+  \caption{Logotipo utilizado no modelo}
+  \label{fig:unesp}
+  \fonteimagem{Fonte: arquivo do modelo.}
+\end{figure}
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.35\linewidth]{images/unesp.png}
+  \caption{Logotipo utilizado no modelo}
+  \label{fig:unesp}
+  \fonteimagem{Fonte: arquivo do modelo.}
+\end{figure}
+
+\subsection{Subfiguras}
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Duas imagens lado a lado}]
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{.3\linewidth}
+    \includegraphics[width=\linewidth]{images/unesp.png}
+    \caption{Primeira imagem}
+  \end{subfigure}\hfill
+  \begin{subfigure}{.3\linewidth}
+    \includegraphics[width=\linewidth]{images/unesp.png}
+    \caption{Segunda imagem}
+  \end{subfigure}
+  \caption{Exemplo com subfiguras}
+\end{figure}
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{.3\linewidth}
+    \includegraphics[width=\linewidth]{images/unesp.png}
+    \caption{Primeira imagem}
+  \end{subfigure}\hfill
+  \begin{subfigure}{.3\linewidth}
+    \includegraphics[width=\linewidth]{images/unesp.png}
+    \caption{Segunda imagem}
+  \end{subfigure}
+  \caption{Exemplo com subfiguras}
+  \label{fig:subfiguras}
+\end{figure}
+
+\subsection{Tabela}
+
+A coluna \texttt{X} do ambiente \texttt{tabularx} distribui o espaço disponível.
+\verb|\multirow| permite que uma célula ocupe mais de uma linha.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Tabela com largura ajustável}]
+\begin{table}[H]
+  \centering
+  \caption{Exemplo de tabela}
+  \label{tab:exemplo}
+  \begin{tabularx}{\linewidth}{|l|X|c|}
+    \hline
+    Grupo & Descricao & Valor \\ \hline
+    \multirow{2}{*}{A} & Primeiro resultado & 10 \\ \cline{2-3}
+                       & Segundo resultado  & 20 \\ \hline
+  \end{tabularx}
+\end{table}
+\end{lstlisting}
+
+\begin{table}[H]
+  \centering
+  \caption{Exemplo de tabela}
+  \label{tab:exemplo}
+  \begin{tabularx}{\linewidth}{|l|X|c|}
+    \hline
+    Grupo & Descrição & Valor \\ \hline
+    \multirow{2}{*}{A} & Primeiro resultado & 10 \\ \cline{2-3}
+                       & Segundo resultado  & 20 \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection{Equações}
+
+Equações entre \verb|\[| e \verb|\]| não são numeradas. Para criar número e
+referência, use o ambiente \texttt{equation}.
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Equação numerada}]
+\begin{equation}
+  E = mc^2
+  \label{eq:energia}
+\end{equation}
+\end{lstlisting}
+
+\begin{equation}
+  E = mc^2
+  \label{eq:energia}
+\end{equation}

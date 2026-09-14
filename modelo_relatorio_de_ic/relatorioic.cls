@@ -35,8 +35,7 @@
 % CONFIGURAÇÕES DE FONTE E FORMATAÇÃO
 % ========================================
 
-% Define a fonte Times New Roman como padrão do documento
-% Fonte serifada tradicionalmente usada em documentos acadêmicos
+% Define uma família Times para o texto e para a matemática
 \RequirePackage{mathptmx}
 
 % ======================================================================
@@ -117,7 +116,11 @@
 \RequirePackage{graphicx}
 
 % Legendas personalizáveis para figuras e tabelas
-\RequirePackage{caption}
+\RequirePackage[
+  skip=10pt,
+  font=small,
+  labelfont=bf
+]{caption}
 
 % Subfiguras (figuras lado a lado com legendas individuais)
 \RequirePackage{subcaption}
@@ -208,32 +211,12 @@
 % Destacar texto com cores de fundo (comando \hl{})
 \RequirePackage{soul}
 
-% Citações em bloco com melhor formatação
-\RequirePackage{quoting}
-
 % Importar arquivos TeX de subdiretórios mantendo caminhos relativos
 \RequirePackage{import}
-
-% Controle avançado de hifenização
-\RequirePackage{hyphenat}
-
-% Legendas otimizadas
-\RequirePackage[
-  skip=10pt,
-  font=small,
-  labelfont=bf
-]{caption}
-\RequirePackage{subcaption}
 
 % ========================================
 % COMANDOS PERSONALIZADOS
 % ========================================
-
-% Ambiente para exibir a natureza do trabalho (ex: monografia, TCC, etc.)
-% Insere um recuo à direita (59mm) e um bloco de texto justificado com largura de 95mm.
-\newenvironment{natureza}
-  {\hspace{59mm}\begin{minipage}[c]{95mm}\begin{justify}}
-  {\end{justify}\end{minipage}}
 
 % Ambiente para citações longas.
 % Adiciona espaçamento vertical antes e depois, centraliza o conteúdo em uma caixa de 120mm,
@@ -243,7 +226,7 @@
   {\end{minipage}\vspace{5mm}}
 
 % Comando para o título do trabalho. Pode ser sobrescrito depois.
-\newcommand{\titulo}{\textbf{Titulo}}
+\newcommand{\titulo}{Título do relatório}
 
 % Nome do autor do trabalho.
 \newcommand{\nome}{Nome Sobrenome}
@@ -255,12 +238,6 @@
 % Cidade e estado onde o trabalho foi realizado.
 \newcommand{\cidade}{Presidente Prudente}
 \newcommand{\cidadeestado}{\cidade\;-- Estado}
-\newcommand{\campus}{Faculdade de Ciências e Tecnologia}
-% Tipo de trabalho (ex: Artigo, Revisão bibliográfica, Projeto experimental, etc.)
-\newcommand{\tipotrabalho}{Revisão bibliográfica}
-
-% Nome do professor convidado da banca ou avaliador externo.
-\newcommand{\professorconvidado}{Prof. Dr. Nome Sobrenome}
 
 % Comando para exibir a fonte de uma imagem com espaçamento vertical antes e centralização.
 \newcommand{\fonteimagem}[1]{\vspace{\baselineskip}\centering #1}
@@ -277,13 +254,10 @@
     \renewcommand{\contentsname}{\centering \normalsize \uppercase{Sumário}}
     \renewcommand{\nomname}{\centering \normalsize \uppercase{Siglas}}
     \renewcommand{\listfigurename}{\centering \normalsize \uppercase{Lista de Figuras}}
-    \renewcommand{\listtablename}{\centering \normalsize \uppercase{Lista de Tabela}}
+    \renewcommand{\listtablename}{\centering \normalsize \uppercase{Lista de Tabelas}}
 }
 
 % Formatação da bibliografia: fonte normal e texto justificado
-\defbibheading{bibliography}[\refname]{%
-  \section{#1}%
-}
 \renewcommand*{\bibfont}{\normalfont\justifying}
 
 % ========================================

@@ -1,51 +1,27 @@
-% Classe do documento: relatório de iniciação científica
 \documentclass{relatorioic}
 
-% Define o arquivo de referências bibliográficas
+% Dados usados na folha de rosto.
+\renewcommand{\titulo}{Guia prático de comandos \LaTeX}
+\renewcommand{\nome}{Nome do(a) autor(a)}
+\renewcommand{\email}{autor@unesp.br}
+\renewcommand{\orientador}{Prof. Dr. Nome do(a) orientador(a)}
+\renewcommand{\emailorientador}{orientador@unesp.br}
+\renewcommand{\cidade}{Presidente Prudente}
+\renewcommand{\cidadeestado}{\cidade\;-- SP}
+
 \addbibresource{referencias.bib}
 
+\begin{document}
 
-\begin{document} % Início do conteúdo do documento
-
-% ----------------------------
-% SEÇÕES PRÉ-TEXTUAIS
-% ----------------------------
-
-% Importa a folha de rosto
 \import{sections/pre-textual/}{1-folha-rosto.tex}
-
-% Importa o resumo em português
 \import{sections/pre-textual/}{2-resumo.tex}
-
-% Importa o resumo em inglês (abstract)
-\import{sections/pre-textual/}{3-resumo-ingles.tex}
-
-% Importa listas automáticas (figuras, tabelas, siglas etc.)
 \import{sections/pre-textual/}{4-listas.tex}
-
-% Importa o sumário (índice do conteúdo)
 \import{sections/pre-textual/}{5-sumario.tex}
 
-% ----------------------------
-% SEÇÕES TEXTUAIS
-% ----------------------------
-
-% Importa a introdução do trabalho
 \import{sections/textual/}{6-introducao.tex}
-
-% Importa a seção de materiais e métodos (ou metodologia)
 \import{sections/textual/}{7-materiais-e-metodos.tex}
-
-% Importa a seção de resultados e discussão
 \import{sections/textual/}{8-resultados-e-discussao.tex}
-
-% Importa a conclusão do trabalho
 \import{sections/textual/}{9-conclusoes.tex}
-
-% Importa os agradecimentos (opcional, mas comum)
-\import{sections/textual/}{11-agradecimentos.tex}
-
-% Importa as referências bibliográficas
 \import{sections/textual/}{10-referencias.tex}
 
-\end{document} % Fim do conteúdo do documento
+\end{document}
