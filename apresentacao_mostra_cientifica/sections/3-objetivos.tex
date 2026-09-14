@@ -1,24 +1,90 @@
-\section{Objetivos do projeto}
-% \subsection{Objetivos gerais}
-% \begin{frame}{Objetivos gerais}
-%     O objetivo desse projeto de pesquisa é a análise da precisão e perda em classificação de imagens de diferentes \textit{datasets} com e sem pré-processamento em modo de validação de diversas arquiteturas de \textit{CNNs}. Ainda, faz parte do objetivo deste projeto avaliar a aplicação de métodos de (\textit{data augmentation}) para verificar como eles podem melhorar a precisão dos modelos treinados \cites{Khan2020}{8862686}{chlap2021review}{chollet2015keras}.
-% \end{frame}
+\section{Texto e listas}
 
-% \subsection{Objetivos}
-\begin{frame}{Objetivos}
-\nocite{Khan2020,8862686,chlap2021review,chollet2015keras}
+\begin{frame}[fragile]{Formatação de texto}
+\begin{columns}[T]
+\begin{column}{0.52\textwidth}
+\begin{lstlisting}
+Texto em \textbf{negrito}.
+Texto em \textit{italico}.
+Uma palavra \emph{enfatizada}.
+O sistema \LaTeX{}.
+Uma quebra de linha\\aqui.
+\end{lstlisting}
+\end{column}
+\begin{column}{0.44\textwidth}
+Texto em \textbf{negrito}.\\
+Texto em \textit{itálico}.\\
+Uma palavra \emph{enfatizada}.\\
+O sistema \LaTeX{}.\\
+Uma quebra de linha\\aqui.
+\end{column}
+\end{columns}
+
+Use chaves para indicar exatamente qual trecho recebe a formatação.
+\end{frame}
+
+\begin{frame}[fragile]{Caracteres reservados e comentários}
+\begin{lstlisting}
+% Esta linha nao aparece no PDF.
+Taxa de acerto: 95\%
+Arquivo: dados\_treino.csv
+Comandos com \{chaves\}
+Parametro \#1 custa R\$ 10.
+\end{lstlisting}
+
 \begin{itemize}
-    \item Analisar diversas características como domínio de natureza do \textit{dataset} que podem impactar o desempenho da \textit{CNN};
-    \item Observar como a construção das arquiteturas de \textit{CNN} impactam na sua precisão e perda na classificação em modo de validação e também durante o treino;
-    \item Comparar resultados dos treinos, tanto em precisão e perda sobre o conjunto de validação, de cada arquitetura de \textit{CNNs};
-    \item Comparar a precisão atingida entre as arquiteturas de \textit{CNNs} que utilizaram e não utilizaram a técnica de aumento de dados;
+    \item \verb|%| inicia um comentário.
+    \item \verb|\%|, \verb|\_|, \verb|\#|, \verb|\$|, \verb|\{| e \verb|\}| imprimem caracteres reservados.
+    \item Uma linha em branco inicia outro parágrafo.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Objetivos}
+\begin{frame}[fragile]{Listas com marcadores}
+\begin{columns}[T]
+\begin{column}{0.52\textwidth}
+\begin{lstlisting}
 \begin{itemize}
-    \item Comparar o desempenho da precisão e perda que as arquiteturas de \textit{CNN} obterão com a aplicação de pré-processamento em \textit{dataset} de validação;  
-    \item Modificar os diferentes parâmetros existentes da técnica de \textit{data augmentation} para análise e comparação no desempenho das \textit{CNNs} durante o processo de treinamento.
-    \item Avaliar as \textit{CNNs} treinadas com dados de validação (da mesma classe em que foi treinada) com aumento gradativo de ruídos e filtros para obter a robustez da arquitetura da \textit{CNN}.
+  \item Grande quantidade de imagens
+  \item Imagens em diferentes estados
+  \begin{itemize}
+    \item brilho
+    \item contraste
+  \end{itemize}
 \end{itemize}
+\end{lstlisting}
+\end{column}
+\begin{column}{0.44\textwidth}
+\begin{itemize}
+  \item Grande quantidade de imagens
+  \item Imagens em diferentes estados
+  \begin{itemize}
+    \item brilho
+    \item contraste
+  \end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Listas numeradas}
+\begin{columns}[T]
+\begin{column}{0.52\textwidth}
+\begin{lstlisting}
+\begin{enumerate}
+  \item Preparar os arquivos
+  \item Compilar o documento
+  \item Revisar o PDF
+\end{enumerate}
+\end{lstlisting}
+\end{column}
+\begin{column}{0.44\textwidth}
+\begin{enumerate}
+  \item Preparar os arquivos
+  \item Compilar o documento
+  \item Revisar o PDF
+\end{enumerate}
+\end{column}
+\end{columns}
+
+Troque \verb|itemize| por \verb|enumerate| quando a ordem dos itens importar.
 \end{frame}

@@ -1,45 +1,63 @@
-\section{Cronograma de execução}
-\begin{frame}{Cronograma de execução}
-As atividades a serem executadas estão dispostos a seguir:
-\begin{enumerate}
-    \item Fundamentação teórica;
-    \item Revisão bibliográfica;
-    \item Análise e preparação dos \textit{datasets} a serem utilizados nos treinos e validação;
-    \item Análise e codificação dos métodos a serem utilizados na técnica de \textit{data augmentation};
-    \item Codificação dos treinos das arquiteturas de \textit{CNNs};
-    \item Treino das arquiteturas de \textit{CNNs};
-    \item Análise dos resultados obtidos e modificação dos parâmetros dos treinos;
-    \item Análise e discussão acerca dos resultados obtidos;
-    \item Elaboração de artigo
-\end{enumerate}
+\section{Opções de frame e compilação}
+
+\begin{frame}[fragile]{Opções úteis de frame}
+\begin{lstlisting}
+\begin{frame}[fragile]{Codigo}
+  \begin{verbatim}
+    \textbf{exemplo}
+  \end{verbatim}
+\end{frame} % encerra o slide
+
+\begin{frame}[plain]
+  Conteudo sem moldura do tema.
+\end{frame} % encerra o slide
+
+\begin{frame}[allowframebreaks]{Conteudo longo}
+  \printbibliography
+\end{frame} % encerra o slide
+\end{lstlisting}
+
+Use \verb|fragile| quando o slide contém código literal, como \verb|verbatim| ou \verb|lstlisting|.
 \end{frame}
 
-\begin{frame}{Cronograma de execução}
-    O cronograma será dividido em bimestres:
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-        \hline
-            Atividade & 1º & 2º & 3º & 4º & 5º & 6º & 7º & 8º & 9º &10º & 11º & 12º\\
-        \hline
-            1 & • &  &  &  &  &  &  &  &  &  &  & \\
-        \hline
-            2 &  & • &  &  &  &  &  &  &  &  &  &  \\
-        \hline
-            3 &  &  & • & • &  &  &  &  &  &  &  &  \\
-        \hline
-            4 &  &  &  & • & • & • &  &  &  &  &  &  \\
-        \hline
-            5 &  &  &  &  & • & • & • & • &  &  &  &  \\
-        \hline
-            6 &  &  &  &  & • & • & • & • &  &  &  &  \\
-        \hline
-            7 &  &  &  &  &  & • & • & • &  &  &  &  \\
-        \hline
-            8 &  &  &  &  &  &  &  &  & • & • & • &  \\
-        \hline
-            9 &  &  &  &  &  &  &  &  &  & • & • & • \\
-        \hline
-        \end{tabular}
-    \end{table}
+\begin{frame}[fragile]{Compilação do projeto}
+\begin{enumerate}
+    \item Abra \texttt{main.tex} no editor ou no Overleaf.
+    \item Selecione LuaLaTeX como compilador.
+    \item Compile novamente após mudar citações ou referências.
+\end{enumerate}
+
+\begin{lstlisting}
+lualatex main.tex
+biber main
+lualatex main.tex
+lualatex main.tex
+\end{lstlisting}
+
+Uma ferramenta como \texttt{latexmk} pode executar essa sequência automaticamente.
+\end{frame}
+
+\begin{frame}[fragile]{Diagnóstico de erros comuns}
+\begin{tabular}{p{.27\linewidth}p{.65\linewidth}}
+\toprule
+Mensagem ou sintoma & Verificação \\
+\midrule
+\texttt{Undefined control sequence} & comando digitado incorretamente ou pacote ausente \\
+\texttt{File not found} & caminho, nome e extensão do arquivo \\
+Texto após o limite & conteúdo excessivo ou dimensão maior que o espaço disponível \\
+Citação indefinida & entrada ausente em \texttt{ref.bib} ou falta de nova compilação \\
+\bottomrule
+\end{tabular}
+
+\vspace{.6em}
+O número da linha no arquivo \texttt{.log} ajuda a localizar a origem do erro.
+\end{frame}
+
+\begin{frame}{Resumo dos comandos}
+\begin{itemize}
+    \item Estrutura: \texttt{\textbackslash documentclass}, \texttt{\textbackslash usepackage}, \texttt{\textbackslash begin}, \texttt{\textbackslash end}, \texttt{\textbackslash input}
+    \item Conteúdo: \texttt{\textbackslash section}, \texttt{frame}, \texttt{\textbackslash textbf}, \texttt{\textbackslash textit}, \texttt{itemize}, \texttt{enumerate}
+    \item Elementos: \texttt{\textbackslash includegraphics}, \texttt{columns}, \texttt{tabular}, \texttt{equation}
+    \item Fontes: \texttt{\textbackslash cite}, \texttt{\textbackslash textcite}, \texttt{\textbackslash printbibliography}
+\end{itemize}
 \end{frame}

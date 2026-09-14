@@ -1,64 +1,72 @@
-\section{Justificativa do projeto}
-\begin{frame}{Justificativa do projeto}
-    As \textit{CNNs} é um modelo de \textit{machine learning} que é utilizada principalmente em imagens, seja para classificação, segmentação, reconhecimento e entre outras atividades relacionadas. 
-    \vspace{1em}
-    
-    Porém, antes precisamos que essa \textit{CNN} tenha o processo de treinamento e durante o treino podemos utilizar algumas técnicas para aumentar o seu desempenho.     
+\section{Imagens e colunas}
+
+\begin{frame}[fragile]{Inserção de figuras}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{lstlisting}
+\begin{figure}
+  \centering
+  \includegraphics[
+    width=.82\linewidth
+  ]{images/NeuralNetwork.png}
+  \caption{Representacao de uma rede neural}
+  \label{fig:rede-neural}
+\end{figure}
+\end{lstlisting}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{figure}
+  \centering
+  \includegraphics[width=.82\linewidth]{images/NeuralNetwork.png}
+  \caption{Representação de uma rede neural}
+  \label{fig:rede-neural}
+\end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}{Justificativa do projeto}
-    Problemas relacionados ao treino \cites{aquino2017effect}{8243510}{7906545}:
-    \begin{itemize}
-        \item Precisa-se de uma grande quantidade de imagens para o treino
-        \item Nem sempre é possível obter uma quantidade satisfatória
-        \item Pode-se aumentar artificialmente essa quantidade de imagens
-    \end{itemize}
+\begin{frame}[fragile]{Tamanho e proporção da imagem}
+\begin{lstlisting}
+\includegraphics[width=.7\linewidth]{arquivo.png}
+\includegraphics[height=4cm]{arquivo.png}
+\includegraphics[width=\linewidth,
+                 keepaspectratio]{arquivo.png}
+\end{lstlisting}
+
+\begin{itemize}
+    \item \verb|width| controla a largura; \verb|height| controla a altura.
+    \item \verb|\linewidth| representa a largura disponível no ambiente atual.
+    \item \verb|keepaspectratio| evita distorção quando largura e altura aparecem juntas.
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Justificativa do projeto}
-    \begin{figure}
-        \centering
-        \caption{Aplicação de transformações de imagens como técnica de \textit{data augmentation}}
-        \includegraphics[width=\linewidth]{images/Data-augmentation.pdf}
-        {\scriptsize Fonte: Kowalievska, 2018, modificação de imagem realizado pelo autor}
-        \label{fig:enter-label}
-    \end{figure}
+\begin{frame}[fragile]{Texto e imagem em colunas}
+\begin{columns}[T]
+\begin{column}{0.52\textwidth}
+\begin{lstlisting}
+\begin{columns}[T]
+  \begin{column}{.42\textwidth}
+    Texto explicativo.
+  \end{column}
+  \begin{column}{.54\textwidth}
+    \includegraphics[width=\linewidth]
+      {images/cnn.jpg}
+  \end{column}
+\end{columns}
+\end{lstlisting}
+\end{column}
+\begin{column}{0.44\textwidth}
+As larguras das colunas devem somar menos de \verb|\textwidth| para deixar espaço entre elas.
+
+\vspace{0.7em}
+O modificador \verb|[T]| alinha o conteúdo pelo topo.
+\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}{Justificativa do projeto}
-    A utilização do pré-processamento em imagens de validação será para analisar o quanto uma arquitetura de \textit{CNN} é sensível a um ruído ou alteração em uma imagem.
-    
-    \vspace{1em}
-    Isso seria tentar simular as condições da realidade, onde nem sempre é possível obter uma imagem apropriada para a classificação, alguns fatores que influenciam durante a obtenção da imagem \cite{10.1007/978-3-319-75193-1_50, MOMENY2021100225}:
+\begin{frame}[plain]
+    \centering
+    \includegraphics[width=.92\linewidth,height=.88\textheight,keepaspectratio]{images/Pre-processing-visualization.pdf}
 
-    \vspace{1em}
-    % iluminação, contraste, ruídos gerados pelo dispositivo de captura (e.g. borrão, imagem capturado em movimento) e entre outros. Pode-se incluir também a perda de qualidade devido a compressão de alguns formatos de imagens (e.g. compressão utilizando o formato \textit{JPEG}) \cites{10.1007/978-3-319-75193-1_50}{MOMENY2021100225}.
-
-    \begin{itemize}
-        \item Iluminação
-        \item Contraste
-        \item Ruídos
-        \item Compressão de imagem (e.g. compressão utilizando o formato \textit{JPEG})
-        \item e entre outros.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Justificativa do projeto}
-    \begin{figure}
-        \centering
-        \caption{Exemplos de pré-processamento que pode-se aplicar para simular os problemas durante a captura de imagem}
-        \includegraphics[width=0.8\linewidth]{images/Pre-processing-visualization.pdf}\\
-        {\scriptsize Fonte: Kowalievska, 2018, modificação de imagem realizado pelo autor}
-        \label{fig:enter-label}
-    \end{figure}
-\end{frame}
-
-\begin{frame}{Justificativa do projeto}
-    \begin{figure}
-        \centering
-        % \caption{Exemplos de pré-processamento que pode-se aplicar para simular os problemas durante a captura de imagem}
-        \includegraphics[width=\linewidth]{images/Pre-processing-visualization.pdf}\\
-        % {\scriptsize Fonte: criado pelo autor com imagem de Kowalievska, 2018}
-        % \label{fig:enter-label}
-    \end{figure}
+    \scriptsize Um slide \texttt{[plain]} oculta título, cabeçalho e rodapé para destacar a figura.
 \end{frame}

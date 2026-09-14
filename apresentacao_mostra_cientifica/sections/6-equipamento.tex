@@ -1,11 +1,41 @@
-\section{Equipamento e material}
-\begin{frame}[allowframebreaks]{Equipamento e material}
+\section{Pacotes e personalização}
+
+\begin{frame}[fragile]{Pacotes usados neste modelo}
+\begin{lstlisting}
+\usepackage{graphicx}  % imagens
+\usepackage{booktabs}  % tabelas
+\usepackage{listings}  % codigo-fonte
+\usepackage[brazilian]{babel}
+\usepackage{csquotes}  % citacoes
+\usepackage[style=abnt]{biblatex}
+\end{lstlisting}
+
+Cada pacote acrescenta comandos ou altera regras de composição. As chamadas ficam no preâmbulo, antes de \verb|\begin{document}|.
+\end{frame}
+
+\begin{frame}[fragile]{Tema, logotipo e rodapé}
+\begin{lstlisting}
+\usetheme{Warsaw}
+\logo{\includegraphics[height=.5cm]{images/unesp.png}}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{frametitle continuation}{}
+\end{lstlisting}
+
 \begin{itemize}
-    \item Artigos, livros, monografias para a aquisição da fundamentação teórica para a elaboração do projeto.
-    \item Utilização da plataforma \textit{Kaggle} para obtenção dos \textit{datasets} que serão utilizados para os treinos das \textit{CNNs}.
-    % \item Linguagem de programação utilizada será \textit{Python}
-    % \item \textit{Frameworks} e bibliotecas: Tensorflow, Keras, Matplotlib, Seaborn, Numpy, Os, OpenCV, Pillow  
-    \item Processamento dos treinos das \textit{CNNs} será utilizado o \textit{LSNCS} (\textit{cluster} do Laboratório de Simulação Numérica da FCT/UNESP)
-    \item Elaboração do relatório, revisão bibliográfica e artigo será utilizado \LaTeX\;na plataforma \textit{online} \textit{Overleaf}.
+    \item \verb|\usetheme| seleciona o tema visual do Beamer.
+    \item \verb|\logo| adiciona uma imagem aos slides do tema.
+    \item \verb|\setbeamertemplate| substitui um componente visual.
 \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Espaçamento e alinhamento}
+\begin{lstlisting}
+\centering                 % centraliza
+\raggedright               % alinha a esquerda
+\vspace{1em}               % espaco vertical
+\hspace{.5cm}              % espaco horizontal
+\includegraphics[width=.8\linewidth]{arquivo}
+\end{lstlisting}
+
+Prefira espaçamento controlado pelo próprio ambiente. Use \verb|\vspace| e \verb|\hspace| apenas para pequenos ajustes locais.
 \end{frame}
