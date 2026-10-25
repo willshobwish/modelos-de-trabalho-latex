@@ -2,7 +2,22 @@ name: LaTeX
 
 on:
   push:
+    branches: ['**']
+    paths:
+      - 'apresentacao_*/**'
+      - 'documento_*/**'
+      - 'modelo_*/**'
+      - '.github/workflows/latex.yml'
+      - 'scripts/**'
+      - '.gitattributes'
   pull_request:
+    paths:
+      - 'apresentacao_*/**'
+      - 'documento_*/**'
+      - 'modelo_*/**'
+      - '.github/workflows/latex.yml'
+      - 'scripts/**'
+      - '.gitattributes'
   release:
     types: [published]
 
@@ -10,23 +25,36 @@ permissions:
   contents: read
 
 jobs:
+  detect:
+    name: Selecionar modelos
+    runs-on: ubuntu-latest
+    outputs:
+      models: ${{ steps.models.outputs.models }}
+    steps:
+      - name: Baixar histórico para comparar alterações
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Identificar modelos alterados
+        id: models
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
+        run: python3 scripts/affected_models.py >> "$GITHUB_OUTPUT"
+
   build:
     name: Compilar ${{ matrix.model }}
+    needs: detect
+    if: needs.detect.outputs.models != '[]'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
-        model:
-          - apresentacao_mostra_cientifica
-          - apresentacao_revisao_bibliografica
-          - documento_de_casos_de_uso_es1
-          - documento_requisitos_de_software_es1_ieee
-          - modelo_anteprojeto_de_tcc
-          - modelo_artigo_tcc
-          - modelo_relatorio_de_ic
-          - modelo_revisao_bibliografica_tcc
-          - modelo_seguranca_da_informacao
+        model: ${{ fromJSON(needs.detect.outputs.models) }}
     steps:
       - name: Baixar fontes e imagens do Git LFS
         uses: actions/checkout@v4
@@ -49,8 +77,7 @@ jobs:
           path: ${{ matrix.model }}/main.log
           if-no-files-found: ignore
 
-      - name: Preparar arquivos da release
-        if: github.event_name == 'release'
+      - name: Validar pacote do modelo
         run: python3 scripts/package_release.py "${{ matrix.model }}" dist
 
       - name: Guardar arquivos da release

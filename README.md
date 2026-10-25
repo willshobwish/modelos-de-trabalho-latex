@@ -73,7 +73,7 @@ No Overleaf, use **New Project → Upload Project** e selecione o ZIP do projeto
 
 ## Integração contínua e releases
 
-O [workflow LaTeX](.github/workflows/latex.yml) compila os nove projetos a cada commit enviado ao GitHub e em cada pull request. Ao publicar uma release, ele compila novamente a versão da tag e anexa os ZIPs e PDFs somente se todos os projetos passarem. Se houver falha, consulte o log do projeto na execução do workflow.
+O [workflow LaTeX](.github/workflows/latex.yml) é acionado em commits e pull requests que alterem algum modelo, o próprio workflow, os scripts de empacotamento ou a configuração do Git LFS. Ele compila e valida somente os modelos alterados; mudanças nas ferramentas comuns testam todos. Alterações apenas na documentação não disparam a compilação. Ao publicar uma release, ele compila novamente os nove modelos da tag e anexa os ZIPs e PDFs somente se todos passarem. Se houver falha, consulte o log do projeto na execução do workflow.
 
 ## Referências de formatação
 
