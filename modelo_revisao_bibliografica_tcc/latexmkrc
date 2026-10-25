@@ -1,1 +1,7 @@
 $ENV{'TZ'}='America/Sao_Paulo';
+
+# Gera a lista de siglas criada pelo pacote nomencl.
+add_cus_dep('nlo', 'nls', 0, 'makenomenclature');
+sub makenomenclature {
+    system("makeindex -s nomencl.ist -o \"$_[0].nls\" \"$_[0].nlo\"");
+}
