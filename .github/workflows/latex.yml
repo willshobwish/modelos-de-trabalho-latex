@@ -1,0 +1,83 @@
+name: LaTeX
+
+on:
+  push:
+  pull_request:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Compilar ${{ matrix.model }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        model:
+          - apresentacao_mostra_cientifica
+          - apresentacao_revisao_bibliografica
+          - documento_de_casos_de_uso_es1
+          - documento_requisitos_de_software_es1_ieee
+          - modelo_anteprojeto_de_tcc
+          - modelo_artigo_tcc
+          - modelo_relatorio_de_ic
+          - modelo_revisao_bibliografica_tcc
+          - modelo_seguranca_da_informacao
+    steps:
+      - name: Baixar fontes e imagens do Git LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: false
+
+      - name: Compilar PDF
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: ${{ matrix.model }}
+          texlive_version: '2026'
+
+      - name: Guardar log se falhar
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: log-${{ matrix.model }}
+          path: ${{ matrix.model }}/main.log
+          if-no-files-found: ignore
+
+      - name: Preparar arquivos da release
+        if: github.event_name == 'release'
+        run: python3 scripts/package_release.py "${{ matrix.model }}" dist
+
+      - name: Guardar arquivos da release
+        if: github.event_name == 'release'
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ matrix.model }}
+          path: dist/*
+          if-no-files-found: error
+
+  publish:
+    name: Anexar arquivos à release
+    if: github.event_name == 'release'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Reunir ZIPs e PDFs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: release-*
+          merge-multiple: true
+          path: dist
+
+      - name: Anexar à release publicada
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: gh release upload "$RELEASE_TAG" dist/* --clobber
