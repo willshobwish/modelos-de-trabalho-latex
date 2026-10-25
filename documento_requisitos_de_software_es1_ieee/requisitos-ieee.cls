@@ -1,45 +1,52 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{requisitos-ieee}[2026/10/25 Classe para documento de requisitos de software]
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+\LoadClass[12pt]{article}
+
 % ============================================================================
 % CONFIGURAÇÃO LATEX PARA DOCUMENTOS ACADÊMICOS EM PORTUGUÊS (ABNT)
 % ============================================================================
 
 % Codificação de entrada (UTF-8 para caracteres especiais)
-\usepackage[utf8]{inputenc}
+\RequirePackage[utf8]{inputenc}
 
 % ============================================================================
 % CONFIGURAÇÃO DE PÁGINA E MARGENS
 % ============================================================================
 
 % Definição do tamanho do documento e margens conforme ABNT
-\usepackage[a4paper, left=30mm, right=20mm, top=30mm, bottom=20mm]{geometry}
+\RequirePackage[a4paper, left=30mm, right=20mm, top=30mm, bottom=20mm]{geometry}
 
 % ============================================================================
 % FORMATAÇÃO DE TEXTO E FONTE
 % ============================================================================
 
 % Alinhamento de texto adicional (justificação aprimorada)
-\usepackage{ragged2e}
+\RequirePackage{ragged2e}
 
 % Fonte Times New Roman para o documento
-\usepackage{mathptmx}
+\RequirePackage{mathptmx}
 
 % Alternativa para Arial (comentada)
-% \usepackage{helvet}
+% \RequirePackage{helvet}
 % \renewcommand{\familydefault}{\sfdefault}
 
 % Suporte para hifenização
-\usepackage{hyphenat}
+\RequirePackage{hyphenat}
 
 % Identação do primeiro parágrafo
-\usepackage{indentfirst}
+\RequirePackage{indentfirst}
 
 % Espaçamento entre linhas
-\usepackage{setspace}
+\RequirePackage[nodisplayskipstretch]{setspace}
 
 % ============================================================================
 % CONFIGURAÇÃO DE SEÇÕES E SUBSEÇÕES
 % ============================================================================
 
-\usepackage{titlesec}
+\RequirePackage{titlesec}
 
 % Criação de subsubsubsection (4º nível de seção)
 \titleclass{\subsubsubsection}{straight}[\subsection]
@@ -79,7 +86,7 @@
 \setcounter{tocdepth}{4}
 
 % Tamanho das seções (todas em tamanho normal conforme ABNT)
-\usepackage{sectsty}
+\RequirePackage{sectsty}
 \sectionfont{\normalsize}
 \subsectionfont{\normalsize}
 \subsubsectionfont{\normalsize}
@@ -89,27 +96,27 @@
 % ============================================================================
 
 % Suporte para português brasileiro
-\usepackage[brazil]{babel}
+\RequirePackage[brazil]{babel}
 
 % ============================================================================
 % FIGURAS E TABELAS
 % ============================================================================
 
 % Suporte para subfiguras
-\usepackage{caption}
-\usepackage{subcaption}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
 
 % Pacote para inserção de imagens
-\usepackage{graphicx}
+\RequirePackage{graphicx}
 
 % Controle de posicionamento de figuras
-\usepackage{float}
+\RequirePackage{float}
 
 % ============================================================================
 % CABEÇALHO E RODAPÉ
 % ============================================================================
 
-\usepackage{fancyhdr}
+\RequirePackage{fancyhdr}
 
 % Configuração do fancy para paginação
 \pagestyle{fancy}
@@ -137,20 +144,17 @@
 % ============================================================================
 
 % Ambiente para citações longas
-\usepackage{quoting}
+\RequirePackage{quoting}
 
 % Referências bibliográficas em ABNT (ATENÇÃO: pode estar desatualizado)
-\usepackage[style=abnt]{biblatex}
+\RequirePackage[style=abnt]{biblatex}
 \addbibresource{referencias.bib}
 
 % ============================================================================
 % HYPERLINKS
 % ============================================================================
 
-\usepackage{hyperref}
-
-% Controle de posicionamento de figuras
-\usepackage{float}
+\RequirePackage{hyperref}
 
 % Configuração dos hyperlinks (todos em preto para impressão)
 \hypersetup{%
@@ -170,19 +174,19 @@
 % ============================================================================
 
 % Nomenclaturas e abreviações
-\usepackage{nomencl}
+\RequirePackage{nomencl}
 \makenomenclature
 
 % Glossário com acrônimos
-\usepackage[acronym]{glossaries}
+\RequirePackage[acronym]{glossaries}
 \makeglossaries
 
 % ============================================================================
 % CÓDIGOS DE PROGRAMAÇÃO
 % ============================================================================
 
-\usepackage{listings}
-\usepackage{xcolor}
+\RequirePackage{listings}
+\RequirePackage{xcolor}
 
 % Definição de cores para código
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -216,23 +220,23 @@
 % MATEMÁTICA
 % ============================================================================
 
-\usepackage{amsmath}
+\RequirePackage{amsmath}
 
 % ============================================================================
 % UTILITÁRIOS
 % ============================================================================
 
 % Geração de texto dummy para testes
-\usepackage{lipsum}
+\RequirePackage{lipsum}
 
 % Pacote para comentários no código
-\usepackage{comment}
+\RequirePackage{comment}
 
 % Importação de arquivos externos
-\usepackage{import}
+\RequirePackage{import}
 
 % Pacote para visualização de grades (útil para formatação - comentado)
-% \usepackage[grid]{eso-pic}
+% \RequirePackage[grid]{eso-pic}
 
 % ============================================================================
 % RENOMEAÇÃO DE TÍTULOS (deve ficar no final)
@@ -281,3 +285,80 @@
     \end{minipage}\vspace{5mm}
 }
 
+% ============================================================================
+% COMANDOS PERSONALIZADOS
+% ============================================================================
+
+% Título do trabalho
+\newcommand{\titulo}{Descrição de projeto}
+\newcommand{\titulocapa}{\MakeUppercase{\titulo}}
+
+% Nome do autor
+\newcommand{\nome}{\uppercase{Nome Sobrenome}}
+
+% Orientador
+\newcommand{\orientador}{Prof. Dr. Nome Sobrenome}
+
+% Cidade e Estado
+\newcommand{\cidade}{Cidade -- Estado}
+
+% Definição de um comando personalizado para criar tabelas de casos de uso
+% Este comando facilita a criação padronizada de documentação de casos de uso
+\newcommand{\usecase}[4]{
+    % Inicia um ambiente centralizado para posicionar a tabela no centro da página
+    \begin{center}
+        % Cria uma tabela com duas colunas de larguras fixas
+        % |p{4cm}|p{11cm}| define:
+        % - Primeira coluna: 4cm de largura para os rótulos
+        % - Segunda coluna: 11cm de largura para o conteúdo
+        % As barras verticais (|) criam bordas entre as colunas
+        \begin{tabular}{|p{4cm}|p{11cm}|}
+            % Linha horizontal superior da tabela
+            \hline
+            
+            % Primeira linha: Nome do caso de uso
+            % #1 é o primeiro parâmetro passado ao comando
+            % \textbf{} deixa o texto em negrito
+            Caso de uso: & \textbf{#1} \\
+            \hline
+            
+            % Segunda linha: Atores envolvidos
+            % #2 é o segundo parâmetro
+            Atores: & #2 \\
+            \hline
+            
+            % Terceira linha: Tipo do caso de uso
+            % #3 é o terceiro parâmetro
+            Tipo: & #3 \\
+            \hline
+            
+            % Quarta linha: Descrição detalhada
+            % #4 é o quarto parâmetro
+            Descrição: & #4 \\
+            \hline
+            
+        \end{tabular}
+    \end{center}
+}
+
+% EXEMPLO DE USO:
+% \usecase{Login do Usuário}
+%         {Usuário, Sistema}
+%         {Primário}
+%         {O usuário fornece suas credenciais para acessar o sistema}
+
+% VANTAGENS DESTE COMANDO:
+% 1. Padronização: Garante que todos os casos de uso tenham o mesmo formato
+% 2. Reutilização: Pode ser usado múltiplas vezes no documento
+% 3. Manutenibilidade: Mudanças no formato podem ser feitas em um só lugar
+% 4. Simplicidade: Reduz a repetição de código LaTeX complexo
+
+% PARÂMETROS:
+% #1 - Nome/título do caso de uso
+% #2 - Lista de atores (usuários, sistemas, etc.)
+% #3 - Classificação do tipo (primário, secundário, etc.)
+% #4 - Descrição detalhada do comportamento esperado
+
+\AtBeginDocument{\setstretch{1.5}}
+
+\endinput
