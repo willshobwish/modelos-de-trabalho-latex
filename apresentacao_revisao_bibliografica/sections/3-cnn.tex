@@ -536,9 +536,9 @@ Pooling & \cross{56} & \multicolumn{4}{c}{\cross{3} max pool, stride 2} \\ \hlin
                 \hline
                 Entrada & Operação & Saída\\
                 \hline
-                $h \times w \times k$ & $1\times 1$ \conv, \relus & $h \times w \times (tk)$\\
+                $h \times w \times k$ & $1\times 1$ \convop, \relus & $h \times w \times (tk)$\\
                 $h \times w \times tk$& $3\times 3$ \depthwise s=$s$, \relus & $\frac{h}{s} \times \frac{w}{s} \times (tk)$\\ 
-                $\frac{h}{s} \times \frac{w}{s} \times tk$ & linear $1\times 1$ \conv & $\frac{h}{s} \times \frac{w}{s} \times k'$\\
+                $\frac{h}{s} \times \frac{w}{s} \times tk$ & linear $1\times 1$ \convop & $\frac{h}{s} \times \frac{w}{s} \times k'$\\
                 \hline
                 \end{tabular}}
             \begin{center}
