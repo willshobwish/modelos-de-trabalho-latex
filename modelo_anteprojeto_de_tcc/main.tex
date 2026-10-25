@@ -1,12 +1,11 @@
-% Define o tipo de documento como "article", com fonte de 12pt
-% A opção 'nodisplayskipstretch' evita que o LaTeX altere o espaçamento ao redor de fórmulas exibidas
-\documentclass[12pt,nodisplayskipstretch]{article}
+% Carrega a classe do anteprojeto (formatação, pacotes e comandos).
+\documentclass{anteprojeto_tcc}
 
-% Importa o arquivo com as configurações gerais do projeto (pacotes, margens, fonte etc.)
-\usepackage{config/commands}
-
-% Importa o arquivo de configurações adicionais (talvez pacotes específicos ou definições de estilo)
-\usepackage{config/config}
+% Dados do trabalho: substitua os valores abaixo.
+\renewcommand{\titulo}{Título da pesquisa}
+\renewcommand{\nome}{Nome sobrenome}
+\renewcommand{\orientador}{Prof. Dr. Nome Sobrenome}
+\renewcommand{\cidade}{Cidade}
 
 \begin{document} % Início do conteúdo do documento
 

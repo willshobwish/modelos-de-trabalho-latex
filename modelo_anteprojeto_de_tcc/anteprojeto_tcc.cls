@@ -1,19 +1,28 @@
+% Classe do modelo de anteprojeto de TCC.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{anteprojeto_tcc}[2026/10/25 Classe para anteprojeto de TCC]
+
+% Encaminha opções adicionais à classe base.
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+\LoadClass[12pt]{article}
+
 % ========================================
 % CONFIGURAÇÕES DE CODIFICAÇÃO E IDIOMA
 % ========================================
 
 % Define a codificação de entrada do arquivo como UTF-8
 % Permite o uso de caracteres especiais diretamente no código
-\usepackage[utf8]{inputenc}
+\RequirePackage[utf8]{inputenc}
 
 % Codificação de saída da fonte para suportar caracteres acentuados
 % T1 é recomendado para idiomas com acentos
-\usepackage[T1]{fontenc}
+\RequirePackage[T1]{fontenc}
 
 % Configuração de idiomas do documento
 % 'brazil' é o idioma principal, 'english' é secundário
 % Afeta hifenização, nomes de seções, formato de datas, etc.
-\usepackage[english,brazil]{babel}
+\RequirePackage[english,brazil]{babel}
 
 % ========================================
 % CONFIGURAÇÕES DE FONTE E FORMATAÇÃO
@@ -21,22 +30,22 @@
 
 % Define a fonte Times New Roman como padrão do documento
 % Fonte serifada tradicionalmente usada em documentos acadêmicos
-\usepackage{mathptmx}
+\RequirePackage{mathptmx}
 
 % Controle de espaçamento entre linhas
 % Permite usar \onehalfspacing, \doublespacing, etc.
-\usepackage{setspace}
+\RequirePackage[nodisplayskipstretch]{setspace}
 
 % Força a identação do primeiro parágrafo após títulos de seções
 % Por padrão, LaTeX não indenta o primeiro parágrafo
-\usepackage{indentfirst}
+\RequirePackage{indentfirst}
 
 % Melhores algoritmos de justificação e alinhamento de texto
 % Oferece comandos como \RaggedRight, \Centering, etc.
-\usepackage{ragged2e}
+\RequirePackage{ragged2e}
 
 % Controle do tamanho das fontes dos títulos das seções
-\usepackage{sectsty}
+\RequirePackage{sectsty}
 \sectionfont{\normalsize}        % Seções com tamanho normal
 \subsectionfont{\normalsize}     % Subseções com tamanho normal
 \subsubsectionfont{\normalsize}  % Sub-subseções com tamanho normal
@@ -47,14 +56,14 @@
 
 % Define as margens da página conforme padrões acadêmicos brasileiros
 % Papel A4 com margens: esquerda 30mm, direita 20mm, superior 30mm, inferior 20mm
-\usepackage[a4paper, left=30mm, right=20mm, top=30mm, bottom=20mm]{geometry}
+\RequirePackage[a4paper, left=30mm, right=20mm, top=30mm, bottom=20mm]{geometry}
 
 % ========================================
 % CONFIGURAÇÕES DE CABEÇALHO E RODAPÉ
 % ========================================
 
 % Pacote para personalizar cabeçalhos e rodapés
-\usepackage{fancyhdr}
+\RequirePackage{fancyhdr}
 
 % Define o estilo de página como 'fancy'
 \pagestyle{fancy}
@@ -80,13 +89,13 @@
 % ========================================
 
 % Permite células que ocupam múltiplas linhas
-\usepackage{multirow}
+\RequirePackage{multirow}
 
 % Tabelas com largura ajustável automaticamente
-\usepackage{tabularx}
+\RequirePackage{tabularx}
 
 % Suporte a cores em tabelas
-\usepackage[table]{xcolor}
+\RequirePackage[table]{xcolor}
 
 % Alinhamento vertical centralizado para colunas X do tabularx
 \renewcommand\tabularxcolumn[1]{m{#1}}
@@ -96,24 +105,24 @@
 % ========================================
 
 % Inclusão de imagens nos formatos mais comuns
-\usepackage{graphicx}
+\RequirePackage{graphicx}
 
 % Legendas personalizáveis para figuras e tabelas
-\usepackage{caption}
+\RequirePackage{caption}
 
 % Subfiguras (figuras lado a lado com legendas individuais)
-\usepackage{subcaption}
+\RequirePackage{subcaption}
 
 % Controle preciso do posicionamento de elementos flutuantes
 % [H] força o posicionamento exato onde o código foi inserido
-\usepackage{float}
+\RequirePackage{float}
 
 % ========================================
 % CONFIGURAÇÕES DE HIPERLINKS
 % ========================================
 
 % Criação de hiperlinks e bookmarks no PDF
-\usepackage{hyperref}
+\RequirePackage{hyperref}
 
 % Configurações dos hiperlinks
 \hypersetup{
@@ -133,10 +142,10 @@
 % ========================================
 
 % Suporte aprimorado para aspas (necessário para biblatex)
-\usepackage{csquotes}
+\RequirePackage{csquotes}
 
 % Sistema de bibliografia moderno com estilo ABNT
-\usepackage[style=abnt]{biblatex}
+\RequirePackage[style=abnt]{biblatex}
 
 % Define o arquivo de referências bibliográficas
 \addbibresource{referencias.bib}
@@ -146,10 +155,10 @@
 % ========================================
 
 % Pacote principal para listagens de código
-\usepackage{listings}
+\RequirePackage{listings}
 
 % Redefinição do pacote xcolor (já carregado anteriormente)
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 
 % Definição de cores personalizadas para syntax highlighting
 \definecolor{codegreen}{rgb}{0,0.6,0}      % Verde para comentários
@@ -184,7 +193,7 @@
 % ========================================
 
 % Sistema para lista de siglas e símbolos
-\usepackage{nomencl}
+\RequirePackage{nomencl}
 
 % Gera os arquivos necessários para a nomenclatura
 \makenomenclature
@@ -194,19 +203,19 @@
 % ========================================
 
 % Destacar texto com cores de fundo (comando \hl{})
-\usepackage{soul}
+\RequirePackage{soul}
 
 % Citações em bloco com melhor formatação
-\usepackage{quoting}
+\RequirePackage{quoting}
 
 % Importar arquivos TeX de subdiretórios mantendo caminhos relativos
-\usepackage{import}
+\RequirePackage{import}
 
 % Controle avançado de hifenização
-\usepackage{hyphenat}
+\RequirePackage{hyphenat}
 
 % Geração de texto dummy para testes (comando \lipsum)
-\usepackage{lipsum}
+\RequirePackage{lipsum}
 
 % ========================================
 % PERSONALIZAÇÕES DE NOMES E TÍTULOS
@@ -237,3 +246,32 @@
     \hrule width 5cm    % Linha horizontal de 5cm
     \kern 2pt           % Espaçamento abaixo da linha
 }
+% ========================================
+% COMANDOS E AMBIENTES DO MODELO
+% ========================================
+
+% Ambiente para apresentação da natureza do trabalho (ex: tipo, curso, ano, etc.).
+% Insere um recuo horizontal de 59mm e posiciona o conteúdo dentro de uma caixa de 95mm com alinhamento justificado.
+\newenvironment{natureza}
+  {\hspace{59mm}\begin{minipage}[c]{95mm}\begin{justify}}
+  {\end{justify}\end{minipage}}
+
+% Ambiente para citações longas (com mais de três linhas), formatando com recuo, espaçamento simples e fonte reduzida.
+% Utilizado para destacar trechos de textos de outros autores.
+\newenvironment{longcite}
+  {\vspace{5mm}\hfill\begin{minipage}[c]{120mm}\setstretch{1.0}\small}
+  {\end{minipage}\vspace{5mm}}
+
+% Comando personalizado para o título da pesquisa.
+% Pode ser redefinido com \renewcommand{\titulo}{Novo Título}.
+\newcommand{\titulo}{Título da pesquisa}
+
+% Comando para o nome do autor ou autora do trabalho.
+\newcommand{\nome}{Nome sobrenome}
+
+% Comando para o nome do(a) orientador(a).
+\newcommand{\orientador}{Prof. Dr. Nome Sobrenome}
+
+% Comando para a cidade e o estado em que o trabalho foi desenvolvido.
+\newcommand{\cidade}{Cidade}
+\newcommand{\cidadeestado}{\cidade\;-- Estado}
